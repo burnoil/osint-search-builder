@@ -41,12 +41,14 @@
         <div class="two">
           <div><label><b>KEV JSON URL</b></label><input id="kevUrl" value="data/kev.json"></div>
           <div><label><b>Patch RSS URL</b></label><input id="patchUrl" value="data/patchmypc.xml"></div>
+          <div><label><b>ZDI RSS URL</b></label><input id="zdiUrl" value="data/zdi.xml"></div>
         </div>
         <p class="small">Recommended GitHub Pages setup: mirror CISA KEV to <code>data/kev.json</code> and Patch My PC RSS to <code>data/patchmypc.xml</code> using GitHub Actions. Direct external fetches may be blocked by CORS.</p>
         <div class="actions" style="margin-top:12px">
           <button data-action="load-feeds">Refresh Feeds</button>
           <label class="filebtn secondary">Import KEV JSON<input id="kevImport" type="file" accept="application/json" style="display:none"></label>
-          <label class="filebtn secondary">Import RSS/XML<input id="rssImport" type="file" accept=".xml,.rss,text/xml,application/xml" style="display:none"></label>
+          <label class="filebtn secondary">Import Patch RSS/XML<input id="rssImport" type="file" accept=".xml,.rss,text/xml,application/xml" style="display:none"></label>
+          <label class="filebtn secondary">Import ZDI RSS/XML<input id="zdiImport" type="file" accept=".xml,.rss,text/xml,application/xml" style="display:none"></label>
         </div>
         <div id="sourceStatus" style="margin-top:12px"></div>
       </section>
@@ -93,6 +95,7 @@
 const $ = id => document.getElementById(id);
 let KEV = { vulnerabilities: [] };
 let RSS_ITEMS = [];
+let ZDI_ITEMS = [];
 let LAST_RESULTS = [];
 
 const SAMPLE = `Google Chrome
@@ -164,6 +167,7 @@ async function loadFeeds() {
 
   const kevUrl = $('kevUrl').value || 'data/kev.json';
   const patchUrl = $('patchUrl').value || 'data/patchmypc.xml';
+  const zdiUrl = $('zdiUrl').value || 'data/zdi.xml';
 
   const lines = [];
 
@@ -177,11 +181,19 @@ async function loadFeeds() {
   }
 
   try {
-    const rssResult = await fetchTextCandidates(sourceCandidateList(patchUrl, 'https://raw.githubusercontent.com/burnoil/osint-search-builder/main/data/patchmypc.xml'));
+    const rssResult = await fetchTextCandidates(sourceCandidateList(patchUrl, 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/patchmypc.xml'));
     RSS_ITEMS = parseRss(rssResult.text);
     lines.push('<div class="ok" style="margin-top:8px"><b>Patch RSS loaded:</b> ' + RSS_ITEMS.length + ' items from <code>' + esc(rssResult.url) + '</code></div>');
   } catch (error) {
     lines.push('<div class="warn" style="margin-top:8px"><b>Patch RSS failed:</b> ' + esc(error.message) + '<br>RSS is optional; KEV matching can still run.</div>');
+  }
+
+  try {
+    const zdiResult = await fetchTextCandidates(sourceCandidateList(zdiUrl, 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/zdi.xml'));
+    ZDI_ITEMS = parseRss(zdiResult.text);
+    lines.push('<div class="ok" style="margin-top:8px"><b>ZDI RSS loaded:</b> ' + ZDI_ITEMS.length + ' advisories from <code>' + esc(zdiResult.url) + '</code></div>');
+  } catch (error) {
+    lines.push('<div class="warn" style="margin-top:8px"><b>ZDI RSS failed:</b> ' + esc(error.message) + '<br>ZDI is optional; KEV and patch matching can still run.</div>');
   }
 
   status.innerHTML = lines.join('');
@@ -225,9 +237,23 @@ function importRss(file) {
   reader.onload = () => {
     try {
       RSS_ITEMS = parseRss(reader.result);
-      $('sourceStatus').innerHTML = '<div class="ok"><b>Imported RSS:</b> ' + RSS_ITEMS.length + ' items.</div>';
+      $('sourceStatus').innerHTML = '<div class="ok"><b>Imported Patch RSS:</b> ' + RSS_ITEMS.length + ' items.</div>';
     } catch (error) {
-      $('sourceStatus').innerHTML = '<div class="bad"><b>RSS import failed:</b> ' + esc(error.message) + '</div>';
+      $('sourceStatus').innerHTML = '<div class="bad"><b>Patch RSS import failed:</b> ' + esc(error.message) + '</div>';
+    }
+  };
+  reader.readAsText(file);
+}
+
+function importZdi(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      ZDI_ITEMS = parseRss(reader.result);
+      $('sourceStatus').innerHTML = '<div class="ok"><b>Imported ZDI RSS:</b> ' + ZDI_ITEMS.length + ' advisories.</div>';
+    } catch (error) {
+      $('sourceStatus').innerHTML = '<div class="bad"><b>ZDI import failed:</b> ' + esc(error.message) + '</div>';
     }
   };
   reader.readAsText(file);
@@ -274,10 +300,26 @@ function matchRss(software) {
     .slice(0, 8);
 }
 
-function priorityFor(kevMatches, rssMatches) {
+function matchZdi(software) {
+  const days = parseInt($('lookbackDays').value || '90', 10);
+  const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
+
+  return ZDI_ITEMS
+    .map(item => ({ ...item, matchScore: matchScore(software, item.text) }))
+    .filter(item => item.matchScore >= 50)
+    .filter(item => {
+      const d = item.date ? new Date(item.date).getTime() : NaN;
+      return Number.isNaN(d) || d >= cutoff;
+    })
+    .sort((a, b) => b.matchScore - a.matchScore)
+    .slice(0, 8);
+}
+
+function priorityFor(kevMatches = [], rssMatches = [], zdiMatches = []) {
   let score = 0;
   const reasons = [];
   if (kevMatches.length) { score += 70; reasons.push('Known exploited vulnerability match'); }
+  if (zdiMatches.length) { score += 40; reasons.push('Recently disclosed vulnerability signal from ZDI'); }
   if (rssMatches.some(x => x.cves.length)) { score += 20; reasons.push('Recent patch/update item references CVEs'); }
   if (rssMatches.length) { score += 10; reasons.push('Recent patch/update signal found'); }
 
@@ -285,7 +327,7 @@ function priorityFor(kevMatches, rssMatches) {
   if (score >= 80) return { label: 'Critical / Immediate Review', level: 'critical', cls: 'score-critical', score, reasons };
   if (score >= 60) return { label: 'High Priority', level: 'high', cls: 'score-high', score, reasons };
   if (score >= 30) return { label: 'Medium Priority', level: 'medium', cls: 'score-medium', score, reasons };
-  return { label: 'Low / No Current Signal', level: 'low', cls: 'score-low', score, reasons: reasons.length ? reasons : ['No KEV or recent patch signal found'] };
+  return { label: 'Low / No Current Signal', level: 'low', cls: 'score-low', score, reasons: reasons.length ? reasons : ['No KEV, ZDI, or recent patch signal found'] };
 }
 
 function analyze() {
@@ -295,8 +337,9 @@ function analyze() {
   LAST_RESULTS = apps.map(app => {
     const kev = matchKev(app);
     const rss = matchRss(app);
-    const priority = priorityFor(kev, rss);
-    return { app, kev, rss, priority };
+    const zdi = matchZdi(app);
+    const priority = priorityFor(kev, rss, zdi);
+    return { app, kev, rss, zdi, priority };
   }).filter(result => {
     if (filter === 'critical') return result.priority.level === 'critical';
     if (filter === 'high') return result.priority.level === 'high';
@@ -316,6 +359,7 @@ function renderSummary() {
   const total = LAST_RESULTS.length;
   const kevCount = LAST_RESULTS.filter(r => r.kev.length).length;
   const patchCount = LAST_RESULTS.filter(r => r.rss.length).length;
+  const zdiCount = LAST_RESULTS.filter(r => r.zdi.length).length;
   const critical = LAST_RESULTS.filter(r => r.priority.level === 'critical').length;
   const high = LAST_RESULTS.filter(r => r.priority.level === 'high').length;
 
@@ -323,6 +367,7 @@ function renderSummary() {
     '<div class="item"><b>' + total + '</b><br><span class="small">Applications analyzed</span></div>' +
     '<div class="item"><b>' + kevCount + '</b><br><span class="small">KEV matches</span></div>' +
     '<div class="item"><b>' + patchCount + '</b><br><span class="small">Patch/update signals</span></div>' +
+    '<div class="item"><b>' + zdiCount + '</b><br><span class="small">ZDI emerging signals</span></div>' +
     '</div><div class="' + (critical ? 'bad' : high ? 'warn' : 'ok') + '" style="margin-top:10px"><b>' + critical + '</b> critical items • <b>' + high + '</b> high-priority items. Results are sorted by priority descending.</div>';
 }
 
@@ -366,6 +411,12 @@ function renderResult(result) {
     return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + updateLink + '</div>';
   }).join('') : '<div class="small">No recent patch/update signal.</div>';
 
+  const zdiHtml = result.zdi.length ? result.zdi.map(item => {
+    const cveLinkHtml = item.cves.length ? '<br>' + item.cves.map(cve => '<b>' + esc(cve) + '</b> ' + cveLinks(cve)).join('<br>') : '';
+    const advisoryLink = item.link ? '<br>' + linkButton('ZDI Advisory', item.link) : '';
+    return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + advisoryLink + '</div>';
+  }).join('') : '<div class="small">No recent ZDI disclosure signal.</div>';
+
   const queries = buildQueries(result);
 
   return '<div class="item">' +
@@ -375,6 +426,7 @@ function renderResult(result) {
     '<div style="margin-bottom:8px">' + vendorLinks(result.app) + '</div>' +
     '<details open><summary>KEV exploited vulnerability matches</summary>' + kevHtml + '</details>' +
     '<details><summary>Patch/update signals</summary>' + rssHtml + '</details>' +
+    '<details><summary>ZDI emerging disclosures</summary>' + zdiHtml + '</details>' +
     '<details><summary>Suggested validation actions</summary><div class="mono">' + buildActions(result).map(esc).join('<br>') + '</div></details>' +
     '<details><summary>Search pivots</summary><div class="mono">' + queries.map(esc).join('<br>') + '</div></details>' +
     '</div>';
@@ -388,12 +440,13 @@ function buildActions(result) {
   ];
   if (result.kev.length) actions.push('- Prioritize immediately: at least one matching item appears in CISA KEV.');
   if (result.rss.length) actions.push('- Validate whether a recent vendor/update signal maps to a deployable update.');
+  if (result.zdi.length) actions.push('- Review ZDI disclosure details and vendor fix status; treat as emerging risk even if not yet in KEV.');
   return actions;
 }
 
 function buildQueries(result) {
   const app = result.app;
-  const cves = [...new Set(result.kev.map(v => v.cveID).concat(result.rss.flatMap(r => r.cves)))];
+  const cves = [...new Set(result.kev.map(v => v.cveID).concat(result.rss.flatMap(r => r.cves)).concat(result.zdi.flatMap(z => z.cves)))];
   const queries = [
     '"' + app + '" vulnerability advisory',
     '"' + app + '" release notes security update',
@@ -417,6 +470,9 @@ function resultText(result) {
     '',
     'Patch Signals:',
     ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']),
+    '',
+    'ZDI Emerging Disclosures:',
+    ...(result.zdi.length ? result.zdi.map(z => '- ' + z.title + (z.cves.length ? ' [' + z.cves.join(', ') + ']' : '')) : ['- None']),
     '',
     'Validation Actions:',
     ...buildActions(result),
@@ -453,9 +509,10 @@ function runTests() {
   const tests = [
     { name: 'Software parser splits lines', pass: (() => { const old = $('softwareInput').value; $('softwareInput').value = 'A\nB'; const ok = softwareList().length === 2; $('softwareInput').value = old; return ok; })() },
     { name: 'RSS parser accepts empty channel', pass: parseRss('<rss><channel></channel></rss>').length === 0 },
-    { name: 'Priority with KEV is high', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], []).score >= 70 },
-    { name: 'Priority levels include critical', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [{ cves: ['CVE-2024-0001'] }]).level === 'critical' },
-    { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', kev: [], rss: [], priority: priorityFor([], []) }).includes('Validation Actions') },
+    { name: 'Priority with KEV is high', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [], []).score >= 70 },
+    { name: 'Priority levels include critical', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [{ cves: ['CVE-2024-0001'] }], []).level === 'critical' },
+    { name: 'Priority with ZDI is medium or higher', pass: priorityFor([], [], [{ title: 'ZDI test' }]).score >= 40 },
+    { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', kev: [], rss: [], zdi: [], priority: priorityFor([], [], []) }).includes('Validation Actions') },
     { name: 'CVE links include NVD', pass: cveLinks('CVE-2024-0001').includes('nvd.nist.gov') },
     { name: 'Vendor links include update search', pass: vendorLinks('TestApp').includes('download') }
   ];
@@ -476,6 +533,7 @@ function boot() {
 
   $('kevImport').addEventListener('change', event => importKev(event.target.files[0]));
   $('rssImport').addEventListener('change', event => importRss(event.target.files[0]));
+  $('zdiImport').addEventListener('change', event => importZdi(event.target.files[0]));
   $('resultFilter').addEventListener('change', analyze);
   $('lookbackDays').addEventListener('change', analyze);
 
