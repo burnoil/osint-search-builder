@@ -44,10 +44,18 @@ jobs:
         run: |
           test -s data/kev.json
           test -s data/patchmypc.xml
-          test -s data/zdi.xml
           jq . data/kev.json > /dev/null
           head -n 5 data/patchmypc.xml
-          head -n 5 data/zdi.xml
+
+      - name: Validate ZDI RSS
+        run: |
+          echo "ZDI file size:"
+          wc -c data/zdi.xml
+
+          echo "ZDI first 20 lines:"
+          head -n 20 data/zdi.xml
+
+          grep -Eiq "<rss|<feed|<item|<entry" data/zdi.xml
 
       - name: Commit updated feeds
         run: |
