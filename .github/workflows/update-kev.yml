@@ -35,9 +35,10 @@ jobs:
       - name: Download ZDI RSS
         run: |
           curl -fL --retry 3 \
-            -A "Mozilla/5.0" \
+            -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" \
             "https://www.zerodayinitiative.com/rss/published/" \
             -o data/zdi.xml
+          test -s data/zdi.xml
             
       - name: Validate downloaded files
         run: |
