@@ -25,6 +25,10 @@ jobs:
             "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json" \
             -o data/kev.json
 
+      - name: Validate JSON
+        run: |
+          cat data/kev.json | jq . > /dev/null
+
       - name: Commit updated feed
         run: |
           git config user.name "github-actions"
