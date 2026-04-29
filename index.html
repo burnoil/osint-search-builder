@@ -19,7 +19,7 @@
     <div class="actions">
       <button data-action="load-feeds">Load Feeds</button>
       <button class="secondary" data-action="analyze">Analyze Software</button>
-      
+      <button class="secondary" data-action="export-report">Export Report</button>
       <button class="secondary" data-action="copy-critical-high">Copy Critical + High</button>
     </div>
   </section>
@@ -44,7 +44,7 @@
           <div><label><b>Patch RSS URL</b></label><input id="patchUrl" value="data/patchmypc.xml"></div>
           <div><label><b>ZDI RSS URL</b></label><input id="zdiUrl" value="data/zdi.xml"></div>
         </div>
-        <p class="small">Recommended GitHub Pages setup: mirror CISA KEV to <code>data/kev.json</code> and Patch My PC RSS to <code>data/patchmypc.xml</code> using GitHub Actions. Direct external fetches may be blocked by CORS.</p>
+        <p class="small">Recommended GitHub Pages setup: mirror CISA KEV to <code>data/kev.json</code>, Patch My PC RSS to <code>data/patchmypc.xml</code>, and ZDI RSS to <code>data/zdi.xml</code> using GitHub Actions. Direct external fetches may be blocked by CORS.</p>
         <div class="actions" style="margin-top:12px">
           <button data-action="load-feeds">Refresh Feeds</button>
           <label class="filebtn secondary">Import KEV JSON<input id="kevImport" type="file" accept="application/json" style="display:none"></label>
@@ -60,7 +60,15 @@
           <div><label><b>Criticality filter</b></label><select id="resultFilter"><option value="all">All criticalities</option><option value="critical">Critical only</option><option value="high">High only</option><option value="medium">Medium only</option><option value="low">Low only</option></select></div>
           <div><label><b>Lookback window</b></label><select id="lookbackDays"><option value="30">Last 30 days</option><option value="60">Last 60 days</option><option value="90" selected>Last 90 days</option><option value="180">Last 180 days</option><option value="365">Last year</option></select></div>
           <div><label><b>Noise control</b></label><select id="noiseFilter"><option value="all">Show all results</option><option value="actionable">Hide Low / No Signal</option></select></div>
-          <div><label><b>Search engine</b></label><select id="engine"><option value="google">Google</option><option value="bing">Bing</option><option value="du    <div id="summaryBox"><p class="small">Load feeds and analyze software to see results.</p></div>
+          <div><label><b>Search engine</b></label><select id="engine"><option value="google">Google</option><option value="bing">Bing</option><option value="duck">DuckDuckGo</option></select></div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="sticky">
+      <section class="card">
+        <h2>Analysis Summary</h2>
+        <div id="summaryBox"><p class="small">Load feeds and analyze software to see results.</p></div>
       </section>
       <section class="card">
         <h2>Feed Freshness</h2>
@@ -69,7 +77,7 @@
       <section class="card">
         <h2>What This Tool Does</h2>
         <p class="small">This does not scan endpoints. It correlates a software list against public vulnerability and patch signals so an engineer can prioritize validation, patching, ownership, and escalation.</p>
-        <span class="pill">Software stack input</span><span class="pill">KEV exploited</span><span class="pill">Patch signal</span><span class="pill">Action report</span>
+        <span class="pill">Software stack input</span><span class="pill">KEV exploited</span><span class="pill">Patch signal</span><span class="pill">ZDI emerging</span><span class="pill">Action report</span>
       </section>
     </aside>
   </section>
@@ -97,16 +105,7 @@ let ZDI_ITEMS = [];
 let LAST_RESULTS = [];
 let FEED_META = { kev: null, patch: null, zdi: null };
 
-const SAMPLE = `Google Chrome
-Microsoft Office
-Zoom
-7-Zip
-Ivanti Connect Secure
-Fortinet FortiOS
-Okta
-ConnectWise ScreenConnect
-Adobe Acrobat
-Mozilla Firefox`;
+const SAMPLE = 'Google Chrome\nMicrosoft Office\nZoom\n7-Zip\nIvanti Connect Secure\nFortinet FortiOS\nOkta\nConnectWise ScreenConnect\nAdobe Acrobat\nMozilla Firefox';
 
 const esc = value => String(value || '')
   .replaceAll('&', '&amp;')
@@ -167,11 +166,10 @@ async function loadFeeds() {
   const kevUrl = $('kevUrl').value || 'data/kev.json';
   const patchUrl = $('patchUrl').value || 'data/patchmypc.xml';
   const zdiUrl = $('zdiUrl').value || 'data/zdi.xml';
-
   const lines = [];
 
   try {
-    const kevResult = await fetchTextCandidates(sourceCandidateList(kevUrl, 'https://raw.githubusercontent.com/burnoil/osint-search-builder/main/data/kev.json'));
+    const kevResult = await fetchTextCandidates(sourceCandidateList(kevUrl, 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/kev.json'));
     KEV = JSON.parse(kevResult.text);
     if (!Array.isArray(KEV.vulnerabilities)) throw new Error('KEV JSON missing vulnerabilities[]');
     FEED_META.kev = { loadedAt: new Date().toISOString(), source: kevResult.url, count: KEV.vulnerabilities.length };
@@ -208,7 +206,7 @@ function sanitizeXmlText(xmlText) {
 }
 
 function compactPreview(text, length) {
-  return String(text || '').slice(0, length || 160).split(new RegExp('[ \n\r\t]+')).join(' ');
+  return String(text || '').slice(0, length || 160).replace(/\s+/g, ' ');
 }
 
 function parseRss(xmlText) {
@@ -228,9 +226,7 @@ function parseRss(xmlText) {
     parseError = doc.querySelector('parsererror');
   }
 
-  if (parseError) {
-    throw new Error('Invalid XML/RSS. Preview: ' + compactPreview(original, 160));
-  }
+  if (parseError) throw new Error('Invalid XML/RSS. Preview: ' + compactPreview(original, 160));
 
   const items = [...doc.querySelectorAll('item, entry')];
   const cvePattern = new RegExp('CVE-[0-9]{4}-[0-9]{4,7}', 'gi');
@@ -293,10 +289,8 @@ function matchScore(software, text) {
   const hay = norm(text);
   if (!sw || !hay) return 0;
   if (hay.includes(sw)) return 100;
-
   const swTokens = tokenSet(sw);
   if (!swTokens.size) return 0;
-
   let hits = 0;
   swTokens.forEach(token => { if (hay.includes(token)) hits++; });
   return Math.round((hits / swTokens.size) * 100);
@@ -304,11 +298,7 @@ function matchScore(software, text) {
 
 function matchKev(software) {
   return (KEV.vulnerabilities || [])
-    .map(v => {
-      const text = [v.cveID, v.vendorProject, v.product, v.vulnerabilityName, v.shortDescription].join(' ');
-      const score = matchScore(software, text);
-      return { ...v, matchScore: score };
-    })
+    .map(v => ({ ...v, matchScore: matchScore(software, [v.cveID, v.vendorProject, v.product, v.vulnerabilityName, v.shortDescription].join(' ')) }))
     .filter(v => v.matchScore >= 50)
     .sort((a, b) => b.matchScore - a.matchScore || String(b.dateAdded).localeCompare(String(a.dateAdded)))
     .slice(0, 10);
@@ -317,14 +307,9 @@ function matchKev(software) {
 function matchRss(software) {
   const days = parseInt($('lookbackDays').value || '90', 10);
   const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
-
-  return RSS_ITEMS
-    .map(item => ({ ...item, matchScore: matchScore(software, item.text) }))
+  return RSS_ITEMS.map(item => ({ ...item, matchScore: matchScore(software, item.text) }))
     .filter(item => item.matchScore >= 50)
-    .filter(item => {
-      const d = item.date ? new Date(item.date).getTime() : NaN;
-      return Number.isNaN(d) || d >= cutoff;
-    })
+    .filter(item => { const d = item.date ? new Date(item.date).getTime() : NaN; return Number.isNaN(d) || d >= cutoff; })
     .sort((a, b) => b.matchScore - a.matchScore)
     .slice(0, 8);
 }
@@ -332,14 +317,9 @@ function matchRss(software) {
 function matchZdi(software) {
   const days = parseInt($('lookbackDays').value || '90', 10);
   const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
-
-  return ZDI_ITEMS
-    .map(item => ({ ...item, matchScore: matchScore(software, item.text) }))
+  return ZDI_ITEMS.map(item => ({ ...item, matchScore: matchScore(software, item.text) }))
     .filter(item => item.matchScore >= 50)
-    .filter(item => {
-      const d = item.date ? new Date(item.date).getTime() : NaN;
-      return Number.isNaN(d) || d >= cutoff;
-    })
+    .filter(item => { const d = item.date ? new Date(item.date).getTime() : NaN; return Number.isNaN(d) || d >= cutoff; })
     .sort((a, b) => b.matchScore - a.matchScore)
     .slice(0, 8);
 }
@@ -351,7 +331,6 @@ function priorityFor(kevMatches = [], rssMatches = [], zdiMatches = []) {
   if (zdiMatches.length) { score += 40; reasons.push('Recently disclosed vulnerability signal from ZDI'); }
   if (rssMatches.some(x => x.cves.length)) { score += 20; reasons.push('Recent patch/update item references CVEs'); }
   if (rssMatches.length) { score += 10; reasons.push('Recent patch/update signal found'); }
-
   score = Math.min(100, score);
   if (score >= 80) return { label: 'Critical / Immediate Review', level: 'critical', cls: 'score-critical', score, reasons };
   if (score >= 60) return { label: 'High Priority', level: 'high', cls: 'score-high', score, reasons };
@@ -363,7 +342,6 @@ function analyze() {
   const apps = softwareList();
   const filter = $('resultFilter').value;
   const noise = $('noiseFilter') ? $('noiseFilter').value : 'all';
-
   LAST_RESULTS = apps.map(app => {
     const kev = matchKev(app);
     const rss = matchRss(app);
@@ -381,7 +359,6 @@ function analyze() {
     const rank = { critical: 4, high: 3, medium: 2, low: 1 };
     return (rank[b.priority.level] - rank[a.priority.level]) || (b.priority.score - a.priority.score) || a.app.localeCompare(b.app);
   });
-
   renderSummary();
   renderResults();
 }
@@ -403,7 +380,6 @@ function renderSummary() {
   const zdiCount = LAST_RESULTS.filter(r => r.zdi.length).length;
   const critical = LAST_RESULTS.filter(r => r.priority.level === 'critical').length;
   const high = LAST_RESULTS.filter(r => r.priority.level === 'high').length;
-
   $('summaryBox').innerHTML = '<div class="three">' +
     '<div class="item"><b>' + total + '</b><br><span class="small">Applications analyzed</span></div>' +
     '<div class="item"><b>' + kevCount + '</b><br><span class="small">KEV matches</span></div>' +
@@ -414,11 +390,7 @@ function renderSummary() {
 
 function renderResults() {
   const root = $('results');
-  if (!LAST_RESULTS.length) {
-    root.innerHTML = '<p class="small">No results to display. Try loading feeds and analyzing a software list.</p>';
-    return;
-  }
-
+  if (!LAST_RESULTS.length) { root.innerHTML = '<p class="small">No results to display. Try loading feeds and analyzing a software list.</p>'; return; }
   root.innerHTML = LAST_RESULTS.map(result => renderResult(result)).join('');
 }
 
@@ -442,24 +414,18 @@ function vendorLinks(app) {
 }
 
 function renderResult(result) {
-  const kevHtml = result.kev.length ? result.kev.map(v => {
-    return '<div class="mono" style="margin-bottom:8px"><b>' + esc(v.cveID) + '</b> • ' + esc(v.vendorProject) + ' ' + esc(v.product) + ' • Added ' + esc(v.dateAdded) + ' • Match ' + v.matchScore + '%<br>' + cveLinks(v.cveID) + '</div>';
-  }).join('') : '<div class="small">No KEV match.</div>';
-
+  const kevHtml = result.kev.length ? result.kev.map(v => '<div class="mono" style="margin-bottom:8px"><b>' + esc(v.cveID) + '</b> • ' + esc(v.vendorProject) + ' ' + esc(v.product) + ' • Added ' + esc(v.dateAdded) + ' • Match ' + v.matchScore + '%<br>' + cveLinks(v.cveID) + '</div>').join('') : '<div class="small">No KEV match.</div>';
   const rssHtml = result.rss.length ? result.rss.map(item => {
     const cveLinkHtml = item.cves.length ? '<br>' + item.cves.map(cve => '<b>' + esc(cve) + '</b> ' + cveLinks(cve)).join('<br>') : '';
     const updateLink = item.link ? '<br>' + linkButton('Patch / Release Item', item.link) : '';
     return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + updateLink + '</div>';
   }).join('') : '<div class="small">No recent patch/update signal.</div>';
-
   const zdiHtml = result.zdi.length ? result.zdi.map(item => {
     const cveLinkHtml = item.cves.length ? '<br>' + item.cves.map(cve => '<b>' + esc(cve) + '</b> ' + cveLinks(cve)).join('<br>') : '';
     const advisoryLink = item.link ? '<br>' + linkButton('ZDI Advisory', item.link) : '';
     return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + advisoryLink + '</div>';
   }).join('') : '<div class="small">No recent ZDI disclosure signal.</div>';
-
   const queries = buildQueries(result);
-
   return '<div class="item">' +
     '<div class="item-head"><div><h3 style="margin:0 0 6px">' + esc(result.app) + '</h3><span class="' + result.priority.cls + '">' + result.priority.label + '</span> <span class="pill">Score ' + result.priority.score + '</span></div>' +
     '<div class="actions"><button data-open-searches="' + esc(result.app) + '">Open Searches</button><button class="secondary" data-copy-report="' + esc(result.app) + '">Copy</button></div></div>' +
@@ -474,11 +440,7 @@ function renderResult(result) {
 }
 
 function buildActions(result) {
-  const actions = [
-    '- Confirm installed versions from inventory, EDR, BigFix, MECM, vulnerability scanner, or app control data.',
-    '- Identify owner, business criticality, exposure, and patch deployment path.',
-    '- Check vendor advisory and release notes for fixed versions and mitigations.'
-  ];
+  const actions = ['- Confirm installed versions from inventory, EDR, BigFix, MECM, vulnerability scanner, or app control data.', '- Identify owner, business criticality, exposure, and patch deployment path.', '- Check vendor advisory and release notes for fixed versions and mitigations.'];
   if (result.kev.length) actions.push('- Prioritize immediately: at least one matching item appears in CISA KEV.');
   if (result.rss.length) actions.push('- Validate whether a recent vendor/update signal maps to a deployable update.');
   if (result.zdi.length) actions.push('- Review ZDI disclosure details and vendor fix status; treat as emerging risk even if not yet in KEV.');
@@ -488,39 +450,13 @@ function buildActions(result) {
 function buildQueries(result) {
   const app = result.app;
   const cves = [...new Set(result.kev.map(v => v.cveID).concat(result.rss.flatMap(r => r.cves)).concat(result.zdi.flatMap(z => z.cves)))];
-  const queries = [
-    '"' + app + '" vulnerability advisory',
-    '"' + app + '" release notes security update',
-    '"' + app + '" fixed version CVE'
-  ];
-  cves.slice(0, 5).forEach(cve => {
-    queries.push('"' + cve + '" exploit OR poc OR github');
-    queries.push('"' + cve + '" patch OR mitigation OR advisory');
-  });
+  const queries = ['"' + app + '" vulnerability advisory', '"' + app + '" release notes security update', '"' + app + '" fixed version CVE'];
+  cves.slice(0, 5).forEach(cve => { queries.push('"' + cve + '" exploit OR poc OR github'); queries.push('"' + cve + '" patch OR mitigation OR advisory'); });
   return queries;
 }
 
 function resultText(result) {
-  return [
-    result.app,
-    'Priority: ' + result.priority.label + ' (' + result.priority.score + ')',
-    'Reasons: ' + result.priority.reasons.join('; '),
-    '',
-    'KEV Matches:',
-    ...(result.kev.length ? result.kev.map(v => '- ' + v.cveID + ' ' + v.vendorProject + ' ' + v.product + ' Added: ' + v.dateAdded) : ['- None']),
-    '',
-    'Patch Signals:',
-    ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']),
-    '',
-    'ZDI Emerging Disclosures:',
-    ...(result.zdi.length ? result.zdi.map(z => '- ' + z.title + (z.cves.length ? ' [' + z.cves.join(', ') + ']' : '')) : ['- None']),
-    '',
-    'Validation Actions:',
-    ...buildActions(result),
-    '',
-    'Search Pivots:',
-    ...buildQueries(result)
-  ].join('\n');
+  return [result.app, 'Priority: ' + result.priority.label + ' (' + result.priority.score + ')', 'Reasons: ' + result.priority.reasons.join('; '), '', 'KEV Matches:', ...(result.kev.length ? result.kev.map(v => '- ' + v.cveID + ' ' + v.vendorProject + ' ' + v.product + ' Added: ' + v.dateAdded) : ['- None']), '', 'Patch Signals:', ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']), '', 'ZDI Emerging Disclosures:', ...(result.zdi.length ? result.zdi.map(z => '- ' + z.title + (z.cves.length ? ' [' + z.cves.join(', ') + ']' : '')) : ['- None']), '', 'Validation Actions:', ...buildActions(result), '', 'Search Pivots:', ...buildQueries(result)].join('\n');
 }
 
 function criticalHighResults() {
@@ -529,9 +465,7 @@ function criticalHighResults() {
 
 function copyCriticalHigh() {
   const items = criticalHighResults();
-  const text = items.length
-    ? items.map(resultText).join('\n\n---\n\n')
-    : 'No Critical or High findings in the current analysis.';
+  const text = items.length ? items.map(resultText).join('\n\n---\n\n') : 'No Critical or High findings in the current analysis.';
   navigator.clipboard.writeText(text);
 }
 
@@ -568,6 +502,7 @@ function runTests() {
     { name: 'Priority with ZDI is medium or higher', pass: priorityFor([], [], [{ title: 'ZDI test' }]).score >= 40 },
     { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', kev: [], rss: [], zdi: [], priority: priorityFor([], [], []) }).includes('Validation Actions') },
     { name: 'Critical/high helper returns array', pass: Array.isArray(criticalHighResults()) },
+    { name: 'Critical/high copy separator is escaped', pass: ['A','B'].join('\n\n---\n\n').includes('---') },
     { name: 'CVE links include NVD', pass: cveLinks('CVE-2024-0001').includes('nvd.nist.gov') },
     { name: 'Vendor links include update search', pass: vendorLinks('TestApp').includes('download') }
   ];
@@ -586,14 +521,12 @@ function boot() {
     if (target.dataset.openSearches) openSearchesFor(target.dataset.openSearches);
     if (target.dataset.copyReport) copyReportFor(target.dataset.copyReport);
   });
-
   $('kevImport').addEventListener('change', event => importKev(event.target.files[0]));
   $('rssImport').addEventListener('change', event => importRss(event.target.files[0]));
   $('zdiImport').addEventListener('change', event => importZdi(event.target.files[0]));
   $('resultFilter').addEventListener('change', analyze);
   $('lookbackDays').addEventListener('change', analyze);
   $('noiseFilter').addEventListener('change', analyze);
-
   runTests();
   loadFeeds();
 }
