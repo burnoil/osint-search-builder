@@ -19,7 +19,8 @@
     <div class="actions">
       <button data-action="load-feeds">Load Feeds</button>
       <button class="secondary" data-action="analyze">Analyze Software</button>
-      <button class="secondary" data-action="export-report">Export Report</button>
+      
+      <button class="secondary" data-action="copy-critical-high">Copy Critical + High</button>
     </div>
   </section>
 
@@ -58,15 +59,12 @@
         <div class="three">
           <div><label><b>Criticality filter</b></label><select id="resultFilter"><option value="all">All criticalities</option><option value="critical">Critical only</option><option value="high">High only</option><option value="medium">Medium only</option><option value="low">Low only</option></select></div>
           <div><label><b>Lookback window</b></label><select id="lookbackDays"><option value="30">Last 30 days</option><option value="60">Last 60 days</option><option value="90" selected>Last 90 days</option><option value="180">Last 180 days</option><option value="365">Last year</option></select></div>
-          <div><label><b>Search engine</b></label><select id="engine"><option value="google">Google</option><option value="bing">Bing</option><option value="duck">DuckDuckGo</option></select></div>
-        </div>
+          <div><label><b>Noise control</b></label><select id="noiseFilter"><option value="all">Show all results</option><option value="actionable">Hide Low / No Signal</option></select></div>
+          <div><label><b>Search engine</b></label><select id="engine"><option value="google">Google</option><option value="bing">Bing</option><option value="du    <div id="summaryBox"><p class="small">Load feeds and analyze software to see results.</p></div>
       </section>
-    </div>
-
-    <aside class="sticky">
       <section class="card">
-        <h2>Analysis Summary</h2>
-        <div id="summaryBox"><p class="small">Load feeds and analyze software to see results.</p></div>
+        <h2>Feed Freshness</h2>
+        <div id="freshnessBox"><p class="small">Feeds have not been loaded yet.</p></div>
       </section>
       <section class="card">
         <h2>What This Tool Does</h2>
@@ -97,6 +95,7 @@ let KEV = { vulnerabilities: [] };
 let RSS_ITEMS = [];
 let ZDI_ITEMS = [];
 let LAST_RESULTS = [];
+let FEED_META = { kev: null, patch: null, zdi: null };
 
 const SAMPLE = `Google Chrome
 Microsoft Office
@@ -175,6 +174,7 @@ async function loadFeeds() {
     const kevResult = await fetchTextCandidates(sourceCandidateList(kevUrl, 'https://raw.githubusercontent.com/burnoil/osint-search-builder/main/data/kev.json'));
     KEV = JSON.parse(kevResult.text);
     if (!Array.isArray(KEV.vulnerabilities)) throw new Error('KEV JSON missing vulnerabilities[]');
+    FEED_META.kev = { loadedAt: new Date().toISOString(), source: kevResult.url, count: KEV.vulnerabilities.length };
     lines.push('<div class="ok"><b>KEV loaded:</b> ' + KEV.vulnerabilities.length + ' entries from <code>' + esc(kevResult.url) + '</code></div>');
   } catch (error) {
     lines.push('<div class="bad"><b>KEV failed:</b> ' + esc(error.message) + '</div>');
@@ -183,6 +183,7 @@ async function loadFeeds() {
   try {
     const rssResult = await fetchTextCandidates(sourceCandidateList(patchUrl, 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/patchmypc.xml'));
     RSS_ITEMS = parseRss(rssResult.text);
+    FEED_META.patch = { loadedAt: new Date().toISOString(), source: rssResult.url, count: RSS_ITEMS.length };
     lines.push('<div class="ok" style="margin-top:8px"><b>Patch RSS loaded:</b> ' + RSS_ITEMS.length + ' items from <code>' + esc(rssResult.url) + '</code></div>');
   } catch (error) {
     lines.push('<div class="warn" style="margin-top:8px"><b>Patch RSS failed:</b> ' + esc(error.message) + '<br>RSS is optional; KEV matching can still run.</div>');
@@ -191,27 +192,55 @@ async function loadFeeds() {
   try {
     const zdiResult = await fetchTextCandidates(sourceCandidateList(zdiUrl, 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/zdi.xml'));
     ZDI_ITEMS = parseRss(zdiResult.text);
+    FEED_META.zdi = { loadedAt: new Date().toISOString(), source: zdiResult.url, count: ZDI_ITEMS.length };
     lines.push('<div class="ok" style="margin-top:8px"><b>ZDI RSS loaded:</b> ' + ZDI_ITEMS.length + ' advisories from <code>' + esc(zdiResult.url) + '</code></div>');
   } catch (error) {
     lines.push('<div class="warn" style="margin-top:8px"><b>ZDI RSS failed:</b> ' + esc(error.message) + '<br>ZDI is optional; KEV and patch matching can still run.</div>');
   }
 
   status.innerHTML = lines.join('');
+  renderFreshness();
+}
+
+function sanitizeXmlText(xmlText) {
+  const ampPattern = new RegExp('&(?!amp;|lt;|gt;|quot;|apos;|#[0-9]+;|#x[0-9a-fA-F]+;)', 'g');
+  return String(xmlText || '').replace(ampPattern, '&amp;');
+}
+
+function compactPreview(text, length) {
+  return String(text || '').slice(0, length || 160).split(new RegExp('[ \n\r\t]+')).join(' ');
 }
 
 function parseRss(xmlText) {
+  const original = String(xmlText || '').trim();
+  if (!original) throw new Error('RSS/XML file was empty');
+  if (original.toLowerCase().startsWith('<!doctype html') || original.toLowerCase().startsWith('<html')) {
+    throw new Error('Downloaded content is HTML, not RSS/XML. Preview: ' + compactPreview(original, 120));
+  }
+
   const parser = new DOMParser();
-  const doc = parser.parseFromString(xmlText, 'application/xml');
-  const parseError = doc.querySelector('parsererror');
-  if (parseError) throw new Error('Invalid XML/RSS');
+  let doc = parser.parseFromString(original, 'application/xml');
+  let parseError = doc.querySelector('parsererror');
+
+  if (parseError) {
+    const sanitized = sanitizeXmlText(original);
+    doc = parser.parseFromString(sanitized, 'application/xml');
+    parseError = doc.querySelector('parsererror');
+  }
+
+  if (parseError) {
+    throw new Error('Invalid XML/RSS. Preview: ' + compactPreview(original, 160));
+  }
 
   const items = [...doc.querySelectorAll('item, entry')];
+  const cvePattern = new RegExp('CVE-[0-9]{4}-[0-9]{4,7}', 'gi');
   return items.map(item => {
     const title = item.querySelector('title')?.textContent || '';
     const link = item.querySelector('link')?.textContent || item.querySelector('link')?.getAttribute('href') || '';
-    const description = item.querySelector('description, summary, content')?.textContent || '';
+    const encoded = item.getElementsByTagName('content:encoded')[0]?.textContent || '';
+    const description = item.querySelector('description, summary')?.textContent || encoded || item.querySelector('content')?.textContent || '';
     const date = item.querySelector('pubDate, updated, published')?.textContent || '';
-    const cves = [...new Set((title + ' ' + description).match(/CVE-\d{4}-\d{4,7}/gi) || [])].map(x => x.toUpperCase());
+    const cves = [...new Set((title + ' ' + description).match(cvePattern) || [])].map(x => x.toUpperCase());
     return { title, link, description, date, cves, text: title + ' ' + description };
   });
 }
@@ -333,6 +362,7 @@ function priorityFor(kevMatches = [], rssMatches = [], zdiMatches = []) {
 function analyze() {
   const apps = softwareList();
   const filter = $('resultFilter').value;
+  const noise = $('noiseFilter') ? $('noiseFilter').value : 'all';
 
   LAST_RESULTS = apps.map(app => {
     const kev = matchKev(app);
@@ -345,6 +375,7 @@ function analyze() {
     if (filter === 'high') return result.priority.level === 'high';
     if (filter === 'medium') return result.priority.level === 'medium';
     if (filter === 'low') return result.priority.level === 'low';
+    if (noise === 'actionable' && result.priority.level === 'low') return false;
     return true;
   }).sort((a, b) => {
     const rank = { critical: 4, high: 3, medium: 2, low: 1 };
@@ -353,6 +384,16 @@ function analyze() {
 
   renderSummary();
   renderResults();
+}
+
+function renderFreshness() {
+  const root = $('freshnessBox');
+  if (!root) return;
+  const label = (name, meta) => {
+    if (!meta) return '<div class="item"><b>' + name + '</b><br><span class="small">Not loaded yet.</span></div>';
+    return '<div class="item"><b>' + name + '</b><br><span class="small">Loaded: ' + esc(new Date(meta.loadedAt).toLocaleString()) + '<br>Items: ' + esc(meta.count) + '<br>Source: <code>' + esc(meta.source) + '</code></span></div>';
+  };
+  root.innerHTML = label('CISA KEV', FEED_META.kev) + label('Patch RSS', FEED_META.patch) + label('ZDI RSS', FEED_META.zdi) + '<p class="small">GitHub Action mirrors feeds hourly. Browser data refresh happens when you click Load Feeds or reload the page.</p>';
 }
 
 function renderSummary() {
@@ -482,6 +523,18 @@ function resultText(result) {
   ].join('\n');
 }
 
+function criticalHighResults() {
+  return LAST_RESULTS.filter(result => result.priority.level === 'critical' || result.priority.level === 'high');
+}
+
+function copyCriticalHigh() {
+  const items = criticalHighResults();
+  const text = items.length
+    ? items.map(resultText).join('\n\n---\n\n')
+    : 'No Critical or High findings in the current analysis.';
+  navigator.clipboard.writeText(text);
+}
+
 function exportReport() {
   const lines = ['Software Vulnerability & Patch Intelligence Report', 'Generated: ' + new Date().toLocaleString(), '', 'Software Input:', ...softwareList().map(x => '- ' + x), '', 'Results:', ''];
   LAST_RESULTS.forEach(result => lines.push(resultText(result), '', '---', ''));
@@ -509,10 +562,12 @@ function runTests() {
   const tests = [
     { name: 'Software parser splits lines', pass: (() => { const old = $('softwareInput').value; $('softwareInput').value = 'A\nB'; const ok = softwareList().length === 2; $('softwareInput').value = old; return ok; })() },
     { name: 'RSS parser accepts empty channel', pass: parseRss('<rss><channel></channel></rss>').length === 0 },
+    { name: 'RSS parser fixes bare ampersand', pass: parseRss('<rss><channel><item><title>A & B</title></item></channel></rss>').length === 1 },
     { name: 'Priority with KEV is high', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [], []).score >= 70 },
     { name: 'Priority levels include critical', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [{ cves: ['CVE-2024-0001'] }], []).level === 'critical' },
     { name: 'Priority with ZDI is medium or higher', pass: priorityFor([], [], [{ title: 'ZDI test' }]).score >= 40 },
     { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', kev: [], rss: [], zdi: [], priority: priorityFor([], [], []) }).includes('Validation Actions') },
+    { name: 'Critical/high helper returns array', pass: Array.isArray(criticalHighResults()) },
     { name: 'CVE links include NVD', pass: cveLinks('CVE-2024-0001').includes('nvd.nist.gov') },
     { name: 'Vendor links include update search', pass: vendorLinks('TestApp').includes('download') }
   ];
@@ -525,6 +580,7 @@ function boot() {
     if (target.dataset.action === 'load-feeds') loadFeeds();
     if (target.dataset.action === 'analyze') analyze();
     if (target.dataset.action === 'export-report') exportReport();
+    if (target.dataset.action === 'copy-critical-high') copyCriticalHigh();
     if (target.dataset.action === 'load-sample') $('softwareInput').value = SAMPLE;
     if (target.dataset.action === 'clear-input') $('softwareInput').value = '';
     if (target.dataset.openSearches) openSearchesFor(target.dataset.openSearches);
@@ -536,6 +592,7 @@ function boot() {
   $('zdiImport').addEventListener('change', event => importZdi(event.target.files[0]));
   $('resultFilter').addEventListener('change', analyze);
   $('lookbackDays').addEventListener('change', analyze);
+  $('noiseFilter').addEventListener('change', analyze);
 
   runTests();
   loadFeeds();
