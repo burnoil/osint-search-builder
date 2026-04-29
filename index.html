@@ -168,7 +168,7 @@ async function loadFeeds() {
   const lines = [];
 
   try {
-    const kevResult = await fetchTextCandidates(sourceCandidateList(kevUrl, 'https://raw.githubusercontent.com/burnoil/osint-search-builder/main/data/kev.json'));
+    const kevResult = await fetchTextCandidates(sourceCandidateList(kevUrl, 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/kev.json'));
     KEV = JSON.parse(kevResult.text);
     if (!Array.isArray(KEV.vulnerabilities)) throw new Error('KEV JSON missing vulnerabilities[]');
     lines.push('<div class="ok"><b>KEV loaded:</b> ' + KEV.vulnerabilities.length + ' entries from <code>' + esc(kevResult.url) + '</code></div>');
@@ -177,7 +177,7 @@ async function loadFeeds() {
   }
 
   try {
-    const rssResult = await fetchTextCandidates(sourceCandidateList(patchUrl, 'https://raw.githubusercontent.com/burnoil/osint-search-builder/main/data/patchmypc.xml'));
+    const rssResult = await fetchTextCandidates(sourceCandidateList(patchUrl, 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/patchmypc.xml'));
     RSS_ITEMS = parseRss(rssResult.text);
     lines.push('<div class="ok" style="margin-top:8px"><b>Patch RSS loaded:</b> ' + RSS_ITEMS.length + ' items from <code>' + esc(rssResult.url) + '</code></div>');
   } catch (error) {
