@@ -1,4 +1,4 @@
-name: Update CISA KEV Feed
+name: Update Threat Feeds
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  update-kev:
+  update-feeds:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,30 +21,30 @@ jobs:
 
       - name: Download CISA KEV JSON
         run: |
-          curl -L \
+          curl -fL --retry 3 \
             "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json" \
             -o data/kev.json
-            
+
       - name: Download Patch My PC RSS
         run: |
-          curl -L \
+          curl -fL --retry 3 \
+            -A "Mozilla/5.0" \
             "https://patchmypc.com/feed/" \
             -o data/patchmypc.xml
-            
-      - name: Validate JSON
+
+      - name: Validate downloaded files
         run: |
-          cat data/kev.json | jq . > /dev/null
-          
-      - name: Validate Patch My PC RSS
-        run: |
+          test -s data/kev.json
           test -s data/patchmypc.xml
-          
-      - name: Commit updated feed
+          jq . data/kev.json > /dev/null
+          head -n 5 data/patchmypc.xml
+
+      - name: Commit updated feeds
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/kev.json
+          git add data/kev.json data/patchmypc.xml
           git diff --cached --quiet && exit 0
-          git commit -m "Update KEV feed"
+          git commit -m "Update threat feeds"
           git pull --rebase origin main
           git push
