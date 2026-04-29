@@ -1,0 +1,1599 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Patch My PC</title>
+	<atom:link href="https://patchmypc.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://patchmypc.com/</link>
+	<description>Patch Management Made Easy</description>
+	<lastBuildDate>Tue, 28 Apr 2026 15:01:48 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Patch My PC Publisher Preview Version 2.1.120.177 Released</title>
+		<link>https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-177-released/</link>
+					<comments>https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-177-released/#respond</comments>
+		
+		<dc:creator><![CDATA[Brian Hall]]></dc:creator>
+		<pubDate>Tue, 28 Apr 2026 15:01:47 +0000</pubDate>
+				<category><![CDATA[Preview Release]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=182996</guid>
+
+					<description><![CDATA[<p>This release contains a variety of features, improvements, and fixes, as noted below. Bugfixes &#38; Improvements Publisher Microsoft Intune Integration Reliability and Logging</p>
+<p>The post <a href="https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-177-released/">Patch My PC Publisher Preview Version 2.1.120.177 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>This release contains a variety of features, improvements, and fixes, as noted below.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-bugfixes-amp-improvements">Bugfixes &amp; Improvements</h2>
+
+
+
+<h3 class="wp-block-heading" id="h-publisher">Publisher</h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Improved Manage Assignments window usability</strong><br>Fixed an issue where the <em>Manage Assignments</em> window could not be resized when accessed via right‑click actions in the Intune Apps and Updates tabs. The window can now be resized to more easily view and manage multiple assignments.</li>
+
+
+
+<li><strong>Copy button restored in Intune Apps and Updates tabs</strong><br>Resolved an issue where the <strong>Copy</strong> button was no longer visible, allowing customers to once again copy products and customizations between entries.</li>
+
+
+
+<li><strong>Fixed scrollbar interaction across multiple managers</strong><br>Fixed an issue where scrollbars only supported mouse‑wheel scrolling instead of click‑and‑drag interaction in the following areas:
+<ul class="wp-block-list">
+<li>WSUS Updates</li>
+
+
+
+<li>ConfigMgr Application Manager</li>
+
+
+
+<li>Intune Application Manager</li>
+
+
+
+<li>Intune Update Manager</li>
+</ul>
+</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading" id="h-microsoft-intune-integration">Microsoft Intune Integration</h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Corrected assignment loading behavior</strong><br>Fixed an issue where an unexpected progress indicator appeared when viewing assignments for a single Intune application, incorrectly showing the total number of applications being loaded before the assignment window opened.</li>
+
+
+
+<li><strong>Validated expected behavior for zero‑count scan results</strong><br>Confirmed expected behavior when filtering Intune scan results with a count of zero. These views are designed to display only applications detected on devices, while exports remain available for reviewing zero‑count results.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Reliability and Logging</h3>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Improved log file handling to reduce event log noise</strong> <br>Fixed an issue that could cause repeated event log errors due to log file access conflicts, helping reduce unnecessary logging and monitoring alerts while the Publisher is running.</li>
+</ul>
+
+
+
+<p></p>
+<p>The post <a href="https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-177-released/">Patch My PC Publisher Preview Version 2.1.120.177 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-177-released/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Patch My PC Publisher Preview Version 2.1.120.131 Released</title>
+		<link>https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-131-released/</link>
+					<comments>https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-131-released/#respond</comments>
+		
+		<dc:creator><![CDATA[Cody Mathis]]></dc:creator>
+		<pubDate>Wed, 22 Apr 2026 18:31:36 +0000</pubDate>
+				<category><![CDATA[Preview Release]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=182337</guid>
+
+					<description><![CDATA[<p>This release contains a variety of features, improvements, and fixes, as noted below. Improvements Fixes</p>
+<p>The post <a href="https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-131-released/">Patch My PC Publisher Preview Version 2.1.120.131 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>This release contains a variety of features, improvements, and fixes, as noted below.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-improvements">Improvements</h2>
+
+
+
+<ul class="wp-block-list">
+<li>Increase Intune upload timeout to one hour for large files and other enhancements to the Azure upload process.</li>
+
+
+
+<li>When selecting the Use Existing App Registration option, you are now given a choice of Intune tenants to choose from.</li>
+
+
+
+<li>Display Entra groups that have been deleted with a prefix of [Deleted Group: &lt;Group ID>] when editing DO Priority.</li>
+
+
+
+<li>Ensure the Publisher gracefully handles the case where its connection is deleted in the cloud.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="h-fixes">Fixes</h2>
+
+
+
+<ul class="wp-block-list">
+<li>Fix a bug causing the user to be unable to add a new language to Manage Conflicting Processes.</li>
+
+
+
+<li>An error message was displayed in the wrong place when editing a webhook.</li>
+
+
+
+<li>Resolve an issue that causes the Publisher to improperly parse the installation command line for WSUS in some cases. This could result in an update being published with an incorrectly formatted installation command.</li>
+
+
+
+<li>Grace period for required assignments can be disabled.</li>
+
+
+
+<li>Republishing an Intune Update retains the icon.</li>
+
+
+
+<li>Pause Product only worked for the first tenant in the list when MSPs had more than one tenant configured.</li>
+
+
+
+<li>Large Intune reports would fail to write to disk, causing an Out Of Memory exception.</li>
+
+
+
+<li>Fixed a bug where some applications would not be found in the local content cache.</li>
+
+
+
+<li>Clicking Browse in the Manage Pre/Post Scripts window would sometimes cause the Publisher to force close.</li>
+
+
+
+<li>When running a sync, Auto Publishing rules would return 0 devices for the Intune Report, even when Devices were present.</li>
+
+
+
+<li>Switched from using JSON to LiteDB for Intune Report Caching to improve report performance.</li>
+
+
+
+<li>Ensure the co-existence status is propagated to the cloud when a product is unselected in Publisher.</li>
+
+
+
+<li>Requirement Architecture was not correctly interpreted by the Publisher when creating Intune Apps.</li>
+
+
+
+<li>Fixed a bug causing products marked for &#8216;Exclude from auto-publishing rules&#8217; not to be saved when the product treeview is filtered to enabled products only.</li>
+
+
+
+<li>Addressed bug in Teams webhooks, causing notification to be missing version and other information.</li>
+
+
+
+<li>The SMTP Oauth Test permission button would only ever account for the first tenant configured.</li>
+
+
+
+<li>Fix a bug causing the WSUS Update Modification Wizard to not load in some cases.</li>
+
+
+
+<li>Intune tenant names were not correctly shown in the webhook list under the Alerts tab.</li>
+
+
+
+<li>Ensure the nth-day-of-the-week option for a monthly sync schedule maps correctly to settings.xml.</li>
+
+
+
+<li>The product export feature in the Advanced tab no longer exports duplicate rows for Intune applications and updates.</li>
+
+
+
+<li>Refresh the Intune authentication token before retrieving reports from Intune when performing auto-publishing during synchronization.</li>
+
+
+
+<li>CVE, Classification and Severity data were not populated in Publisher email reports for existing applications that received an update to a new version.</li>
+
+
+
+<li>Ensure the OS requirements are set appropriately for ConfigMgr and Intune Publishing.</li>
+
+
+
+<li>The Package Details would improperly display an error dialog when clicking a link to a package&#8217;s local content file, even when the content was found. It now shows a success dialogue, and the error dialogue is reserved for when the file is not found.</li>
+</ul>
+
+
+
+<p></p>
+<p>The post <a href="https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-131-released/">Patch My PC Publisher Preview Version 2.1.120.131 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/release-notes/preview-release/patch-my-pc-publisher-preview-version-2-1-120-131-released/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>When Intune Remediations Fail: Troubleshooting Push Notifications</title>
+		<link>https://patchmypc.com/blog/on-demand-remediation-push-notification-troubleshoot-intune/</link>
+					<comments>https://patchmypc.com/blog/on-demand-remediation-push-notification-troubleshoot-intune/#respond</comments>
+		
+		<dc:creator><![CDATA[Rudy Ooms]]></dc:creator>
+		<pubDate>Mon, 20 Apr 2026 08:46:09 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=173125</guid>
+
+					<description><![CDATA[<p>Everything that depends on instant device actions (such as remediations) in Intune relies on Windows Push Notifications, and that is where troubleshooting goes blind. The Windows Notification Services (WNS) gives you no delivery status, no failure signal, and no way to see whether a push ever reached the device. Intune reports the action as sent, ... <a href="https://patchmypc.com/blog/on-demand-remediation-push-notification-troubleshoot-intune/">Continue Reading  &#187;</a></p>
+<p>The post <a href="https://patchmypc.com/blog/on-demand-remediation-push-notification-troubleshoot-intune/">When Intune Remediations Fail: Troubleshooting Push Notifications</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Everything that depends on instant device actions (such as remediations) in Intune relies on <strong>Windows Push Notifications</strong>, and that is where troubleshooting goes blind. <strong>The Windows Notification Services (WNS) </strong>gives you no delivery status, no failure signal, and no way to see whether a push ever reached the device. Intune reports the action as sent, the Intune Management Extension (IME) looks healthy, but nothing happens.</p>
+
+
+
+<p>Read the blog to learn how to determine whether the push arrived, where to check on the device, and how to troubleshoot without reinstalling the IME.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-introduction">Introduction</h2>
+
+
+
+<p id="h-">It all started with something that should have been pretty instant. I triggered an on-demand remediation from Intune.</p>
+
+
+
+<figure class="wp-block-image size-full"><img fetchpriority="high" decoding="async" width="483" height="273" src="https://patchmypc.com/app/uploads/2026/01/image-137.png" alt="" class="wp-image-173126" srcset="https://patchmypc.com/app/uploads/2026/01/image-137.png 483w, https://patchmypc.com/app/uploads/2026/01/image-137-300x170.png 300w" sizes="(max-width: 483px) 100vw, 483px" /></figure>
+
+
+
+<p>Which is a remote action to the device, without waiting for weird IME schedules or the Intune Management Extension to wake up on its own. But somehow nothing happened.&nbsp; At first, it felt like a one-off. Maybe the remediation itself was broken. But after retrying it a couple of times, it became pretty clear. Every device action that depends on the IME reacting instantly behaves the same way… With it, <strong>Device Query </strong>was also stuck in progress.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="534" height="306" src="https://patchmypc.com/app/uploads/2026/01/image-138.png" alt="" class="wp-image-173137" srcset="https://patchmypc.com/app/uploads/2026/01/image-138.png 534w, https://patchmypc.com/app/uploads/2026/01/image-138-300x172.png 300w" sizes="(max-width: 534px) 100vw, 534px" /></figure>
+
+
+
+<p>That was the moment it stopped being only a remediation problem.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-fixing-the-push-notifications-option-1">Fixing the Push Notifications Option 1</h2>
+
+
+
+<p>This behavior was familiar. I had seen it before. <strong><a href="https://call4cloud.nl/push-notifications-device-query-an-error-occurred/">Uninstalling and reinstalling the Intune Management Extension fixed everything instantly.</a></strong> After the IME got reinstalled, on-demand remediations started working again as if nothing had ever happened. That workaround still worked here.</p>
+
+
+
+<p>But reinstalling the IME is not the solution we want. It is a reset button. The real question was why that reset worked and what exactly got fixed when you do it.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-how-on-demand-remediation-should-work">How on-demand remediation should work</h2>
+
+
+
+<p>The IME itself does not discover on-demand remediations by polling. These actions are delivered via Windows push notifications. To receive those notifications, IME registers itself with the Windows Push Notification platform under a specific application identity: the <strong>IME notification AUMID.</strong></p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="118" src="https://patchmypc.com/app/uploads/2026/01/image-201-1024x118.png" alt="registering the ime for Push Notifications" class="wp-image-173837" srcset="https://patchmypc.com/app/uploads/2026/01/image-201-1024x118.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-201-300x34.png 300w, https://patchmypc.com/app/uploads/2026/01/image-201-768x88.png 768w, https://patchmypc.com/app/uploads/2026/01/image-201-1536x176.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-201-2048x235.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>From Windows’ perspective, this looks like an app registering for push, even though IME is a service. That registration has two distinct steps. First, IME ensures the <strong>local application registration exists</strong>. This lives under the <strong>PushNotifications Applications registry hive</strong>. If the key is missing or incomplete, IME recreates it.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="298" src="https://patchmypc.com/app/uploads/2026/01/image-202-1024x298.png" alt="the ime Push Notifications registry hive" class="wp-image-173838" srcset="https://patchmypc.com/app/uploads/2026/01/image-202-1024x298.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-202-300x87.png 300w, https://patchmypc.com/app/uploads/2026/01/image-202-768x224.png 768w, https://patchmypc.com/app/uploads/2026/01/image-202-1536x447.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-202.png 1773w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Second, the IME creates the <strong>IMENotificationApp</strong> folder and asks Windows to create a push channel by calling the WinRT API <strong>CreatePushNotificationChannelForApplicationAsync</strong>.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="180" src="https://patchmypc.com/app/uploads/2026/01/image-203-1024x180.png" alt="the Push Notifications imenotificationapop" class="wp-image-173839" srcset="https://patchmypc.com/app/uploads/2026/01/image-203-1024x180.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-203-300x53.png 300w, https://patchmypc.com/app/uploads/2026/01/image-203-768x135.png 768w, https://patchmypc.com/app/uploads/2026/01/image-203-1536x270.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-203-2048x360.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="186" src="https://patchmypc.com/app/uploads/2026/01/image-143-1024x186.png" alt="Push Notifications callback was added" class="wp-image-173145" srcset="https://patchmypc.com/app/uploads/2026/01/image-143-1024x186.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-143-300x54.png 300w, https://patchmypc.com/app/uploads/2026/01/image-143-768x139.png 768w, https://patchmypc.com/app/uploads/2026/01/image-143.png 1427w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Windows responds with a <strong>channel URI </strong>and an expiration time. That URI is the <strong>callback address.</strong></p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="40" src="https://patchmypc.com/app/uploads/2026/01/image-144-1024x40.png" alt="" class="wp-image-173146" srcset="https://patchmypc.com/app/uploads/2026/01/image-144-1024x40.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-144-300x12.png 300w, https://patchmypc.com/app/uploads/2026/01/image-144-768x30.png 768w, https://patchmypc.com/app/uploads/2026/01/image-144-1536x61.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-144-2048x81.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Intune sends the notification (through WNS) to that address, Windows receives it, and Windows calls back into the IME when a message arrives.&nbsp; &nbsp;If that callback chain is broken, the IME never wakes up. No remediation runs, no error is shown, and retries from the Intune portal change nothing.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-proving-whether-the-push-notifications-arrived-at-all">Proving whether the push notifications arrived at all</h2>
+
+
+
+<p>At that point, guessing if the push arrived was no longer useful. There is no status in Intune that tells you whether a push was actually delivered to the device, and IME does not expose that information either….the <strong>WNS is just 1 big black box</strong>. So we stopped relying on the portal and built our own way to observe push delivery on the device.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="468" src="https://patchmypc.com/app/uploads/2026/01/image-204-1024x468.png" alt="powershell script to monitor Push Notifications" class="wp-image-173840" srcset="https://patchmypc.com/app/uploads/2026/01/image-204-1024x468.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-204-300x137.png 300w, https://patchmypc.com/app/uploads/2026/01/image-204-768x351.png 768w, https://patchmypc.com/app/uploads/2026/01/image-204-1536x702.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-204-2048x936.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Under normal circumstances, this part of the story is boring. On a healthy device, Windows makes push delivery visible if you know where to look. Every push routed to the Intune Management Extension appears in the PushNotification Platform operational log. You see <strong>Event ID 1010 </strong>for the IME notification AUMID, followed almost immediately by <strong>Event ID 1225 containing the raw payload.</strong></p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="276" src="https://patchmypc.com/app/uploads/2026/01/image-146-1024x276.png" alt="Push Notifications payload" class="wp-image-173148" srcset="https://patchmypc.com/app/uploads/2026/01/image-146-1024x276.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-146-300x81.png 300w, https://patchmypc.com/app/uploads/2026/01/image-146-768x207.png 768w, https://patchmypc.com/app/uploads/2026/01/image-146-1536x413.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-146.png 1992w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>We can easily decode the payload to see the notification intent and ID.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="360" src="https://patchmypc.com/app/uploads/2026/01/image-147-1024x360.png" alt="decoding the Push Notifications payload" class="wp-image-173149" srcset="https://patchmypc.com/app/uploads/2026/01/image-147-1024x360.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-147-300x106.png 300w, https://patchmypc.com/app/uploads/2026/01/image-147-768x270.png 768w, https://patchmypc.com/app/uploads/2026/01/image-147.png 1486w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>That is what a working system looks like. A clean and predictable sequence. The push message is routed, the payload is delivered, and the IME is woken up. On the affected device, none of that happened. When we triggered an on-demand remediation, the Push Platform event log stayed completely silent. No Event <strong>ID 1010 for the IME AUMID.</strong> No <strong>Event ID 1225</strong>. Nothing to decode. From Windows’ perspective, no notification was ever delivered. That absence changed the entire investigation.</p>
+
+
+
+<p>From the Intune side, the action was marked as sent. From the IME side, nothing appeared obviously broken. But the push message never crossed the Windows boundary. The IME was never woken up because the WNS never routed the notification to that specific device. AKA the Push Notification was lost in cyberspace. Before zooming in on how we fixed it without reinstalling the IME, let&#8217;s zoom in on the remediation itself… when it&#8217;s working.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-what-happens-if-the-remediation-push-notification-works">What happens if the Remediation Push Notification works</h2>
+
+
+
+<p>A Run Remediation push does NOT contain the remediation logic itself. It is just a signal. When the IME receives that notification, it enters the device action callback path. The payload is parsed, the intent is identified as <strong>RunRemediation</strong>, and IME starts a notification-driven check-in</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="268" src="https://patchmypc.com/app/uploads/2026/01/image-205-1024x268.png" alt="decoding the notificationintent from the Push Notifications payload" class="wp-image-173841" srcset="https://patchmypc.com/app/uploads/2026/01/image-205-1024x268.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-205-300x79.png 300w, https://patchmypc.com/app/uploads/2026/01/image-205-768x201.png 768w, https://patchmypc.com/app/uploads/2026/01/image-205-1536x402.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-205.png 1792w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p class="has-small-font-size"><strong>Please Note: Win32AppWorkload Notification&#8230;. wondering what that is going to do</strong></p>
+
+
+
+<p>This is different from a scheduled cycle. It is explicitly marked as notification-based and immediately requests the device action policy tied to that <strong>NotificationID.</strong> Only then does IME download the remediation payload, store it locally, and invoke the proactive remediation engine in on-demand mode.</p>
+
+
+
+<p>All of that happens after the push. If the callback never fires, the IME never even starts this remediation flow. If the callback fires but the follow-up communication fails, the remediation still never runs. From the portal, both cases look identical.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-remediation-flow-in-mermaid-style">The Remediation flow In mermaid Style</h2>
+
+
+
+<p>The same flow as discussed above, but now in total… also with the IME action in it</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="198" height="1024" src="https://patchmypc.com/app/uploads/2026/01/image-206-198x1024.png" alt="Push Notifications flow" class="wp-image-173842" srcset="https://patchmypc.com/app/uploads/2026/01/image-206-198x1024.png 198w, https://patchmypc.com/app/uploads/2026/01/image-206-58x300.png 58w" sizes="(max-width: 198px) 100vw, 198px" /></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-fixing-the-push-notifications-with-our-powershell-script">Fixing the Push Notifications with our PowerShell script</h2>
+
+
+
+<p>Once it was clear that the IME push notification with the notificationintent never arrived, it became clear what we needed to do. <strong>Re-registering the IME Notification app</strong>… because something during the uninstall and reinstall of the IME also forced the IME to reregister it. So why can’t we do it ourselves? Besides that I thought it was funny….</p>
+
+
+
+<p>We already know that the IME maintains its own notification cache, but that cache is only part of the chain. The more important piece is the Windows Push Notification platform registration for the IME notification AUMID. That registration is owned by the operating system. Even when running as an administrator, you cannot reliably remove or repair it. Windows may block the deletion or recreate the key immediately in the background. So we created a PowerShell script to mimic the same steps</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="535" src="https://patchmypc.com/app/uploads/2026/01/image-207-1024x535.png" alt="" class="wp-image-173843" srcset="https://patchmypc.com/app/uploads/2026/01/image-207-1024x535.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-207-300x157.png 300w, https://patchmypc.com/app/uploads/2026/01/image-207-768x401.png 768w, https://patchmypc.com/app/uploads/2026/01/image-207.png 1476w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>The IME service was stopped first, so it could not interfere. Its <strong>local notification cache</strong> was cleared to remove any stale channel data. The PushNotifications application registration for the IME AUMID was then removed by executing the deletion as SYSTEM, not as an administrator. That distinction matters. Only SYSTEM can reliably remove the registration long enough for the platform to rebuild it.</p>
+
+
+
+<p>After that, the Windows Push Notification service was restarted to flush any cached platform state. From that point, the normal registration flow ran cleanly.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="178" src="https://patchmypc.com/app/uploads/2026/01/image-150-1024x178.png" alt="registering the IME Push Notifications" class="wp-image-173152" srcset="https://patchmypc.com/app/uploads/2026/01/image-150-1024x178.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-150-300x52.png 300w, https://patchmypc.com/app/uploads/2026/01/image-150-768x133.png 768w, https://patchmypc.com/app/uploads/2026/01/image-150-1536x267.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-150.png 1548w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h3 class="wp-block-heading" id="h-create-push-notification-channel">Create Push Notification Channel</h3>
+
+
+
+<p>After executing the script, the IME recreated the application registration, and the IME called <strong>CreatePushNotificationChannelForApplicationAsync.</strong> From there on, Windows issued a fresh channel URI and expiration. Immediately after that, push notifications started working again. The PushNotification Platform log began showing <strong>EventID 1010 and 1225</strong> for the IME notification AUMID, and on-demand remediation triggered exactly like it did on a healthy device.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="389" src="https://patchmypc.com/app/uploads/2026/01/image-208-1024x389.png" alt="" class="wp-image-173844" srcset="https://patchmypc.com/app/uploads/2026/01/image-208-1024x389.png 1024w, https://patchmypc.com/app/uploads/2026/01/image-208-300x114.png 300w, https://patchmypc.com/app/uploads/2026/01/image-208-768x292.png 768w, https://patchmypc.com/app/uploads/2026/01/image-208-1536x584.png 1536w, https://patchmypc.com/app/uploads/2026/01/image-208.png 1859w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>The end result was identical to reinstalling IME. The difference was understanding why it worked and fixing the actual failure instead of resetting everything around it.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-why-reinstalling-ime-fixes-the-push-channel">Why reinstalling IME “fixes” the Push Channel</h2>
+
+
+
+<p>The key detail turned out to be where the broken state lived. It was not only inside IME’s own notification cache. It was inside the Windows Push Notification platform’s protected application registration for the IME AUMID. That registry key is owned by the operating system. Even as an administrator, you cannot reliably delete it. Reinstalling IME works because it indirectly forces Windows to tear down and rebuild the push notification app registration. But … yeah, don’t do this in prod.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-wns-as-a-black-box-and-why-ic3-might-replace-it">WNS as a black box, and why IC3 might replace it</h2>
+
+
+
+<p><strong>Windows push notifications</strong> are opaque by design. Once Intune hands a message to WNS, visibility largely disappears. If the notification is routed correctly, you might see it in the PushNotification Platform log. If it is not, there is no retry signal, no failure surface, and no way to tell where it vanished. In practice, WNS is a black box… and it has a nice throttling mechanism. The best thing? You don’t have any visibility!</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="247" height="408" src="https://patchmypc.com/app/uploads/2026/01/image-47.jpg" alt="wns black box" class="wp-image-173139" srcset="https://patchmypc.com/app/uploads/2026/01/image-47.jpg 247w, https://patchmypc.com/app/uploads/2026/01/image-47-182x300.jpg 182w" sizes="(max-width: 247px) 100vw, 247px" /></figure>
+
+
+
+<p>That is exactly what we ran into here. Intune marked the action as sent. IME looked healthy. But the push itself never reached the device. Somewhere between the service and the callback, it simply stopped existing. This is where <strong>IC3 becomes interesting</strong>, even though it is not fully there yet.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="318" src="https://patchmypc.com/app/uploads/2026/01/image-139.png" alt="ic3 teams" class="wp-image-173141" srcset="https://patchmypc.com/app/uploads/2026/01/image-139.png 624w, https://patchmypc.com/app/uploads/2026/01/image-139-300x153.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-ic3-is-coming">IC3 is Coming?</h2>
+
+
+
+<p>If you look at how newer IME flows are evolving,<strong> </strong><a href="https://patchmypc.com/blog/intune-ime-ic3-teams-protocol/"><strong>IC3</strong> </a>appears to be positioning itself as more than just another transport layer. Instead of relying on Windows push notifications as the primary wake-up mechanism,<strong> IC3 </strong>provides a direct, stateful communication path between Intune and the IME. One that is observable, traceable, and far less dependent on OS-level push plumbing. In the current model, WNS is still the trigger. <strong>If WNS breaks, the IME never wakes up.</strong> That single dependency is the weak link. The behavior we saw here is a perfect example of that. Everything above WNS was fine. Everything below it was never reached.</p>
+
+
+
+<p>What <strong>IC3</strong> seems to aim to do is <strong>remove that WNS fragility. </strong>Rather than notifications vanishing into an OS owned subsystem with no feedback, IC3 shifts device actions into a protocol that IME already uses for other workloads. One where connections are explicit, retries exist, and failures show up as real errors instead of silence. Today, that transition is incomplete. WNS is still part of the picture, and when it breaks, everything built on top of it still collapses. But the direction is clear.<strong> IC3 is not just another channel</strong>. It looks like a deliberate <strong><a href="https://patchmypc.com/blog/intune-ime-ic3-teams-protocol/">move away from WNS as the critical dependency for instant device actions.</a></strong></p>
+
+
+
+<p>If and when that shift completes, issues like this should become far easier to reason about. Not because failures stop happening, but because they stop disappearing. And after chasing a remediation that never arrived, that alone would be a massive improvement.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-real-takeaway">The real takeaway</h2>
+
+
+
+<p>On-demand remediation was never the root problem. It was simply the first feature to expose a broken push callback chain. IME depends on a Windows push notification callback created through CreatePushNotificationChannelForApplicationAsync. When that callback registration is corrupted, IME never wakes up, and every instant device action silently stops working. Reinstalling IME fixes it by coincidence. Resetting the push registration fixes it by design.</p>
+<p>The post <a href="https://patchmypc.com/blog/on-demand-remediation-push-notification-troubleshoot-intune/">When Intune Remediations Fail: Troubleshooting Push Notifications</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/blog/on-demand-remediation-push-notification-troubleshoot-intune/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Windows 11 Hotpatch Updates, Secure Boot, and the Reset This PC Problem</title>
+		<link>https://patchmypc.com/blog/windows-11-hotpatch-updates-secure-boot-and-the-reset-this-pc-problem/</link>
+					<comments>https://patchmypc.com/blog/windows-11-hotpatch-updates-secure-boot-and-the-reset-this-pc-problem/#respond</comments>
+		
+		<dc:creator><![CDATA[Rudy Ooms]]></dc:creator>
+		<pubDate>Mon, 13 Apr 2026 08:40:24 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=181306</guid>
+
+					<description><![CDATA[<p>Windows 11 hotpatch updates can reduce reboots, but they do not move every part of Windows forward at the same pace. Microsoft has now confirmed the reset issue, while Secure Boot still depends on the baseline path.</p>
+<p>The post <a href="https://patchmypc.com/blog/windows-11-hotpatch-updates-secure-boot-and-the-reset-this-pc-problem/">Windows 11 Hotpatch Updates, Secure Boot, and the Reset This PC Problem</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>A while ago, I wrote about <strong><a href="https://patchmypc.com/blog/windows-11-hotpatch-rebootless-updates/">hotpatch updates</a> </strong>and why the story felt a bit too clean. Fewer reboots, faster security fixes, less disruption. On paper, it is hard to argue with that. But the moment Microsoft announced that <strong><a href="https://techcommunity.microsoft.com/blog/windows-itpro-blog/securing-devices-faster-with-hotpatch-updates-on-by-default/4500066">hotpatch would be enabled by default</a></strong> for eligible Windows Autopatch devices starting with the May 2026 security update, the whole conversation changed for me.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="140" src="https://patchmypc.com/app/uploads/2026/04/image-18-1024x140.png" alt="hotpatch updates on by default" class="wp-image-181313" srcset="https://patchmypc.com/app/uploads/2026/04/image-18-1024x140.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-18-300x41.png 300w, https://patchmypc.com/app/uploads/2026/04/image-18-768x105.png 768w, https://patchmypc.com/app/uploads/2026/04/image-18.png 1069w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>The moment <strong>hotpatch updates become the default</strong>, most people stop asking what it really changes underneath the hood. And now Microsoft has done something important. It has officially documented the exact kind of issue that made me nervous in the first place.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-hotpatch-updates-reset-this-pc-issue">The Hotpatch Updates &#8220;Reset this pc&#8221; Issue</h2>
+
+
+
+<p>In the March 10, <a href="https://support.microsoft.com/en-gb/topic/march-10-2026-hotpatch-kb5079420-os-builds-26200-7979-and-26100-7979-752485e9-41c1-4628-ad1a-7538dba503e3"><strong>2026 hotpatch article for KB5079420</strong></a>, Microsoft states that Windows Autopatch managed commercial devices with <strong>hotpatch enabled</strong> can fail during <strong>Push Button Reset.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="173" src="https://patchmypc.com/app/uploads/2026/04/image-16.png" alt="reset this pc might fail with hotpatch updates installed" class="wp-image-181311" srcset="https://patchmypc.com/app/uploads/2026/04/image-16.png 624w, https://patchmypc.com/app/uploads/2026/04/image-16-300x83.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>After the first phase of the offline reset, the device can restart back to the desktop and show the message, “<strong>There was a problem resetting your PC. No changes were made.”</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="449" src="https://patchmypc.com/app/uploads/2026/04/image.jpg" alt="there was a problem resetting your pc" class="wp-image-181310" srcset="https://patchmypc.com/app/uploads/2026/04/image.jpg 624w, https://patchmypc.com/app/uploads/2026/04/image-300x216.jpg 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>If you want to know more about what happened during the reset and why it broke, check out our upcoming <strong>patch n rant!</strong> (it&#8217;s coming!)&#8230; here is a small teaser in the meantime!</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="141" src="https://patchmypc.com/app/uploads/2026/04/image-20-1024x141.png" alt="" class="wp-image-181322" srcset="https://patchmypc.com/app/uploads/2026/04/image-20-1024x141.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-20-300x41.png 300w, https://patchmypc.com/app/uploads/2026/04/image-20-768x106.png 768w, https://patchmypc.com/app/uploads/2026/04/image-20.png 1486w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Microsoft also lists a mitigation, the <strong>March Safe OS Dynamic Update KB5079471</strong>, and notes that this update only needs to be applied once.   That matters because this is no longer a theory built on log analysis alone. It is no longer a weird edge case that only showed up in my <strong><a href="https://www.reddit.com/r/Intune/comments/1s36b14/windows_remote_wipe_issues_after_intune_202603/">own testing or on reddit.</a></strong> Microsoft has now placed it directly in the release notes of the hotpatch update itself, for <strong><a href="https://support.microsoft.com/en-gb/topic/march-10-2026-hotpatch-kb5079420-os-builds-26200-7979-and-26100-7979-752485e9-41c1-4628-ad1a-7538dba503e3">Windows 11 version 25H2 and 24H2.</a></strong></p>
+
+
+
+<h2 class="wp-block-heading" id="h-why-this-matters-more-than-the-reset-error-itself">Why this matters more than the reset error itself</h2>
+
+
+
+<p>The reset failure is the visible part. The more interesting part is what it tells us about <strong>hotpatch.</strong> Microsoft’s own hotpatch documentation is already very clear about the update rhythm. January, April, July, and October are <strong>baseline months</strong> that require a restart. The months in between are the hotpatch months.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="501" height="219" src="https://patchmypc.com/app/uploads/2026/04/image-13.png" alt="hotpatch updates baseline month" class="wp-image-181307" srcset="https://patchmypc.com/app/uploads/2026/04/image-13.png 501w, https://patchmypc.com/app/uploads/2026/04/image-13-300x131.png 300w" sizes="(max-width: 501px) 100vw, 501px" /></figure>
+
+
+
+<p>And if a device is not on the latest baseline update, Windows can still apply both the latest baseline update and the latest hotpatch update. That alone tells you hotpatch is not replacing the normal servicing model. It is sitting on top of it.</p>
+
+
+
+<p>That is exactly why I have never been fully comfortable with the simplified version of the hotpatch story. Hotpatch can move the OS security fixes forward faster, yes. But that does not mean every other part of the platform moves forward at the same pace. The baseline still matters. The reboot still matters. The broader servicing state still matters. And the moment recovery depends on that servicing state, you stop talking about convenience and start talking about platform consistency.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-hotpatch-updates-and-the-secure-boot-certificates">Hotpatch Updates and the Secure Boot Certificates</h2>
+
+
+
+<p>The same March 2026 hotpatch article also contains another detail that should make people slow down a bit. Microsoft explicitly says that <strong>Secure Boot certificate updates</strong> will be delivered with the next baseline Windows update in April 2026<strong>, NOT</strong> with the hotpatch month itself.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="591" height="69" src="https://patchmypc.com/app/uploads/2026/04/image-14.png" alt="secure boot certificates will be delivered in the baseline month" class="wp-image-181309" srcset="https://patchmypc.com/app/uploads/2026/04/image-14.png 591w, https://patchmypc.com/app/uploads/2026/04/image-14-300x35.png 300w" sizes="(max-width: 591px) 100vw, 591px" /></figure>
+
+
+
+<p>In the same article, Microsoft also reminds customers that Secure Boot certificates used by most Windows devices start expiring from June 2026. It confirms the bigger point in one sentence. Hotpatch can move one part of Windows forward, while another important part still waits for the <strong>baseline month</strong>.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="471" height="282" src="https://patchmypc.com/app/uploads/2026/04/image-15.png" alt="hotpatch updates not containing the secure boot certificates" class="wp-image-181308" srcset="https://patchmypc.com/app/uploads/2026/04/image-15.png 471w, https://patchmypc.com/app/uploads/2026/04/image-15-300x180.png 300w" sizes="(max-width: 471px) 100vw, 471px" /></figure>
+
+
+
+<p>So yes, a device may look current from a hotpatch point of view. It may have the latest security fixes for the OS. But that still does not mean the entire platform has moved forward as one block. The Secure Boot certificate path is one example. The reset issue is another. And both are sitting in the same official article.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-this-is-the-part-people-need-to-be-aware-of">This is the part people need to be aware of</h2>
+
+
+
+<p><strong>I am NOT saying hotpatch is bad</strong>. I am saying hotpatch is narrower than the marketing pitch makes it sound. That is a very important difference.</p>
+
+
+
+<p>If you run devices where <strong>uptime </strong>really matters, <strong>hotpatch makes a lot of sense</strong>. But when Microsoft enables it by default for eligible Windows Autopatch devices, the risk is that people stop treating it like a servicing choice and start treating it like a harmless checkbox.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="287" src="https://patchmypc.com/app/uploads/2026/04/image-19-1024x287.png" alt="hotpatch updates turned on by default" class="wp-image-181315" srcset="https://patchmypc.com/app/uploads/2026/04/image-19-1024x287.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-19-300x84.png 300w, https://patchmypc.com/app/uploads/2026/04/image-19-768x215.png 768w, https://patchmypc.com/app/uploads/2026/04/image-19.png 1356w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>It is not. It changes the way monthly servicing progresses on the device. And once the device has to recover, reset, or rely on components still tied to the baseline path, those differences stop being theoretical.</p>
+
+
+
+<p>That is really why this follow-up blog matters. The earlier conversation around hotpatch could still be framed as a debate about caution. This one cannot. Microsoft has now documented the <strong>push button</strong> <strong>reset failure</strong> itself, documented the mitigation, and in the same breath reminded everyone that <strong>Secure Boot certificate </strong>updates still wait for the next baseline. </p>
+
+
+
+<p>That is the story. <strong>Not that hotpatch is broken</strong> everywhere. <strong>Not that nobody should use it.</strong> But that <strong>reducing reboots is not the same thing as reducing complexity.</strong></p>
+
+
+
+<h2 class="wp-block-heading" id="h-my-take-on-hotpach">My take on Hotpach</h2>
+
+
+
+<p>If hotpatch is about to become the default, reset testing should also be part of the conversation. And Secure Boot certificate planning definitely also needs to be part of the conversation now that Microsoft has already pointed to April 2026 as the next baseline moment for those updates, while the certificate expiration window starts in June 2026. &nbsp;So no, I would not panic (or maybe a bit?). But <strong>I also would NOT just let hotpatch quietly be turned on by default </strong>and assume it is nothing more than a nice way to avoid reboots.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="166" src="https://patchmypc.com/app/uploads/2026/04/image-17.png" alt="" class="wp-image-181312" srcset="https://patchmypc.com/app/uploads/2026/04/image-17.png 624w, https://patchmypc.com/app/uploads/2026/04/image-17-300x80.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>Microsoft has now shown us, in its own documentation, that hotpatch can affect more than the monthly update experience. It can also show up in the exact moment you need the device to recover cleanly.</p>
+<p>The post <a href="https://patchmypc.com/blog/windows-11-hotpatch-updates-secure-boot-and-the-reset-this-pc-problem/">Windows 11 Hotpatch Updates, Secure Boot, and the Reset This PC Problem</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/blog/windows-11-hotpatch-updates-secure-boot-and-the-reset-this-pc-problem/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Patch My PC Publisher Production Version 2.1.120.0 Released</title>
+		<link>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-120-0-released/</link>
+					<comments>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-120-0-released/#respond</comments>
+		
+		<dc:creator><![CDATA[Cody Mathis]]></dc:creator>
+		<pubDate>Fri, 10 Apr 2026 20:05:47 +0000</pubDate>
+				<category><![CDATA[Production Release]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=180962</guid>
+
+					<description><![CDATA[<p>This release contains a fix, as noted below. This will be made available via the self-update channel over the coming days. You can upgrade in place now by downloading the latest&#160;MSI installer. Fixes</p>
+<p>The post <a href="https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-120-0-released/">Patch My PC Publisher Production Version 2.1.120.0 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>This release contains a fix, as noted below.</p>
+
+
+
+<p>This will be made available via the self-update channel over the coming days. You can upgrade in place now by downloading the latest&nbsp;<strong><a href="https://patchmypc.com/publishing-service-setup-documentation">MSI installer</a></strong>.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-fixes">Fixes</h2>
+
+
+
+<ul class="wp-block-list">
+<li>Fix a bug causing some Intune Dynamic Assignments to fail to parse from settings.xml. An error message in the log containing “Sequence contains no matching elements” indicates if this bug was encountered. This release will automatically restore missing Intune Dynamic Assignments from backup settings.
+<ul class="wp-block-list">
+<li>This is a follow-up to a fix in 2.1.114.0. It was found that the bug impacted Dynamic Assignments with a rule filtering on Classification or Severity. Build 2.1.114.0 addresses Severity, and this build addresses Classification. </li>
+</ul>
+</li>
+
+
+
+<li>An exception would occur when the Publisher UI was opened when installed on a ConfigMgr site server that did not also have the Software Update Point role installed. </li>
+</ul>
+
+
+
+<p></p>
+<p>The post <a href="https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-120-0-released/">Patch My PC Publisher Production Version 2.1.120.0 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-120-0-released/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>The Story Behind: IT1272653 and the Company Portal Stuck on Download Pending</title>
+		<link>https://patchmypc.com/blog/it1272653-company-portal-stuck-on-downloading/</link>
+					<comments>https://patchmypc.com/blog/it1272653-company-portal-stuck-on-downloading/#respond</comments>
+		
+		<dc:creator><![CDATA[Rudy Ooms]]></dc:creator>
+		<pubDate>Thu, 09 Apr 2026 12:27:13 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=180882</guid>
+
+					<description><![CDATA[<p>In 1.101.103.0, Microsoft changed the IME config into a companion file, and that first transition appears to be where the file disappeared during upgrade. In 1.101.105.0, the same model remained, but the missing config could finally be recreated, which explains why the issue looked so different across both versions.</p>
+<p>The post <a href="https://patchmypc.com/blog/it1272653-company-portal-stuck-on-downloading/">The Story Behind: IT1272653 and the Company Portal Stuck on Download Pending</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>The moment the IME version <strong>1.101.103.0</strong> was released, and the IME stopped responding completely, with no new logs being written, I knew where to start looking. Microsoft needed a way to fix the config file versioning problem from the first issue, but the change introduced in IME version <strong>1.101</strong>.<strong>103.0</strong> created a new one instead. After I reached out, Microsoft published incident <strong>IT1272653</strong>, which confirmed that a <strong>required configuration file</strong> had become unavailable.</p>
+
+
+
+<p>This is the story of how that fix went wrong, why the IME config file disappeared, and how the Intune Management Extension <strong>1.101.105.0 Version</strong> fixed it and restored the required config file.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-introduction-to-the-it1272653-error">Introduction to the IT1272653 error</h2>
+
+
+
+<p>Not long ago<a href="https://patchmypc.com/blog/company-portal-stuck-on-downloading-idx12729-0x80131040/">,</a><strong><a href="https://patchmypc.com/blog/company-portal-stuck-on-downloading-idx12729-0x80131040/"> I wrote about a Company Portal issue</a> </strong>(so please read it first) that looked like a download problem but really was not. Applications were stuck during the <strong>download process,</strong> while the actual failure occurred within the <strong>Intune Management Extension.</strong></p>
+
+
+
+<p>The one that caused the IME to break was: <strong>Microsoft.Management.Services.IntuneWindowsAgent.exe.config</strong>. Once that config file drifts out of sync with the assemblies next to it, token handling could fail with errors like <strong>IDX12729</strong> <strong>and 0x80131040</strong>, and the Win32 user app flow never really got started. <strong>That was the first chapter.</strong></p>
+
+
+
+<p><strong>The second chapter</strong> began when Microsoft tried to solve that original config problem. What changed in <strong>1.101.103.0</strong> was not just a version bump. Microsoft changed how MSI handled <strong>Microsoft.Management.Services.IntuneWindowsAgent.exe.config</strong>, and that change appears to explain why the file might have disappeared during the first upgrade to the new companion model. Microsoft later acknowledged the fallout under <strong>IT1272653</strong>, describing a case where user-targeted apps could remain stuck in <strong>Download Pending</strong> because a required configuration file had become unavailable.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="975" height="717" src="https://patchmypc.com/app/uploads/2026/04/image.png" alt="" class="wp-image-180883" srcset="https://patchmypc.com/app/uploads/2026/04/image.png 975w, https://patchmypc.com/app/uploads/2026/04/image-300x221.png 300w, https://patchmypc.com/app/uploads/2026/04/image-768x565.png 768w" sizes="(max-width: 975px) 100vw, 975px" /></figure>
+
+
+
+<p>That wording of the <strong>IT1272653 incident </strong>lines up closely with what showed up in the MSI package and in the upgrade behavior.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-intunewindowsagent-exe-config">The IntuneWindowsAgent.exe.config</h2>
+
+
+
+<p>In the older IME packages, <strong>Microsoft.Management.Services.IntuneWindowsAgent.exe.config</strong> didn’t have a version configured.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="102" src="https://patchmypc.com/app/uploads/2026/04/image-1-1024x102.png" alt="" class="wp-image-180884" srcset="https://patchmypc.com/app/uploads/2026/04/image-1-1024x102.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-1-300x30.png 300w, https://patchmypc.com/app/uploads/2026/04/image-1-768x76.png 768w, https://patchmypc.com/app/uploads/2026/04/image-1-1536x153.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-1-2048x204.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>That matters because Windows Installer treats <strong><a href="https://learn.microsoft.com/en-us/windows/win32/msi/file-versioning-rules">unversioned files differently from versioned ones.</a></strong> When a file is unversioned, Windows Installer tends to preserve user-modified data rather than blindly overwrite it. Guess what happened if you changed the config file to add verbose logging…</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="975" height="411" src="https://patchmypc.com/app/uploads/2026/04/image-2.png" alt="" class="wp-image-180885" srcset="https://patchmypc.com/app/uploads/2026/04/image-2.png 975w, https://patchmypc.com/app/uploads/2026/04/image-2-300x126.png 300w, https://patchmypc.com/app/uploads/2026/04/image-2-768x324.png 768w" sizes="(max-width: 975px) 100vw, 975px" /></figure>
+
+
+
+<p>You guessed it… Your own versioned config file will <strong>NOT</strong> be overwritten when a new IME gets installed. Good to know is that Microsoft’s file versioning rules also state that <strong>non-versioned files</strong> are <strong>treated as user data </strong>when the modified date is newer than the creation date.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="99" src="https://patchmypc.com/app/uploads/2026/04/image-3-1024x99.png" alt="" class="wp-image-180887" srcset="https://patchmypc.com/app/uploads/2026/04/image-3-1024x99.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-3-300x29.png 300w, https://patchmypc.com/app/uploads/2026/04/image-3-768x74.png 768w, https://patchmypc.com/app/uploads/2026/04/image-3-1536x148.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-3.png 1668w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>That old model helps explain the first issue. The agent binaries could move forward while the config stayed behind.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="975" height="261" src="https://patchmypc.com/app/uploads/2026/04/image-4.png" alt="" class="wp-image-180889" srcset="https://patchmypc.com/app/uploads/2026/04/image-4.png 975w, https://patchmypc.com/app/uploads/2026/04/image-4-300x80.png 300w, https://patchmypc.com/app/uploads/2026/04/image-4-768x206.png 768w" sizes="(max-width: 975px) 100vw, 975px" /></figure>
+
+
+
+<p>Once the binding redirects no longer matched what was actually on disk, the IME could fail before Company Portal ever had a real chance to start the user app workflow.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-what-the-intune-management-extension-1-101-103-0-changed">What the Intune Management Extension 1.101.103.0 changed</h2>
+
+
+
+<p>In <strong>1.101.103.0</strong>, Microsoft changed that config into a <strong>companion file</strong> of Microsoft.Management.Services.IntuneWindowsAgent.exe.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="95" src="https://patchmypc.com/app/uploads/2026/04/image-5-1024x95.png" alt="" class="wp-image-180890" srcset="https://patchmypc.com/app/uploads/2026/04/image-5-1024x95.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-5-300x28.png 300w, https://patchmypc.com/app/uploads/2026/04/image-5-768x71.png 768w, https://patchmypc.com/app/uploads/2026/04/image-5-1536x143.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-5.png 1946w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>In MSI terms, that occurs when the <strong>Version field of one file record points to another</strong>. Microsoft’s documentation says that when a <strong>file is authored that way</strong>, the <strong>companion parent file </strong>controls the <strong>versioning logic. </strong>The same documentation also states that a file whose KeyPath is that of its component must not be authored as a companion file.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="60" src="https://patchmypc.com/app/uploads/2026/04/image-6-1024x60.png" alt="" class="wp-image-180893" srcset="https://patchmypc.com/app/uploads/2026/04/image-6-1024x60.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-6-300x18.png 300w, https://patchmypc.com/app/uploads/2026/04/image-6-768x45.png 768w, https://patchmypc.com/app/uploads/2026/04/image-6-1536x91.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-6-2048x121.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>That is exactly the kind of shift that showed up in the 103 MSI export. The config stopped behaving like its own independent tracked file and started following the main Intune Windows Agent EXE instead. At the same time, the component no longer used the config file itself as the KeyPath. In practical terms, <strong>Microsoft took the config out of the driver’s seat.</strong></p>
+
+
+
+<p>On paper, that makes sense. If the old issue came from a stale config that could outlive the agent version it belonged to, then making the config follow the EXE is a reasonable way to prevent stale<strong> binding-redirect drift.</strong></p>
+
+
+
+<h2 class="wp-block-heading" id="h-why-103-caused-it1272653">Why 103 caused: IT1272653</h2>
+
+
+
+<p>Before explaining what happened with the <strong>incident: IT1272653</strong>… First, I need to make one thing clear: an important detail is that <strong>companion files</strong> do <strong>NOT</strong> automatically <strong>delete themselves.</strong> Microsoft’s file versioning rules say the opposite. If the companion parent on disk and the one being installed have the same version and language, but the companion file is <strong>missing</strong>, Windows Installer uses the companion file being installed. In other words, companion file logic can help a missing file come back.</p>
+
+
+
+<p>So the story is not “<strong>Microsoft turned the config into a companion file, and companion files delete themselves</strong>.” The more accurate story is that <strong>1.101.103.0 was the first transition from the old standalone model into the new companion model</strong>, and that transition happened inside a major upgrade sequence where <strong>RemoveExistingProducts</strong>still ran after the new files were installed.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="81" src="https://patchmypc.com/app/uploads/2026/04/image-7-1024x81.png" alt="" class="wp-image-180894" srcset="https://patchmypc.com/app/uploads/2026/04/image-7-1024x81.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-7-300x24.png 300w, https://patchmypc.com/app/uploads/2026/04/image-7-768x61.png 768w, https://patchmypc.com/app/uploads/2026/04/image-7-1536x122.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-7-2048x163.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Microsoft’s documentation is very clear on this point: when <strong>RemoveExistingProducts</strong><strong> </strong>is scheduled between <strong>InstallExecute</strong><strong> and </strong><strong>InstallFinalize</strong><strong>,</strong> the updated files are installed first and the old product is removed afterward. That is the gap where this issue likely happened.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="315" src="https://patchmypc.com/app/uploads/2026/04/image-8-1024x315.png" alt="" class="wp-image-180895" srcset="https://patchmypc.com/app/uploads/2026/04/image-8-1024x315.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-8-300x92.png 300w, https://patchmypc.com/app/uploads/2026/04/image-8-768x236.png 768w, https://patchmypc.com/app/uploads/2026/04/image-8-1536x472.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-8-2048x629.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>The new 103 package could lay down the config using the new companion model, and then the uninstall phase of the old package could still come in afterward and remove that same <strong>config file</strong> because the upgrade was crossing from one ownership model into another.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="121" src="https://patchmypc.com/app/uploads/2026/04/image-9-1024x121.png" alt="" class="wp-image-180896" srcset="https://patchmypc.com/app/uploads/2026/04/image-9-1024x121.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-9-300x36.png 300w, https://patchmypc.com/app/uploads/2026/04/image-9-768x91.png 768w, https://patchmypc.com/app/uploads/2026/04/image-9-1536x182.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-9.png 1672w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Once that happened, the <strong>intunewindowsagent.exe</strong>.<strong>config file was gone. </strong>The new MSI no longer treated the missing config as the key proof that the component was broken in the same way the older package had</p>
+
+
+
+<h2 class="wp-block-heading" id="h-why-105-behaves-differently">Why 105 behaves differently</h2>
+
+
+
+<p>The reason <strong>1.101.105.0</strong> behaves differently is that by then the machine is already on the <strong>companion file model</strong>. The first dangerous jump already happened in 103. That matters because the MSI rules now work in 105’s favor. Microsoft documents that if the companion file is missing while the parent file is being installed, the companion file being installed is used even when the parent file version comparison is otherwise equal. &nbsp;</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="101" src="https://patchmypc.com/app/uploads/2026/04/image-10-1024x101.png" alt="" class="wp-image-180897" srcset="https://patchmypc.com/app/uploads/2026/04/image-10-1024x101.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-10-300x29.png 300w, https://patchmypc.com/app/uploads/2026/04/image-10-768x75.png 768w, https://patchmypc.com/app/uploads/2026/04/image-10-1536x151.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-10-2048x201.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>That fits what showed up in the 103 to 105 MSI log. The config was no longer treated like a normal <strong>unversioned file</strong> with its own hash-based overwrite decision.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="60" src="https://patchmypc.com/app/uploads/2026/04/image-11-1024x60.png" alt="" class="wp-image-180898" srcset="https://patchmypc.com/app/uploads/2026/04/image-11-1024x60.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-11-300x18.png 300w, https://patchmypc.com/app/uploads/2026/04/image-11-768x45.png 768w, https://patchmypc.com/app/uploads/2026/04/image-11-1536x91.png 1536w, https://patchmypc.com/app/uploads/2026/04/image-11-2048x121.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>It was processed through the <strong>companion relationship </strong>to Microsoft.Management.Services.IntuneWindowsAgent.exe, which means 105 could refresh or recreate the config precisely because the companion model was already in place by then.  So 103 appears to be the version that introduced the Win32 <strong>companion model</strong> and hit the ugly transition problem. 105 appears to be the version that benefits from the companion rules instead of colliding with them.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-so-what-did-105-fix">So what did 105 fix???</h2>
+
+
+
+<p>Based on what I could verify, <strong>105 did two different things at the same time</strong>, but only one of them is clearly visible in the code. The first part is the <strong>APDP / APv2 provisioning hardening</strong>. That is visible in EmsAgentService and looks deliberate. The service restart and provisioning resume path is cleaner in 105, and the guard logic is better contained.</p>
+
+
+
+<p>The second part is the <strong>config recovery effect</strong>. Because the system is already on the companion model after 103, and because companion file rules allow a missing companion file to be laid down when the parent file is being installed, <strong>105 can recreate the config that 103 left missing</strong>.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="975" height="88" src="https://patchmypc.com/app/uploads/2026/04/image-12.png" alt="" class="wp-image-180899" srcset="https://patchmypc.com/app/uploads/2026/04/image-12.png 975w, https://patchmypc.com/app/uploads/2026/04/image-12-300x27.png 300w, https://patchmypc.com/app/uploads/2026/04/image-12-768x69.png 768w" sizes="(max-width: 975px) 100vw, 975px" /></figure>
+
+
+
+<p>That does not require Microsoft to abandon the companion model. In fact, it is the companion model that now lets the missing config come back.</p>
+
+
+
+<p><strong>-IME 103 introduced the new companion model and removed the config file</strong></p>
+
+
+
+<p><strong>-IME 105 kept the new model, fixed the APDP side, and, because the config was already missing, could now put it back down using the normal companion rules.</strong>.<strong>.But still, this version doesn&#8217;t contain the real fix when the config file is missing?.</strong></p>
+
+
+
+<h2 class="wp-block-heading">What 1.101.109.0 changed</h2>
+
+
+
+<p>After 105 was released, within a couple of days, we got another IME release&#8230; which holds the real fix for <strong>the missing config file!</strong> When I compared the 1.101.105.0 and 1.101.109.0 MSI exports, Microsoft clearly changed how the Intune Management Extension installer handles Microsoft.Management.Services.IntuneWindowsAgent.exe.config. In 109, they added a new custom action named EnsureAppConfigExists, sequenced right after RemoveExistingProducts during an upgrade</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="166" src="https://patchmypc.com/app/uploads/2026/04/image-21-1024x166.png" alt="" class="wp-image-181447" srcset="https://patchmypc.com/app/uploads/2026/04/image-21-1024x166.png 1024w, https://patchmypc.com/app/uploads/2026/04/image-21-300x49.png 300w, https://patchmypc.com/app/uploads/2026/04/image-21-768x124.png 768w, https://patchmypc.com/app/uploads/2026/04/image-21.png 1039w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>That timing matters because it places the repair step exactly when the old IME version could still interfere with files that the new IME version had just laid down.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="932" height="31" src="https://patchmypc.com/app/uploads/2026/04/image-22.png" alt="" class="wp-image-181448" srcset="https://patchmypc.com/app/uploads/2026/04/image-22.png 932w, https://patchmypc.com/app/uploads/2026/04/image-22-300x10.png 300w, https://patchmypc.com/app/uploads/2026/04/image-22-768x26.png 768w" sizes="(max-width: 932px) 100vw, 932px" /></figure>
+
+
+
+<p>After extracting and reviewing that custom action, the logic turned out to be very targeted. It checks whether Microsoft.Management.Services.IntuneWindowsAgent.exe exists and whether Microsoft.Management.Services.IntuneWindowsAgent.exe.config is missing. </p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="992" height="513" src="https://patchmypc.com/app/uploads/2026/04/image-23.png" alt="" class="wp-image-181449" srcset="https://patchmypc.com/app/uploads/2026/04/image-23.png 992w, https://patchmypc.com/app/uploads/2026/04/image-23-300x155.png 300w, https://patchmypc.com/app/uploads/2026/04/image-23-768x397.png 768w" sizes="(max-width: 992px) 100vw, 992px" /></figure>
+
+
+
+<p>If the executable is present but the config file is missing, it restores the config from an embedded resource named EmsAgentAppConfig. I<strong>n other words, 109 introduced a safety net for the missing config file scenario.</strong></p>
+
+
+
+<p>That is an important distinction, because this fix is narrow by design&#8230;.But&#8230;. This new IME version still does not validate or check the contents of the existing config file. It does <strong>NOT</strong> compare the file on disk with the embedded baseline. And it does <strong>NOT</strong> overwrite the config when the file is present but <strong>altered</strong>. So while the IME version 109 appears to close the gap where the config disappeared entirely during an upgrade, it does not fully protect against the older problem where the config still exists but no longer matches the binaries next to it. How would I fix it? Well&#8230;<strong><a href="https://patchmypc.com/blog/company-portal-stuck-on-downloading-idx12729-0x80131040/"> check out the older blog !</a></strong></p>
+
+
+
+<h2 class="wp-block-heading" id="h-it1272653-summary">IT1272653: Summary</h2>
+
+
+
+<p>Microsoft needed a way to solve the original IME config versioning problem, where an old Microsoft.Management.Services.IntuneWindowsAgent.exe.config could survive an upgrade and no longer match the binaries next to it. In <strong>1.101.103.0</strong>, they changed that file into a companion file of Microsoft.Management.Services.IntuneWindowsAgent.exe, but that first jump into the new model appears to be where the config could disappear during upgrade. In 1.101.105.0, the companion model stayed in place;<strong> the missing config could be recreated… with it, the IME started working again.</strong></p>
+<p>The post <a href="https://patchmypc.com/blog/it1272653-company-portal-stuck-on-downloading/">The Story Behind: IT1272653 and the Company Portal Stuck on Download Pending</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/blog/it1272653-company-portal-stuck-on-downloading/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Patch My PC Publisher Production Version 2.1.116.0 Released</title>
+		<link>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-116-0-released/</link>
+					<comments>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-116-0-released/#respond</comments>
+		
+		<dc:creator><![CDATA[Cody Mathis]]></dc:creator>
+		<pubDate>Tue, 07 Apr 2026 19:46:08 +0000</pubDate>
+				<category><![CDATA[Production Release]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=180730</guid>
+
+					<description><![CDATA[<p>This release contains a variety of features, improvements, and fixes, as noted below. This will be made available via the self-update channel over the coming days. You can upgrade in place now by downloading the latest&#160;MSI installer. Fixes</p>
+<p>The post <a href="https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-116-0-released/">Patch My PC Publisher Production Version 2.1.116.0 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>This release contains a variety of features, improvements, and fixes, as noted below.</p>
+
+
+
+<p>This will be made available via the self-update channel over the coming days. You can upgrade in place now by downloading the latest&nbsp;<strong><a href="https://patchmypc.com/publishing-service-setup-documentation">MSI installer</a></strong>.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-fixes">Fixes</h2>
+
+
+
+<ul class="wp-block-list">
+<li>Fixed a bug causing some applications, when updated in place in ConfigMgr, to include a &#8220;BaseInstallOnlyNotForUpdating_&#8221; prefix in the title. This release will prevent the issue from occurring and remediate existing applications by removing the prefix. </li>
+</ul>
+
+
+
+<p></p>
+<p>The post <a href="https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-116-0-released/">Patch My PC Publisher Production Version 2.1.116.0 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-116-0-released/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Patch My PC Publisher Production Version 2.1.114.0 Released</title>
+		<link>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-114-0-released/</link>
+					<comments>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-114-0-released/#respond</comments>
+		
+		<dc:creator><![CDATA[Cody Mathis]]></dc:creator>
+		<pubDate>Fri, 03 Apr 2026 20:46:58 +0000</pubDate>
+				<category><![CDATA[Production Release]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=180588</guid>
+
+					<description><![CDATA[<p>This release contains a variety of fixes, as noted below. This will be made available via the self-update channel over the coming days. You can upgrade in place now by downloading the latest&#160;MSI installer. Fixes</p>
+<p>The post <a href="https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-114-0-released/">Patch My PC Publisher Production Version 2.1.114.0 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>This release contains a variety of fixes, as noted below.</p>
+
+
+
+<p>This will be made available via the self-update channel over the coming days. You can upgrade in place now by downloading the latest&nbsp;<strong><a href="https://patchmypc.com/publishing-service-setup-documentation">MSI installer</a></strong>.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-fixes">Fixes</h2>
+
+
+
+<ul class="wp-block-list">
+<li>Restore previous behavior when using a multi-tenant Entra ID Application Registration for MSPs.
+<ul class="wp-block-list">
+<li>In environments where the same multi-tenant app registration was used across multiple tenants, tenant selection during Intune publishing could result in the Publisher selecting the first matching tenant based on the App ID. The lookup has been updated to anchor on Tenant ID instead of App ID, restoring the previous behavior.</li>
+</ul>
+</li>
+
+
+
+<li>Fix a bug causing some Intune Dynamic Assignments to fail to parse from settings.xml. An error message in the log containing “Sequence contains no matching elements” indicates if this bug was encountered. This release will automatically restore missing Intune Dynamic Assignments from backup settings. </li>
+</ul>
+
+
+
+<p></p>
+<p>The post <a href="https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-114-0-released/">Patch My PC Publisher Production Version 2.1.114.0 Released</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/release-notes/production-release/patch-my-pc-publisher-production-version-2-1-114-0-released/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Why an “Hourly” Intune Remediation Doesn’t Run Within the First Hour</title>
+		<link>https://patchmypc.com/blog/why-an-hourly-intune-remediation-doesnt-run-within-the-first-hour/</link>
+					<comments>https://patchmypc.com/blog/why-an-hourly-intune-remediation-doesnt-run-within-the-first-hour/#respond</comments>
+		
+		<dc:creator><![CDATA[Rudy Ooms]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2026 08:09:43 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=178120</guid>
+
+					<description><![CDATA[<p>Many assume an Intune hourly remediation runs within the first hour after assignment. In reality, the first execution depends on when the device retrieves the policy.</p>
+<p>The post <a href="https://patchmypc.com/blog/why-an-hourly-intune-remediation-doesnt-run-within-the-first-hour/">Why an “Hourly” Intune Remediation Doesn’t Run Within the First Hour</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p><strong>An hourly remediation</strong> sounds straightforward: assign it, and it should run sometime within the next hour. But when looking closer at how the Intune Management Extension evaluates remediation schedules, the behavior turns out to be very different. In this blog, I will walk through what really happens on existing devices and why the first execution depends on<strong> policy retrieval</strong> events rather than on the <strong>one-hour interval.</strong></p>
+
+
+
+<h2 class="wp-block-heading" id="h-introduction-to-the-hourly-remediations">Introduction to the Hourly Remediations</h2>
+
+
+
+<p>Some time ago, I wrote a blog explaining why Intune <strong><a href="https://patchmypc.com/blog/intune-powershell-script-delay-here-is-what-really-causes-it/">PowerShell scripts always appear with a delay</a></strong>. The key takeaway from that article was simple: the Intune Management Extension does not receive a push when scripts are assigned. Instead, the agent periodically pulls workloads from the Intune service. If the device has not yet retrieved the workload that contains the script, nothing happens yet.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="286" src="https://patchmypc.com/app/uploads/2026/03/image-44.png" alt="powershell workload timer in the ime determines when it should run the hourly remediations" class="wp-image-178127" srcset="https://patchmypc.com/app/uploads/2026/03/image-44.png 624w, https://patchmypc.com/app/uploads/2026/03/image-44-300x138.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>That design explains why PowerShell scripts sometimes appear delayed on devices. It also explains another misconception I hear quite often. When administrators create a<strong> <a href="https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/remediations">remediation with an</a></strong><a href="https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/remediations"> <strong>hourly schedule</strong></a>, many assume the device will wait up to one hour before running the remediation for the first time. In other words, the expectation usually looks like this:</p>
+
+
+
+<p><strong>Hourly Remediation assigned</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Device waits up to one hour</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>First execution</strong></p>
+
+
+
+<p>That sounds logical. But it is not how the Intune Management Extension actually behaves. On already-enrolled devices, an hourly remediation is not performed within the first hour after assignment. The first execution is triggered by policy retrieval events such as <strong>user sign-in</strong>, <strong>device restart</strong>, <strong>IME restart</strong>, or the <strong>periodic workload cycle, NOT</strong> by the <strong>one-hour interval</strong> itself.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="82" src="https://patchmypc.com/app/uploads/2026/03/image-7.jpg" alt="powershell workload is also triggered when the user logs on" class="wp-image-178121" srcset="https://patchmypc.com/app/uploads/2026/03/image-7.jpg 624w, https://patchmypc.com/app/uploads/2026/03/image-7-300x39.jpg 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-the-real-first-trigger-is-policy-retrieval-not-the-hourly-remediation-interval">The real first trigger is policy retrieval, not the hourly Remediation interval</h2>
+
+
+
+<p>To understand why this happens, it helps to revisit the architecture discussed in the <strong><a href="https://patchmypc.com/blog/intune-powershell-script-delay-here-is-what-really-causes-it">earlier blog about PowerShell script delays</a></strong>.  </p>
+
+
+
+<p><strong>A small summary for people who didn&#8217;t read the blog above: </strong>The Intune Management Extension does NOT receive push notifications when PowerShell scripts or remediations are assigned. Instead, it retrieves workloads from the service at specific moments. Because of that design, remediation scripts only appear on the device when the extension retrieves the workload that contains them. For remediation scripts, policy retrieval typically happens when one of the following events occurs:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>the user signs in</strong></li>
+
+
+
+<li><strong>the Intune Management Extension service restarts</strong> (<strong>the device restarts</strong>)</li>
+
+
+
+<li><strong>the periodic remediation policy retrieval cycle runs (every eight hours)</strong></li>
+</ul>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="314" src="https://patchmypc.com/app/uploads/2026/03/image-45-1024x314.png" alt="powershell workload triggered on session change" class="wp-image-178128" srcset="https://patchmypc.com/app/uploads/2026/03/image-45-1024x314.png 1024w, https://patchmypc.com/app/uploads/2026/03/image-45-300x92.png 300w, https://patchmypc.com/app/uploads/2026/03/image-45-768x236.png 768w, https://patchmypc.com/app/uploads/2026/03/image-45.png 1215w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>This means that assigning a remediation does not immediately trigger execution. The device must first retrieve the specific policy that contains the PowerShell remediation.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-what-happens-when-the-hourly-remediation-policy-arrives">What happens when the hourly remediation policy arrives</h2>
+
+
+
+<p>Once the remediation policy appears on the device, the scheduler determines whether to run the remediation.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="766" height="239" src="https://patchmypc.com/app/uploads/2026/03/image-40.png" alt="hourly remediations schedule" class="wp-image-178124" srcset="https://patchmypc.com/app/uploads/2026/03/image-40.png 766w, https://patchmypc.com/app/uploads/2026/03/image-40-300x94.png 300w" sizes="(max-width: 766px) 100vw, 766px" /></figure>
+
+
+
+<p>At that moment, the Intune Management Extension checks whether the remediation has already been executed. If no execution history exists yet, the scheduler allows the remediation to run immediately. So the logic effectively looks like this:</p>
+
+
+
+<p><strong>Remediation policy retrieved</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Scheduler evaluates remediation</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>No previous execution found</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Run remediation immediately</strong></p>
+
+
+
+<p>This is the key point: the scheduler is <strong>not waiting for one hour to pass</strong>. It simply checks whether the remediation has already been executed. If the answer is no, the remediation runs right away.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-what-this-means-for-already-enrolled-devices">What this means for already enrolled devices</h2>
+
+
+
+<p>On a device that has already been enrolled for some time, the first execution therefore depends entirely on when the device retrieves the remediation policy. The sequence typically looks like this:</p>
+
+
+
+<p><strong>Admin assigns remediation</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Device retrieves workloads</strong><br>(user sign-in / restart / IME restart / periodic retrieval)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Remediation policy appears on the device</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Scheduler evaluates remediation</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>No previous execution found</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Remediation executes immediately</strong></p>
+
+
+
+<p>So the device does <strong>not wait one hour</strong> before executing the remediation. Instead, the remediation runs the moment the device processes the remediation policy for the first time. Only after that first execution has taken place does the hourly interval begin to matter.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-what-happens-during-enrollment"><strong>What happens during enrollment</strong></h2>
+
+
+
+<p>Enrollment behaves slightly differently because the Intune Management Extension is installed during the enrollment process. Once the extension is installed and the service starts, it immediately begins retrieving workloads assigned to the device.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="931" height="208" src="https://patchmypc.com/app/uploads/2026/03/image-42.png" alt="timerinterval set for hourly remediations" class="wp-image-178125" srcset="https://patchmypc.com/app/uploads/2026/03/image-42.png 931w, https://patchmypc.com/app/uploads/2026/03/image-42-300x67.png 300w, https://patchmypc.com/app/uploads/2026/03/image-42-768x172.png 768w" sizes="(max-width: 931px) 100vw, 931px" /></figure>
+
+
+
+<p>If the remediation policy already exists in the assignment, the device retrieves it almost immediately. Since the remediation has never been executed before, the scheduler again allows it to run right away. The sequence during enrollment typically looks like this:</p>
+
+
+
+<p><strong>Device enrollment</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>IME installed</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>IME service starts</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Workloads retrieved</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>Remediation policy received</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>No previous execution found</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br>Remediation executes with 5 minute delay</strong></p>
+
+
+
+<p>This is why administrators often observe an hourly remediation executing only a few minutes after enrollment completes. The remediation is not waiting for the hourly interval. It simply runs the first time the device processes the policy.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-five-minute-reevaluation-you-may-see-in-logs">The five-minute reevaluation you may see in logs</h2>
+
+
+
+<p>There is one small detail in the hourly scheduler that can confuse people when looking at logs. Whenever the scheduler decides to run a remediation immediately, it also schedules a follow-up evaluation roughly five minutes later. This comes directly from the schedule handler logic, which sets the next evaluation moment to the current time <strong>plus five minutes.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><a href="https://patchmypc.com/app/uploads/2026/03/image-41.png"><img decoding="async" width="624" height="177" src="https://patchmypc.com/app/uploads/2026/03/image-41.png" alt="5 minutes added when the hourly remediations kicked in during enrollment" class="wp-image-178123" srcset="https://patchmypc.com/app/uploads/2026/03/image-41.png 624w, https://patchmypc.com/app/uploads/2026/03/image-41-300x85.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></a></figure>
+
+
+
+<p>That does <strong>not</strong> mean the remediation runs every five minutes. It simply means the scheduler checks the schedule again shortly after the first execution. The sequence looks like this:</p>
+
+
+
+<p><strong>12:39&nbsp; remediation executes</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>LastExecution timestamp written</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>12:44&nbsp; scheduler reevaluates (+5 minutes)</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓<br><strong>13:39&nbsp; next hourly execution allowed</strong></p>
+
+
+
+<p>By the time the five-minute reevaluation happens, the execution timestamp already exists, and the hourly interval prevents the remediation from running again. So if you notice activity roughly five minutes after the first run in the logs, that is simply the scheduler reevaluating the schedule.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-registry-key-that-anchors-the-hourly-schedule">The registry key that anchors the hourly schedule</h2>
+
+
+
+<p>After a remediation is executed, the Intune Management Extension records the execution timestamp in the registry. You can find it here: HKLM\SOFTWARE\Microsoft\IntuneManagementExtension\<br>SideCarPolicies\Scripts\Execution\&lt;UserId&gt;\&lt;PolicyId&gt;_&lt;Version&gt;. Inside that key, the agent stores the value: <strong>LastExecution</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="282" src="https://patchmypc.com/app/uploads/2026/03/image-43.png" alt="hourly remediations are scheduled by looking at the lastexecution timer" class="wp-image-178126" srcset="https://patchmypc.com/app/uploads/2026/03/image-43.png 624w, https://patchmypc.com/app/uploads/2026/03/image-43-300x136.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>That timestamp becomes the reference point for the hourly schedule.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="592" height="138" src="https://patchmypc.com/app/uploads/2026/03/image-39.png" alt="hourly remediations schedule" class="wp-image-178122" srcset="https://patchmypc.com/app/uploads/2026/03/image-39.png 592w, https://patchmypc.com/app/uploads/2026/03/image-39-300x70.png 300w" sizes="(max-width: 592px) 100vw, 592px" /></figure>
+
+
+
+<p>When the scheduler evaluates the remediation again later, it compares the current time with the stored execution timestamp. Only when the configured interval has passed will the remediation be allowed to run again. This means the hourly schedule is anchored to <strong>when the hourly remediation last executed</strong>, not to when it was assigned. That is why hourly remediations often run at slightly irregular minutes instead of exactly on the hour.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-key-takeaway">The key takeaway</h2>
+
+
+
+<p>The word <strong>hourly</strong> creates the expectation that a remediation will run sometime within the next hour after it is assigned. But the Intune Management Extension does not schedule the first run that way.</p>
+
+
+
+<p>On already-enrolled devices, the first execution occurs when the device retrieves and processes the remediation policy. That moment is tied to events like user sign-in, device restart, IME restart, or the periodic workload retrieval cycle. Only after the remediation has been executed once does the hourly interval begin controlling when the next run is allowed.</p>
+
+
+
+<p>So if an hourly remediation appears shortly after enrollment or soon after a policy retrieval event, that behavior is not unusual. It simply means the device has just processed the remediation policy for the first time.</p>
+<p>The post <a href="https://patchmypc.com/blog/why-an-hourly-intune-remediation-doesnt-run-within-the-first-hour/">Why an “Hourly” Intune Remediation Doesn’t Run Within the First Hour</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/blog/why-an-hourly-intune-remediation-doesnt-run-within-the-first-hour/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Unattended Remote Help for Windows</title>
+		<link>https://patchmypc.com/blog/unattended-remote-help-for-windows/</link>
+					<comments>https://patchmypc.com/blog/unattended-remote-help-for-windows/#respond</comments>
+		
+		<dc:creator><![CDATA[Rudy Ooms]]></dc:creator>
+		<pubDate>Tue, 31 Mar 2026 06:26:06 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://patchmypc.com/?p=180217</guid>
+
+					<description><![CDATA[<p>A new Sidecar notification in the IME called WindowsRemoteHelpUnattended was enough to raise a bigger question: is Microsoft building unattended Remote Help for Windows behind the scenes? After tracing the IME, the Intune portal, and the Graph calls, the answer started to take shape</p>
+<p>The post <a href="https://patchmypc.com/blog/unattended-remote-help-for-windows/">Unattended Remote Help for Windows</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>While digging through the Intune Management Extension, I noticed a new Sidecar notification action called <strong>Unattended Remote Help for Windows</strong> (which is not really unattended?), and that one name was enough to send me down the rabbit hole. The more I looked at the IME, the Intune portal, and the Graph calls behind it, the more it started to look like Microsoft is almost done building unattended Remote Help for Windows on top of something much bigger than the normal user driven flow.</p>
+
+
+
+<p class="has-small-font-size"><strong>Please note:</strong> all of this is based on reverse engineering, portal tracing, and looking at the IME code, so some parts may still change and not everything is guaranteed to be one hundred percent accurate.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-introduction-to-unattended-remote-help-for-windows">Introduction to Unattended Remote Help for Windows</h2>
+
+
+
+<p>Sometimes the Intune portal is not what gives it away first. Sometimes it is the device side. That is exactly what happened here. While looking through the Intune Management Extension, I noticed a new <strong>Sidecar notification action</strong>: <strong>Windows Remote Help Unattended</strong><strong>.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="305" src="https://patchmypc.com/app/uploads/2026/03/image-5.jpeg" alt="WIndows Remote Help Unattended SideCar Notification" class="wp-image-180223" srcset="https://patchmypc.com/app/uploads/2026/03/image-5.jpeg 624w, https://patchmypc.com/app/uploads/2026/03/image-5-300x147.jpeg 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p><strong>Windows Remote Help Unattended</strong> was sitting there next to the usual IME SideCar Notifications, but that one immediately stood out. Remote Help already exists. We already know how the normal flow works. A user gets involved, a session starts, and both sides meet somewhere in the middle.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="529" height="277" src="https://patchmypc.com/app/uploads/2026/03/image-126.png" alt="Remote Help for Windows" class="wp-image-180218" srcset="https://patchmypc.com/app/uploads/2026/03/image-126.png 529w, https://patchmypc.com/app/uploads/2026/03/image-126-300x157.png 300w" sizes="(max-width: 529px) 100vw, 529px" /></figure>
+
+
+
+<p>But <strong>Windows Remote Help Unattended</strong> suggested something else entirely. That one name was enough to start pulling the thread.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-first-unattended-stop-was-the-ime">The First Unattended Stop Was the IME</h2>
+
+
+
+<p>Even though I wasn’t looking for the <strong>Windows Remote Help Unattended support</strong> (More looking for more <a href="https://patchmypc.com/blog/ic3-from-wns-to-real-time-device-and-ime-actions/">IC3 breadcrumbs</a>), I noticed that the IME also contained other classes like <strong>WindowsUnattendedHandler</strong>, <strong>WindowsUnattendedHelper</strong><strong>, and </strong><strong>WindowsUnattendedUtilities</strong><strong>.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="337" src="https://patchmypc.com/app/uploads/2026/03/image-132.png" alt="Unattended Remote Help for Windows showing up in the IME" class="wp-image-180230" srcset="https://patchmypc.com/app/uploads/2026/03/image-132.png 624w, https://patchmypc.com/app/uploads/2026/03/image-132-300x162.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>Together they form a proper <strong>remote help unattended flow for Windows.</strong> The handler processes the incoming notification. The helper handles the session setup and teardown. The utilities class takes care of the registry, local group membership, service control, user session tracking, and cleanup.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="983" height="487" src="https://patchmypc.com/app/uploads/2026/03/image-136.png" alt="Unattended Remote Help for Windows flow in the IME" class="wp-image-180233" srcset="https://patchmypc.com/app/uploads/2026/03/image-136.png 983w, https://patchmypc.com/app/uploads/2026/03/image-136-300x149.png 300w, https://patchmypc.com/app/uploads/2026/03/image-136-768x380.png 768w" sizes="(max-width: 983px) 100vw, 983px" /></figure>
+
+
+
+<p>That already tells you this is not just some new item on the road map which will be there indefinitely (<a href="https://www.microsoft.com/en-us/microsoft-365/roadmap?id=399933">like EPM improved elevation detection</a>) but something that is really almost done. (<strong>except the name as <a href="https://patchmypc.com/blog/microsoft-intune-suite-pricing/">Intune Suite… uhhh that’s gone</a>?)</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="916" height="332" src="https://patchmypc.com/app/uploads/2026/03/image-129.png" alt="Unattended Remote Help for Windows roadmap" class="wp-image-180220" srcset="https://patchmypc.com/app/uploads/2026/03/image-129.png 916w, https://patchmypc.com/app/uploads/2026/03/image-129-300x109.png 300w, https://patchmypc.com/app/uploads/2026/03/image-129-768x278.png 768w" sizes="(max-width: 916px) 100vw, 916px" /></figure>
+
+
+
+<p>Why? Because, it seems that Microsoft has already written the device side implementation for it And by the looks of it, the IME code to support <strong>unattended support for remote help</strong> for Windows is almost finished.Let’s first check how that remote help unattended support request reaches the device when we launch a remote help unattended support request from the Portal</p>
+
+
+
+<h2 class="wp-block-heading" id="h-launching-unattended-remote-help-control">Launching Unattended Remote Help Control</h2>
+
+
+
+<p>The newer React based Remote Assistance blade already contains a separate session type step. Not just “<strong>Remote Help or TeamViewer,”</strong> but an actual choice between attended and unattended control. The strings are already there: <strong><em>Select Remote Help Control Session Type</em></strong>, <strong><em>Initiate attended control</em>, and <em>Initiate unattended control</em>.</strong> This is what my lovely mockup generator showed me when showing the corresponding Intune Portal JS files.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1020" height="569" src="https://patchmypc.com/app/uploads/2026/03/image-48.jpg" alt="launching Unattended Remote Help for Windows" class="wp-image-180221" srcset="https://patchmypc.com/app/uploads/2026/03/image-48.jpg 1020w, https://patchmypc.com/app/uploads/2026/03/image-48-300x167.jpg 300w, https://patchmypc.com/app/uploads/2026/03/image-48-768x428.jpg 768w" sizes="(max-width: 1020px) 100vw, 1020px" /></figure>
+
+
+
+<p>And the <strong>remote help unattended</strong> description is just as clear: take full control of the device without the presence of the end user. I asked my mock up generator, to come up with a mockup again, of how this would look like:</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1024" height="675" src="https://patchmypc.com/app/uploads/2026/03/image-50.jpg" alt="Unattended Remote Help for Windows starting" class="wp-image-180219" srcset="https://patchmypc.com/app/uploads/2026/03/image-50.jpg 1024w, https://patchmypc.com/app/uploads/2026/03/image-50-300x198.jpg 300w, https://patchmypc.com/app/uploads/2026/03/image-50-768x506.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>But before the Intune blade enables that Remote Help Session Type choice, it calls <strong>getAllowedRemoteHelpActions</strong> for the device. That looks like the precheck (aka if your tenant is flighted).</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="238" src="https://patchmypc.com/app/uploads/2026/03/image-133.png" alt="getallowedremotehelpactions graph call" class="wp-image-180235" srcset="https://patchmypc.com/app/uploads/2026/03/image-133.png 624w, https://patchmypc.com/app/uploads/2026/03/image-133-300x114.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>When looking at the IME logs, you will spot the same information</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="397" height="28" src="https://patchmypc.com/app/uploads/2026/03/image-139.png" alt="" class="wp-image-180381" srcset="https://patchmypc.com/app/uploads/2026/03/image-139.png 397w, https://patchmypc.com/app/uploads/2026/03/image-139-300x21.png 300w" sizes="(max-width: 397px) 100vw, 397px" /></figure>
+
+
+
+<p>It is there to determine which session types are actually allowed for that admin on that device. The same code maps the returned values into actions like <strong>viewscreen</strong><strong>, </strong><strong>takefullcontrol</strong><strong>, </strong><strong>unattended</strong><strong>, and </strong><strong>elevation</strong>.&nbsp; When the admin starts the session, the portal still uses the same Graph action as normal Remote Help: <strong>createRemoteHelpSession </strong>together with the <strong>sessionkey.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="77" src="https://patchmypc.com/app/uploads/2026/03/image-127.png" alt="sessiontype viewscreen" class="wp-image-180229" srcset="https://patchmypc.com/app/uploads/2026/03/image-127.png 624w, https://patchmypc.com/app/uploads/2026/03/image-127-300x37.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>The difference is in the payload. For unattended support, the body is just a bit different <strong>:</strong><strong>{&#8220;SessionType&#8221;:&#8221;unattended&#8221;}</strong> instead of viewscreen.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="744" height="155" src="https://patchmypc.com/app/uploads/2026/03/image-49.jpg" alt="sessiontype: unattended" class="wp-image-180225" srcset="https://patchmypc.com/app/uploads/2026/03/image-49.jpg 744w, https://patchmypc.com/app/uploads/2026/03/image-49-300x63.jpg 300w" sizes="(max-width: 744px) 100vw, 744px" /></figure>
+
+
+
+<p>That was the point where the device side findings and the portal side findings started lining up properly.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-ime-code-and-unattended-remote-help">The IME Code and Unattended Remote Help</h2>
+
+
+
+<p>Good to know (even when it’s a bit obvious). This <strong>unattended remote help for Windows feature,</strong> is <a href="https://patchmypc.com/blog/why-do-required-apps-wait-60-minutes-after-autopilot-enrollment/">not timer based like other IME workloads</a>. The helper uses <strong>CheckinReason.Notification</strong><strong>,</strong> which means it reacts to a Sidecar push Notification. It does not wait for the next <strong>IME schedule. (which is obvious but still)</strong></p>
+
+
+
+<p>That fits the kind of feature this is supposed to be. If an admin clicks unattended in the portal, the device needs to react right away. With the help of <a href="https://patchmypc.com/blog/intune-ime-ic3-teams-protocol/">IC3 in the near future</a>, this will be even better! Once the push arrives the IME performs a few checks.</p>
+
+
+
+<p>Once the push arrives, the IME verifies that unattended support is enabled through a feature flag. It checks whether <strong>Remote Desktop is enabled.</strong></p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="258" src="https://patchmypc.com/app/uploads/2026/03/image-51-1024x258.jpg" alt="the IME function to check if unattended remote help is enabled" class="wp-image-180231" srcset="https://patchmypc.com/app/uploads/2026/03/image-51-1024x258.jpg 1024w, https://patchmypc.com/app/uploads/2026/03/image-51-300x76.jpg 300w, https://patchmypc.com/app/uploads/2026/03/image-51-768x194.jpg 768w, https://patchmypc.com/app/uploads/2026/03/image-51.jpg 1165w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>It also checks whether the RDAgentBootLoader service is installed and &nbsp;whether the device is already tied to another host pool by reading HostPoolArmPath from HKLM\SOFTWARE\Microsoft\RDInfraAgent.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="624" height="179" src="https://patchmypc.com/app/uploads/2026/03/image-131.png" alt="rdinfra registry path showing up in the unattended remote help code" class="wp-image-180227" srcset="https://patchmypc.com/app/uploads/2026/03/image-131.png 624w, https://patchmypc.com/app/uploads/2026/03/image-131-300x86.png 300w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+
+
+
+<p>And this is also the point where it already starts to feel different from the Remote Help flow we know today. Once RDAgentBootLoader, RDInfraAgent, RegistrationToken, and HostPoolArmPath start showing up, it stops sounding like classic screen sharing.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-session-key-and-the-encrypted-payload">The Session Key and the Encrypted Payload</h2>
+
+
+
+<p>Once the portal creates an unattended remote help session, the device side flow gets even more interesting. The notification already contains values like <strong>HelperUpn</strong><strong>, </strong><strong>HelperId</strong><strong>, optional </strong><strong>HelperSid</strong><strong>, </strong><strong>SessionExpiryInHours</strong><strong>, and </strong><strong>EndSession</strong><strong>.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="937" height="249" src="https://patchmypc.com/app/uploads/2026/03/image-128.png" alt="WindowsUnattended IntuneManagementExtension" class="wp-image-180224" srcset="https://patchmypc.com/app/uploads/2026/03/image-128.png 937w, https://patchmypc.com/app/uploads/2026/03/image-128-300x80.png 300w, https://patchmypc.com/app/uploads/2026/03/image-128-768x204.png 768w" sizes="(max-width: 937px) 100vw, 937px" /></figure>
+
+
+
+<p>So the service is already pushing the remote helper identity down to the device before the device even asks for the real unattended payload.&nbsp; After that, the IME uses the <strong>session key</strong> to contact the gateway and request the unattended payload. That exchange only supports two request content types: <strong>WindowsUnattendedRequestPayload</strong><strong> and </strong><strong>WindowsUnattendedReportStatus</strong><strong>.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1012" height="455" src="https://patchmypc.com/app/uploads/2026/03/image-137.png" alt="The Windows Unattended Request Payload" class="wp-image-180234" srcset="https://patchmypc.com/app/uploads/2026/03/image-137.png 1012w, https://patchmypc.com/app/uploads/2026/03/image-137-300x135.png 300w, https://patchmypc.com/app/uploads/2026/03/image-137-768x345.png 768w" sizes="(max-width: 1012px) 100vw, 1012px" /></figure>
+
+
+
+<p>The returned unattended payload is obviously <strong>encrypted.</strong> The device decrypts it with its own <strong>MDM certificate</strong>. That strongly suggests the service is sending data meant only for that specific managed device.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="272" src="https://patchmypc.com/app/uploads/2026/03/image-135-1024x272.png" alt="Decrypting the remote help unattended payload" class="wp-image-180232" srcset="https://patchmypc.com/app/uploads/2026/03/image-135-1024x272.png 1024w, https://patchmypc.com/app/uploads/2026/03/image-135-300x80.png 300w, https://patchmypc.com/app/uploads/2026/03/image-135-768x204.png 768w, https://patchmypc.com/app/uploads/2026/03/image-135.png 1287w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Whatever comes back after decryption is then used to update <strong>HKLM\SOFTWARE\Microsoft\RDInfraAgent</strong>. The IME sets <strong>IsRegistered</strong><strong> to </strong><strong>0</strong><strong>,</strong> writes a new RegistrationToken, and restarts <strong>RDAgentBootLoader</strong><strong>.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1012" height="186" src="https://patchmypc.com/app/uploads/2026/03/image-134.png" alt="checking if the rdinfraagent is registered" class="wp-image-180228" srcset="https://patchmypc.com/app/uploads/2026/03/image-134.png 1012w, https://patchmypc.com/app/uploads/2026/03/image-134-300x55.png 300w, https://patchmypc.com/app/uploads/2026/03/image-134-768x141.png 768w" sizes="(max-width: 1012px) 100vw, 1012px" /></figure>
+
+
+
+<p>That is the moment where it really stops looking like classic Remote Help and starts looking much more like a complete <strong>RDInfraAgent</strong> &nbsp;(Windows 365) registration flow.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-helper-identity-is-the-real-clue">The Helper Identity Is the Real Clue</h2>
+
+
+
+<p>The biggest clue in the whole flow is not the portal. It is the helper identity. The notification already contains <strong>HelperUpn</strong><strong> and </strong><strong>HelperId</strong><strong>.</strong> The IME then takes that helper and adds them to the local <strong>Remote Desktop Users</strong> group. After that, it stores the helper in the registry under:</p>
+
+
+
+<p>HKLM\SOFTWARE\Microsoft\IntuneManagementExtension\WindowsUnattended\Helpers\&lt;HelperId&gt;</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="786" height="199" src="https://patchmypc.com/app/uploads/2026/03/image-52.jpg" alt="the helper in remote help unattended support" class="wp-image-180222" srcset="https://patchmypc.com/app/uploads/2026/03/image-52.jpg 786w, https://patchmypc.com/app/uploads/2026/03/image-52-300x76.jpg 300w, https://patchmypc.com/app/uploads/2026/03/image-52-768x194.jpg 768w" sizes="(max-width: 786px) 100vw, 786px" /></figure>
+
+
+
+<p>That tells you a lot about what Microsoft is doing. The helper is <strong>NOT</strong> the user sitting behind the target device. The helper is the <strong>support person who is being granted temporary local access on that device</strong>. That is the part that is the most important part for the Unattended part in Remote Help.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-what-seems-to-happen-on-the-device">What Seems to Happen on the Device</h2>
+
+
+
+<p>The <strong>Windows Unattended utilities</strong> class makes that even clearer. The IME code enumerates WTS sessions on the device, checks whether a given username is logged on, and later logs that session off with <strong>WTSLogoffSession</strong>. It only looks at active or connected sessions, and it matches them to the helper identity.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="926" height="207" src="https://patchmypc.com/app/uploads/2026/03/image-130.png" alt="" class="wp-image-180226" srcset="https://patchmypc.com/app/uploads/2026/03/image-130.png 926w, https://patchmypc.com/app/uploads/2026/03/image-130-300x67.png 300w, https://patchmypc.com/app/uploads/2026/03/image-130-768x172.png 768w" sizes="(max-width: 926px) 100vw, 926px" /></figure>
+
+
+
+<p>That is a pretty important detail. It strongly suggests the helper does not sign in as the device user. The helper gets their own <strong>temporary Windows session on that machine</strong>.</p>
+
+
+
+<p>So if a user locks the device, unattended support still makes sense. The user does not need to unlock it or click Accept. The helper starts the unattended session from Intune; the device receives the notification; the IME fetches and decrypts the payload, configures RDInfraAgent, grants temporary Remote Desktop Users access; and the helper (the user initiating remote support from the portal) connects as themselves. With it, they can log in with their own user (<strong>so not as the logged-in user</strong>!)</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="419" height="1024" src="https://patchmypc.com/app/uploads/2026/03/image-144-419x1024.png" alt="" class="wp-image-181113" srcset="https://patchmypc.com/app/uploads/2026/03/image-144-419x1024.png 419w, https://patchmypc.com/app/uploads/2026/03/image-144-123x300.png 123w, https://patchmypc.com/app/uploads/2026/03/image-144-768x1879.png 768w, https://patchmypc.com/app/uploads/2026/03/image-144-628x1536.png 628w, https://patchmypc.com/app/uploads/2026/03/image-144-837x2048.png 837w, https://patchmypc.com/app/uploads/2026/03/image-144.png 1021w" sizes="(max-width: 419px) 100vw, 419px" /></figure>
+
+
+
+<p>When the session ends, the device logs off the helper session, removes the helper from <strong>Remote Desktop Users</strong>, and deletes the helper tracking entry from the registry. That is the whole shape of the <strong>Unattended Remote Help feature.</strong></p>
+
+
+
+<h2 class="wp-block-heading" id="h-this-sounds-a-lot-like-windows-365-or-avd-plumbing">This Sounds a Lot Like Windows 365 or AVD Plumbing</h2>
+
+
+
+<p>That is hard to ignore. <strong>RDAgentBootLoader</strong><strong>, </strong><strong>RDInfraAgent</strong><strong>, </strong><strong>RegistrationToken</strong><strong>, </strong><strong>HostPoolArmPath</strong><strong> </strong>checks do not sound like the usual building blocks of classic attended Remote Help. They sound much closer to the remote desktop plumbing Microsoft already uses elsewhere.</p>
+
+
+
+<p>That does not prove unattended Windows Remote Help is literally Windows 365 or AVD under the hood. But it does strongly suggest Microsoft is reusing the same family of components for the actual unattended connection path, while keeping Intune and Remote Help as the control plane on top.</p>
+
+
+
+<p>That would also explain why the device side flow feels so different. Microsoft is not just launching an app and waiting for a user. It is preparing a managed device for a temporary remote session.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-whole-unattended-remote-help-flow">The Whole Unattended Remote Help Flow</h2>
+
+
+
+<p>At this point, the Unattended picture is fairly clear. The admin selects initiate unattended control in the Intune portal.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="592" src="https://patchmypc.com/app/uploads/2026/03/image-138-1024x592.png" alt="Unattended Remote Help for Windows" class="wp-image-180237" srcset="https://patchmypc.com/app/uploads/2026/03/image-138-1024x592.png 1024w, https://patchmypc.com/app/uploads/2026/03/image-138-300x173.png 300w, https://patchmypc.com/app/uploads/2026/03/image-138-768x444.png 768w, https://patchmypc.com/app/uploads/2026/03/image-138.png 1342w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>The portal creates a <strong>Remote Help session and marks it as unattended</strong>. The service sends a Sidecar notification to the device. The IME receives it and checks whether unattended support is allowed on that machine. If the prerequisites are met, the device uses the session key to request an encrypted unattended payload, decrypts it with the MDM certificate, updates RDInfraAgent with a temporary registration token, restarts the RD agent, adds the helper to <strong>Remote Desktop Users</strong>, and allows the helper to connect as themselves (<strong>so NOT as the logged in user</strong>) without requiring the end user to interact.</p>
+
+
+
+<p>When the session ends or expires, the helper session is logged off, the temporary group membership is removed, and the registry tracking is cleaned up again.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-what-is-still-missing">What Is Still Missing</h2>
+
+
+
+<p>The backend still returns FeatureNotEnabled, so this is clearly not broadly lit up yet. There are also still a few details we cannot fully prove from the code alone. The biggest one is whether the helper lands in the locked console session or in a separate remote session every time. The WTS based cleanup logic strongly suggests a real helper session exists, but the exact session experience is still not fully visible.</p>
+
+
+
+<p>Even with that gap, the overall design is not hard to see anymore. The portal knows about unattended. Graph accepts the session type. The IME has the handler. The Sidecar notification exists. The device side setup and cleanup are already written. The backend just is not ready to let most tenants use it yet. And it all started with one new Sidecar notification name showing up in the IME.</p>
+<p>The post <a href="https://patchmypc.com/blog/unattended-remote-help-for-windows/">Unattended Remote Help for Windows</a> appeared first on <a href="https://patchmypc.com">Patch My PC</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://patchmypc.com/blog/unattended-remote-help-for-windows/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
