@@ -3,116 +3,87 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Security Exposure Triage Console</title>
+<title>Software Vulnerability & Patch Intelligence</title>
 <style>
-:root{--bg:#09090b;--panel:#14141b;--panel2:#1f1f2a;--text:#f4f4f5;--muted:#a1a1aa;--border:#30303d;--blue:#2563eb;--green:#34d399;--red:#fb7185;--amber:#f59e0b;--sky:#38bdf8;--purple:#c084fc}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at top left,#14213a 0,#09090b 42%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-main{max-width:1320px;margin:auto;padding:28px 18px 70px}
-.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:20px}
-.badge{display:inline-block;border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.08);color:var(--sky);border-radius:999px;padding:6px 12px;font-size:13px}
-h1{font-size:clamp(32px,5vw,52px);line-height:1;margin:10px 0 8px;letter-spacing:-.04em}
-h2{margin-top:0}p{color:var(--muted);line-height:1.55}
-.card{background:rgba(20,20,27,.94);border:1px solid var(--border);border-radius:22px;padding:18px;margin-bottom:18px;box-shadow:0 20px 55px rgba(0,0,0,.25)}
-.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.toolbar,.actions{display:flex;flex-wrap:wrap;gap:10px}
-button,a.button,label.filebtn{border:0;color:white;background:var(--blue);border-radius:14px;padding:10px 14px;font-weight:750;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px}
-button:hover,a.button:hover,label.filebtn:hover{filter:brightness(1.12)}button.secondary,a.secondary,label.secondary{background:var(--panel2)}button.danger{background:rgba(251,113,133,.18);color:#fecdd3}
-select,input,textarea{width:100%;border:1px solid var(--border);background:#0d0d13;color:var(--text);border-radius:14px;padding:11px 12px;outline:none;font-size:15px}textarea{min-height:100px;resize:vertical}
-select:focus,input:focus,textarea:focus{border-color:rgba(56,189,248,.8);box-shadow:0 0 0 3px rgba(56,189,248,.12)}
-.item{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;background:#0d0d13;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:8px}
-.mono{font-family:Consolas,Monaco,monospace;font-size:12px;color:#d4d4d8;overflow-wrap:anywhere}.small{font-size:13px;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:12px;margin-right:6px;margin-bottom:6px}
-.ok{border:1px solid rgba(52,211,153,.5);background:rgba(52,211,153,.08);color:#a7f3d0;border-radius:14px;padding:12px}.warn{border:1px solid rgba(245,158,11,.5);background:rgba(245,158,11,.09);color:#fde68a;border-radius:14px;padding:12px}.bad{border:1px solid rgba(251,113,133,.55);background:rgba(251,113,133,.09);color:#fecdd3;border-radius:14px;padding:12px}
-.sev-critical{color:#fecdd3}.sev-high{color:#fde68a}.sev-medium{color:#bfdbfe}.right-rail{position:sticky;top:18px;align-self:start}.hide{display:none!important}
-details summary{cursor:pointer;font-weight:800}.tabbar{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.tabbar button{background:var(--panel2)}.toolbar button.active{background:var(--blue)}code{background:rgba(255,255,255,.07);padding:2px 5px;border-radius:6px;color:#e4e4e7}
-@media(max-width:980px){.top,.grid,.two,.three{display:block}.right-rail{position:static}.toolbar{margin-top:14px}.item{display:block}.item .actions{margin-top:10px}}
+:root{--bg:#09090b;--panel:#14141b;--panel2:#1f1f2a;--text:#f4f4f5;--muted:#a1a1aa;--border:#30303d;--blue:#2563eb;--green:#34d399;--red:#fb7185;--amber:#f59e0b;--sky:#38bdf8;--purple:#c084fc}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#152238 0,#09090b 44%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}main{max-width:1380px;margin:auto;padding:28px 18px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:20px}.badge{display:inline-block;border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.08);color:var(--sky);border-radius:999px;padding:6px 12px;font-size:13px}h1{font-size:clamp(32px,5vw,54px);line-height:1;margin:10px 0 8px;letter-spacing:-.04em}h2{margin-top:0}p{color:var(--muted);line-height:1.55}.layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}.card{background:rgba(20,20,27,.94);border:1px solid var(--border);border-radius:22px;padding:18px;margin-bottom:18px;box-shadow:0 20px 55px rgba(0,0,0,.25)}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.actions{display:flex;flex-wrap:wrap;gap:10px}button,a.button,label.filebtn{border:0;color:white;background:var(--blue);border-radius:14px;padding:10px 14px;font-weight:750;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px}button:hover,a.button:hover,label.filebtn:hover{filter:brightness(1.12)}button.secondary,a.secondary,label.secondary{background:var(--panel2)}button.danger{background:rgba(251,113,133,.18);color:#fecdd3}select,input,textarea{width:100%;border:1px solid var(--border);background:#0d0d13;color:var(--text);border-radius:14px;padding:11px 12px;outline:none;font-size:15px}textarea{min-height:260px;resize:vertical;font-family:Consolas,Monaco,monospace}select:focus,input:focus,textarea:focus{border-color:rgba(56,189,248,.8);box-shadow:0 0 0 3px rgba(56,189,248,.12)}.item{background:#0d0d13;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:10px}.item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.mono{font-family:Consolas,Monaco,monospace;font-size:12px;color:#d4d4d8;overflow-wrap:anywhere}.small{font-size:13px;color:var(--muted)}.pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:12px;margin-right:6px;margin-bottom:6px}.ok{border:1px solid rgba(52,211,153,.5);background:rgba(52,211,153,.08);color:#a7f3d0;border-radius:14px;padding:12px}.warn{border:1px solid rgba(245,158,11,.5);background:rgba(245,158,11,.09);color:#fde68a;border-radius:14px;padding:12px}.bad{border:1px solid rgba(251,113,133,.55);background:rgba(251,113,133,.09);color:#fecdd3;border-radius:14px;padding:12px}.score-critical{color:#fecdd3}.score-high{color:#fde68a}.score-medium{color:#bfdbfe}.score-low{color:#a7f3d0}details summary{cursor:pointer;font-weight:800}code{background:rgba(255,255,255,.07);padding:2px 5px;border-radius:6px;color:#e4e4e7}.sticky{position:sticky;top:18px;align-self:start}.hide{display:none!important}@media(max-width:980px){.top,.layout,.two,.three{display:block}.sticky{position:static}.item-head{display:block}.item-head .actions{margin-top:10px}}
 </style>
 </head>
 <body>
 <main>
   <section class="top">
     <div>
-      <div class="badge">Security Architect Console • KEV Intake • Exposure Triage</div>
-      <h1>Security Exposure Triage Console</h1>
-      <p>Prioritize known exploited vulnerabilities against the technologies your organization actually uses. Built for endpoint/security engineers and architects who need to turn threat intel into triage, ownership, and action.</p>
+      <div class="badge">Software Stack → Vulnerability + Patch Intelligence</div>
+      <h1>Software Vulnerability & Patch Intelligence</h1>
+      <p>Paste a software list, correlate it against exploited vulnerabilities and recent patch/update signals, then generate an engineer-ready action report.</p>
     </div>
-    <div class="toolbar">
-      <button data-tab="threats" class="active">Threats</button>
-      <button data-tab="watchlist">Watchlist</button>
-      <button data-tab="workspace">Workspace</button>
-      <button data-tab="settings">Settings</button>
+    <div class="actions">
+      <button data-action="load-feeds">Load Feeds</button>
+      <button class="secondary" data-action="analyze">Analyze Software</button>
+      <button class="secondary" data-action="export-report">Export Report</button>
     </div>
   </section>
 
-  <section class="grid">
+  <section class="layout">
     <div>
-      <section class="card view" id="view-threats">
-        <h2>Threat Intake</h2>
-        <p class="small">Start with the technologies your environment actually uses: VPN, identity, endpoint security, RMM, firewalls, M365, management agents, SaaS platforms, and critical third-party tools.</p>
-        <div class="two">
-          <div><label><b>Quick add technology/vendor</b></label><input id="quickWatchItem" placeholder="Example: Ivanti, Fortinet, Okta, Microsoft, ConnectWise"></div>
-          <div><label><b>Filter KEV feed</b></label><input id="kevFilter" placeholder="vendor, product, CVE, keyword"></div>
+      <section class="card">
+        <h2>1. Software / Application List</h2>
+        <p class="small">Paste one software, platform, vendor, or product per line. This can come from inventory exports, known critical apps, RMM/EDR tools, VPNs, browsers, collaboration tools, or endpoint agents.</p>
+        <textarea id="softwareInput" placeholder="Google Chrome&#10;Microsoft Office&#10;Zoom&#10;7-Zip&#10;Ivanti Connect Secure&#10;Fortinet FortiOS&#10;Okta&#10;ConnectWise ScreenConnect"></textarea>
+        <div class="actions" style="margin-top:12px">
+          <button data-action="analyze">Analyze Software</button>
+          <button class="secondary" data-action="load-sample">Load Sample</button>
+          <button class="danger" data-action="clear-input">Clear</button>
         </div>
-        <div class="two" style="margin-top:12px">
-          <div><label><b>Live page refresh</b></label><select id="refreshInterval"><option value="0">Off</option><option value="15">Every 15 minutes</option><option value="30">Every 30 minutes</option><option value="60">Every hour</option><option value="360">Every 6 hours</option></select></div>
+      </section>
+
+      <section class="card">
+        <h2>2. Data Sources</h2>
+        <div class="two">
+          <div><label><b>KEV JSON URL</b></label><input id="kevUrl" value="data/kev.json"></div>
+          <div><label><b>Patch RSS URL</b></label><input id="patchUrl" value="data/patchmypc.xml"></div>
+        </div>
+        <p class="small">Recommended GitHub Pages setup: mirror CISA KEV to <code>data/kev.json</code> and Patch My PC RSS to <code>data/patchmypc.xml</code> using GitHub Actions. Direct external fetches may be blocked by CORS.</p>
+        <div class="actions" style="margin-top:12px">
+          <button data-action="load-feeds">Refresh Feeds</button>
+          <label class="filebtn secondary">Import KEV JSON<input id="kevImport" type="file" accept="application/json" style="display:none"></label>
+          <label class="filebtn secondary">Import RSS/XML<input id="rssImport" type="file" accept=".xml,.rss,text/xml,application/xml" style="display:none"></label>
+        </div>
+        <div id="sourceStatus" style="margin-top:12px"></div>
+      </section>
+
+      <section class="card">
+        <h2>3. Matching Options</h2>
+        <div class="three">
+          <div><label><b>Result filter</b></label><select id="resultFilter"><option value="all">All results</option><option value="actionable">Actionable only</option><option value="kev">KEV only</option><option value="patch">Patch/update signal only</option></select></div>
+          <div><label><b>Lookback window</b></label><select id="lookbackDays"><option value="30">Last 30 days</option><option value="60">Last 60 days</option><option value="90" selected>Last 90 days</option><option value="180">Last 180 days</option><option value="365">Last year</option></select></div>
           <div><label><b>Search engine</b></label><select id="engine"><option value="google">Google</option><option value="bing">Bing</option><option value="duck">DuckDuckGo</option></select></div>
         </div>
-        <p class="small" id="settingsStatus">Auto-refresh is off.</p>
-        <div class="actions" style="margin-top:12px">
-          <button data-action="quick-add-watch">Add to Watchlist</button>
-          <button class="secondary" data-action="refresh-kev">Refresh KEV Feed</button>
-          <label class="filebtn secondary">Import KEV JSON<input id="kevImport" type="file" accept="application/json" style="display:none"></label>
-          <button class="secondary" data-action="export-report">Export Triage Report</button>
-        </div>
-        <div id="kevStatus" class="small" style="margin-top:10px">Feed not loaded yet.</div>
-        <div id="feedInfo" class="small" style="margin-top:6px"></div>
-        <div id="kevList" style="margin-top:14px"></div>
-      </section>
-
-      <section class="card view hide" id="view-watchlist">
-        <h2>Environment Technology Watchlist</h2>
-        <p class="small">This is the core of the tool. Add what you actually run or manage: endpoint agents, VPNs, firewalls, IdPs, RMM tools, MDM, cloud services, management platforms, and major business-critical applications. KEV entries that match this list become your first-pass triage queue.</p>
-        <div class="two">
-          <input id="watchItem" placeholder="Example: Okta, Fortinet, ConnectWise, Microsoft, Ivanti">
-          <button data-action="add-watch">Add to Watchlist</button>
-        </div>
-        <div id="watchlist" style="margin-top:14px"></div>
-      </section>
-
-      <section class="card view hide" id="view-workspace">
-        <h2>Investigation Workspace</h2>
-        <p class="small">Investigation packs generated from KEV entries appear here. Use them for manual review, escalation notes, ticket comments, or client triage reports.</p>
-        <div class="actions" style="margin-bottom:12px">
-          <button class="secondary" data-action="copy-workspace">Copy Workspace</button>
-          <button class="secondary" data-action="download-workspace">Download Report</button>
-          <button class="danger" data-action="clear-workspace">Clear Workspace</button>
-        </div>
-        <div id="workspace"></div>
-      </section>
-
-      <section class="card view hide" id="view-settings">
-        <h2>Settings</h2>
-        <label><b>KEV feed URL</b></label>
-        <input id="feedUrl" value="data/kev.json">
-        <p class="small">For GitHub Pages, mirror CISA KEV to <code>data/kev.json</code> using a GitHub Action. The repo refreshes hourly with <code>cron: 0 * * * *</code>. Local HTML can import KEV JSON manually.</p>
-        <p class="small">Refresh and search engine controls are also available directly in Threat Intake.</p>
-        <details><summary>Smoke tests</summary><div id="testResults" class="small" style="margin-top:10px"></div></details>
       </section>
     </div>
 
-    <aside class="right-rail">
+    <aside class="sticky">
       <section class="card">
-        <h2>Current Investigation</h2>
-        <div id="currentInvestigation"><p class="small">Select <b>Investigate</b> from a relevant KEV entry to generate an architect-style triage pack: likely ownership, validation steps, advisory searches, mitigation research, and escalation notes.</p></div>
+        <h2>Analysis Summary</h2>
+        <div id="summaryBox"><p class="small">Load feeds and analyze software to see results.</p></div>
       </section>
       <section class="card">
-        <h2>Architect Lens</h2>
-        <p class="small">Use this to think like an endpoint/security architect: what do we run, who owns it, where is it exposed, how is it patched, and what controls reduce blast radius?</p>
-        <span class="pill">Vendor advisory</span><span class="pill">Release notes</span><span class="pill">Exploit / PoC</span><span class="pill">SaaS exposure</span><span class="pill">RMM / VPN / IdP</span><span class="pill">Public docs</span>
-        <details style="margin-top:10px"><summary>How to use this</summary><p class="small">Populate the watchlist from CMDB, BigFix, MECM, EDR, vulnerability scanner exports, procurement records, or known critical services. Then use KEV matches to drive triage, ownership, patch validation, exposure review, and executive-ready reporting.</p></details>
+        <h2>What This Tool Does</h2>
+        <p class="small">This does not scan endpoints. It correlates a software list against public vulnerability and patch signals so an engineer can prioritize validation, patching, ownership, and escalation.</p>
+        <span class="pill">Software stack input</span><span class="pill">KEV exploited</span><span class="pill">Patch signal</span><span class="pill">Action report</span>
       </section>
     </aside>
+  </section>
+
+  <section class="card">
+    <h2>Results</h2>
+    <div id="results"><p class="small">No analysis has been run yet.</p></div>
+  </section>
+
+  <section class="card">
+    <details>
+      <summary>Built-in tests</summary>
+      <div id="testResults" style="margin-top:12px"></div>
+    </details>
   </section>
 </main>
 
@@ -120,8 +91,20 @@ details summary{cursor:pointer;font-weight:800}.tabbar{display:flex;flex-wrap:wr
 'use strict';
 
 const $ = id => document.getElementById(id);
-let kevData = { vulnerabilities: [] };
-let timer = null;
+let KEV = { vulnerabilities: [] };
+let RSS_ITEMS = [];
+let LAST_RESULTS = [];
+
+const SAMPLE = `Google Chrome
+Microsoft Office
+Zoom
+7-Zip
+Ivanti Connect Secure
+Fortinet FortiOS
+Okta
+ConnectWise ScreenConnect
+Adobe Acrobat
+Mozilla Firefox`;
 
 const esc = value => String(value || '')
   .replaceAll('&', '&amp;')
@@ -130,68 +113,44 @@ const esc = value => String(value || '')
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#039;');
 
-const store = {
-  get(key, fallback) {
-    try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); }
-    catch { return fallback; }
-  },
-  set(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
-};
-
-function setTab(name) {
-  document.querySelectorAll('.view').forEach(view => view.classList.add('hide'));
-  const view = $('view-' + name);
-  if (view) view.classList.remove('hide');
-  document.querySelectorAll('[data-tab]').forEach(button => button.classList.toggle('active', button.dataset.tab === name));
+function norm(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
-function watchlist() { return store.get('securityConsole.watchlist', []); }
-function workspace() { return store.get('securityConsole.workspace', []); }
-function saveWorkspace(items) { store.set('securityConsole.workspace', items); renderWorkspace(); }
-function saveWatchlist(items) { store.set('securityConsole.watchlist', items); renderWatchlist(); renderKevList(); }
+function tokenSet(value) {
+  return new Set(norm(value).split(' ').filter(t => t.length > 1));
+}
+
+function softwareList() {
+  return $('softwareInput').value
+    .split(/\r?\n|,/)
+    .map(x => x.trim())
+    .filter(Boolean)
+    .filter((v, i, a) => a.findIndex(x => x.toLowerCase() === v.toLowerCase()) === i);
+}
 
 function engineUrl(query) {
-  const engine = $('engine') ? $('engine').value : 'google';
+  const engine = $('engine').value;
   if (engine === 'bing') return 'https://www.bing.com/search?q=' + encodeURIComponent(query);
   if (engine === 'duck') return 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
   return 'https://www.google.com/search?q=' + encodeURIComponent(query);
 }
 
-function severityLabel(vuln) {
-  const due = vuln.dueDate ? new Date(vuln.dueDate) : null;
-  const now = new Date();
-  if (due && !Number.isNaN(due.getTime()) && due < now) return { label: 'Overdue KEV', cls: 'sev-critical' };
-  return { label: 'Known Exploited', cls: 'sev-high' };
+function sourceCandidateList(primary, fallbackRaw) {
+  return [...new Set([primary, fallbackRaw].filter(Boolean))];
 }
 
-function isWatchMatch(vuln) {
-  const haystack = [vuln.cveID, vuln.vendorProject, vuln.product, vuln.vulnerabilityName, vuln.shortDescription].join(' ').toLowerCase();
-  return watchlist().some(item => haystack.includes(String(item).toLowerCase()));
-}
-
-function filterKev(vuln) {
-  const filter = ($('kevFilter') ? $('kevFilter').value : '').toLowerCase().trim();
-  if (!filter) return true;
-  return [vuln.cveID, vuln.vendorProject, vuln.product, vuln.vulnerabilityName, vuln.shortDescription].join(' ').toLowerCase().includes(filter);
-}
-
-async function fetchKevFromCandidates() {
-  const configured = ($('feedUrl') && $('feedUrl').value) || '';
-  const candidates = [
-    configured,
-    'data/kev.json',
-    './data/kev.json',
-    'https://raw.githubusercontent.com/burnoil/osint-search-builder/main/data/kev.json'
-  ].filter(Boolean);
-
+async function fetchTextCandidates(candidates) {
   const errors = [];
-  for (const url of [...new Set(candidates)]) {
+  for (const url of candidates) {
     try {
       const response = await fetch(url, { cache: 'no-store' });
       if (!response.ok) throw new Error('HTTP ' + response.status);
-      const data = await response.json();
-      if (!data || !Array.isArray(data.vulnerabilities)) throw new Error('JSON did not contain vulnerabilities[]');
-      return { url, data };
+      return { url, text: await response.text() };
     } catch (error) {
       errors.push(url + ' -> ' + error.message);
     }
@@ -199,31 +158,50 @@ async function fetchKevFromCandidates() {
   throw new Error(errors.join(' | '));
 }
 
-async function loadKev() {
-  const status = $('kevStatus');
-  const info = $('feedInfo');
-  if (status) status.textContent = 'Loading KEV feed...';
+async function loadFeeds() {
+  const status = $('sourceStatus');
+  status.innerHTML = '<p class="small">Loading data sources...</p>';
+
+  const kevUrl = $('kevUrl').value || 'data/kev.json';
+  const patchUrl = $('patchUrl').value || 'data/patchmypc.xml';
+
+  const lines = [];
 
   try {
-    const result = await fetchKevFromCandidates();
-    kevData = result.data;
-    const now = new Date();
-    store.set('securityConsole.kevCache', { savedAt: now.toISOString(), source: result.url, data: kevData });
-    if (status) status.textContent = 'Loaded ' + (kevData.vulnerabilities || []).length + ' KEV entries.';
-    if (info) info.innerHTML = 'Last loaded: <b>' + now.toLocaleString() + '</b> • Source: <code>' + esc(result.url) + '</code> • Repo updates hourly via GitHub Action (<code>cron: 0 * * * *</code>).';
-    renderKevList();
+    const kevResult = await fetchTextCandidates(sourceCandidateList(kevUrl, 'https://raw.githubusercontent.com/burnoil/osint-search-builder/main/data/kev.json'));
+    KEV = JSON.parse(kevResult.text);
+    if (!Array.isArray(KEV.vulnerabilities)) throw new Error('KEV JSON missing vulnerabilities[]');
+    lines.push('<div class="ok"><b>KEV loaded:</b> ' + KEV.vulnerabilities.length + ' entries from <code>' + esc(kevResult.url) + '</code></div>');
   } catch (error) {
-    const cached = store.get('securityConsole.kevCache', null);
-    if (cached && cached.data) {
-      kevData = cached.data;
-      if (status) status.textContent = 'Live refresh failed. Showing cached feed from ' + new Date(cached.savedAt).toLocaleString() + '.';
-      if (info) info.innerHTML = 'Last successful load: <b>' + new Date(cached.savedAt).toLocaleString() + '</b> • Cached source: <code>' + esc(cached.source || 'unknown') + '</code> • Last error: ' + esc(error.message);
-      renderKevList();
-    } else {
-      if (status) status.innerHTML = '<span class="bad">Feed could not be loaded.</span>';
-      if (info) info.innerHTML = 'Tried configured URL, <code>data/kev.json</code>, <code>./data/kev.json</code>, and raw GitHub fallback. Error: ' + esc(error.message) + '<br>If running locally, import the CISA KEV JSON file.';
-    }
+    lines.push('<div class="bad"><b>KEV failed:</b> ' + esc(error.message) + '</div>');
   }
+
+  try {
+    const rssResult = await fetchTextCandidates(sourceCandidateList(patchUrl, 'https://raw.githubusercontent.com/burnoil/osint-search-builder/main/data/patchmypc.xml'));
+    RSS_ITEMS = parseRss(rssResult.text);
+    lines.push('<div class="ok" style="margin-top:8px"><b>Patch RSS loaded:</b> ' + RSS_ITEMS.length + ' items from <code>' + esc(rssResult.url) + '</code></div>');
+  } catch (error) {
+    lines.push('<div class="warn" style="margin-top:8px"><b>Patch RSS failed:</b> ' + esc(error.message) + '<br>RSS is optional; KEV matching can still run.</div>');
+  }
+
+  status.innerHTML = lines.join('');
+}
+
+function parseRss(xmlText) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xmlText, 'application/xml');
+  const parseError = doc.querySelector('parsererror');
+  if (parseError) throw new Error('Invalid XML/RSS');
+
+  const items = [...doc.querySelectorAll('item, entry')];
+  return items.map(item => {
+    const title = item.querySelector('title')?.textContent || '';
+    const link = item.querySelector('link')?.textContent || item.querySelector('link')?.getAttribute('href') || '';
+    const description = item.querySelector('description, summary, content')?.textContent || '';
+    const date = item.querySelector('pubDate, updated, published')?.textContent || '';
+    const cves = [...new Set((title + ' ' + description).match(/CVE-\d{4}-\d{4,7}/gi) || [])].map(x => x.toUpperCase());
+    return { title, link, description, date, cves, text: title + ' ' + description };
+  });
 }
 
 function importKev(file) {
@@ -231,256 +209,242 @@ function importKev(file) {
   const reader = new FileReader();
   reader.onload = () => {
     try {
-      kevData = JSON.parse(reader.result);
-      if (!kevData || !Array.isArray(kevData.vulnerabilities)) throw new Error('Invalid KEV JSON');
-      store.set('securityConsole.kevCache', { savedAt: new Date().toISOString(), source: 'manual import', data: kevData });
-      const status = $('kevStatus');
-      if (status) status.textContent = 'Imported ' + (kevData.vulnerabilities || []).length + ' KEV entries.';
-      renderKevList();
-    } catch {
-      const status = $('kevStatus');
-      if (status) status.innerHTML = '<span class="bad">Import failed. File did not match KEV JSON format.</span>';
+      KEV = JSON.parse(reader.result);
+      if (!Array.isArray(KEV.vulnerabilities)) throw new Error('KEV JSON missing vulnerabilities[]');
+      $('sourceStatus').innerHTML = '<div class="ok"><b>Imported KEV:</b> ' + KEV.vulnerabilities.length + ' entries.</div>';
+    } catch (error) {
+      $('sourceStatus').innerHTML = '<div class="bad"><b>KEV import failed:</b> ' + esc(error.message) + '</div>';
     }
   };
   reader.readAsText(file);
 }
 
-function renderKevList() {
-  const root = $('kevList');
-  if (!root) return;
-  const data = (kevData.vulnerabilities || [])
-    .filter(filterKev)
-    .sort((a, b) => String(b.dateAdded).localeCompare(String(a.dateAdded)))
-    .slice(0, 40);
+function importRss(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      RSS_ITEMS = parseRss(reader.result);
+      $('sourceStatus').innerHTML = '<div class="ok"><b>Imported RSS:</b> ' + RSS_ITEMS.length + ' items.</div>';
+    } catch (error) {
+      $('sourceStatus').innerHTML = '<div class="bad"><b>RSS import failed:</b> ' + esc(error.message) + '</div>';
+    }
+  };
+  reader.readAsText(file);
+}
 
-  if (!data.length) {
-    root.innerHTML = '<p class="small">No matching KEV entries.</p>';
+function matchScore(software, text) {
+  const sw = norm(software);
+  const hay = norm(text);
+  if (!sw || !hay) return 0;
+  if (hay.includes(sw)) return 100;
+
+  const swTokens = tokenSet(sw);
+  if (!swTokens.size) return 0;
+
+  let hits = 0;
+  swTokens.forEach(token => { if (hay.includes(token)) hits++; });
+  return Math.round((hits / swTokens.size) * 100);
+}
+
+function matchKev(software) {
+  return (KEV.vulnerabilities || [])
+    .map(v => {
+      const text = [v.cveID, v.vendorProject, v.product, v.vulnerabilityName, v.shortDescription].join(' ');
+      const score = matchScore(software, text);
+      return { ...v, matchScore: score };
+    })
+    .filter(v => v.matchScore >= 50)
+    .sort((a, b) => b.matchScore - a.matchScore || String(b.dateAdded).localeCompare(String(a.dateAdded)))
+    .slice(0, 10);
+}
+
+function matchRss(software) {
+  const days = parseInt($('lookbackDays').value || '90', 10);
+  const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
+
+  return RSS_ITEMS
+    .map(item => ({ ...item, matchScore: matchScore(software, item.text) }))
+    .filter(item => item.matchScore >= 50)
+    .filter(item => {
+      const d = item.date ? new Date(item.date).getTime() : NaN;
+      return Number.isNaN(d) || d >= cutoff;
+    })
+    .sort((a, b) => b.matchScore - a.matchScore)
+    .slice(0, 8);
+}
+
+function priorityFor(kevMatches, rssMatches) {
+  let score = 0;
+  const reasons = [];
+  if (kevMatches.length) { score += 70; reasons.push('Known exploited vulnerability match'); }
+  if (rssMatches.some(x => x.cves.length)) { score += 20; reasons.push('Recent patch/update item references CVEs'); }
+  if (rssMatches.length) { score += 10; reasons.push('Recent patch/update signal found'); }
+
+  score = Math.min(100, score);
+  if (score >= 80) return { label: 'Critical / Immediate Review', cls: 'score-critical', score, reasons };
+  if (score >= 60) return { label: 'High Priority', cls: 'score-high', score, reasons };
+  if (score >= 30) return { label: 'Medium Priority', cls: 'score-medium', score, reasons };
+  return { label: 'No current signal', cls: 'score-low', score, reasons: reasons.length ? reasons : ['No KEV or recent patch signal found'] };
+}
+
+function analyze() {
+  const apps = softwareList();
+  const filter = $('resultFilter').value;
+
+  LAST_RESULTS = apps.map(app => {
+    const kev = matchKev(app);
+    const rss = matchRss(app);
+    const priority = priorityFor(kev, rss);
+    return { app, kev, rss, priority };
+  }).filter(result => {
+    if (filter === 'kev') return result.kev.length > 0;
+    if (filter === 'patch') return result.rss.length > 0;
+    if (filter === 'actionable') return result.kev.length > 0 || result.rss.some(x => x.cves.length);
+    return true;
+  });
+
+  renderSummary();
+  renderResults();
+}
+
+function renderSummary() {
+  const total = LAST_RESULTS.length;
+  const kevCount = LAST_RESULTS.filter(r => r.kev.length).length;
+  const patchCount = LAST_RESULTS.filter(r => r.rss.length).length;
+  const critical = LAST_RESULTS.filter(r => r.priority.score >= 80).length;
+
+  $('summaryBox').innerHTML = '<div class="three">' +
+    '<div class="item"><b>' + total + '</b><br><span class="small">Applications analyzed</span></div>' +
+    '<div class="item"><b>' + kevCount + '</b><br><span class="small">KEV matches</span></div>' +
+    '<div class="item"><b>' + patchCount + '</b><br><span class="small">Patch/update signals</span></div>' +
+    '</div><div class="' + (critical ? 'bad' : 'ok') + '" style="margin-top:10px"><b>' + critical + '</b> immediate-review items.</div>';
+}
+
+function renderResults() {
+  const root = $('results');
+  if (!LAST_RESULTS.length) {
+    root.innerHTML = '<p class="small">No results to display. Try loading feeds and analyzing a software list.</p>';
     return;
   }
 
-  root.innerHTML = data.map(vuln => {
-    const severity = severityLabel(vuln);
-    const match = isWatchMatch(vuln);
-    return '<div class="item ' + (match ? 'warn' : '') + '">' +
-      '<div><b>' + esc(vuln.cveID) + '</b> <span class="' + severity.cls + '">' + severity.label + '</span> ' + (match ? '<span class="pill">watchlist match</span>' : '') +
-      '<br><span>' + esc(vuln.vendorProject) + ' ' + esc(vuln.product) + '</span>' +
-      '<br><span class="small">Added: ' + esc(vuln.dateAdded) + ' • Due: ' + esc(vuln.dueDate || '') + '</span>' +
-      '<br><span class="small">' + esc(vuln.vulnerabilityName || vuln.shortDescription || '') + '</span></div>' +
-      '<div class="actions"><button class="secondary" data-copy="' + esc(vuln.cveID) + '">Copy CVE</button><button data-investigate="' + esc(vuln.cveID) + '">Investigate</button></div>' +
-      '</div>';
-  }).join('');
+  root.innerHTML = LAST_RESULTS.map(result => renderResult(result)).join('');
 }
 
-function renderWatchlist() {
-  const root = $('watchlist');
-  if (!root) return;
-  const items = watchlist();
-  root.innerHTML = items.length
-    ? items.map((item, index) => '<div class="item"><div><b>' + esc(item) + '</b></div><div class="actions"><button class="danger" data-remove-watch="' + index + '">Remove</button></div></div>').join('')
-    : '<p class="small">No watchlist items yet.</p>';
+function renderResult(result) {
+  const kevHtml = result.kev.length ? result.kev.map(v => '<div class="mono">' + esc(v.cveID) + ' • ' + esc(v.vendorProject) + ' ' + esc(v.product) + ' • Added ' + esc(v.dateAdded) + ' • Match ' + v.matchScore + '%</div>').join('') : '<div class="small">No KEV match.</div>';
+  const rssHtml = result.rss.length ? result.rss.map(item => '<div class="mono">' + esc(item.title) + (item.cves.length ? ' • ' + esc(item.cves.join(', ')) : '') + '</div>').join('') : '<div class="small">No recent patch/update signal.</div>';
+  const queries = buildQueries(result);
+
+  return '<div class="item">' +
+    '<div class="item-head"><div><h3 style="margin:0 0 6px">' + esc(result.app) + '</h3><span class="' + result.priority.cls + '">' + result.priority.label + '</span> <span class="pill">Score ' + result.priority.score + '</span></div>' +
+    '<div class="actions"><button data-open-searches="' + esc(result.app) + '">Open Searches</button><button class="secondary" data-copy-report="' + esc(result.app) + '">Copy</button></div></div>' +
+    '<p class="small">' + esc(result.priority.reasons.join(' • ')) + '</p>' +
+    '<details open><summary>KEV exploited vulnerability matches</summary>' + kevHtml + '</details>' +
+    '<details><summary>Patch/update signals</summary>' + rssHtml + '</details>' +
+    '<details><summary>Suggested validation actions</summary><div class="mono">' + buildActions(result).map(esc).join('<br>') + '</div></details>' +
+    '<details><summary>Search pivots</summary><div class="mono">' + queries.map(esc).join('<br>') + '</div></details>' +
+    '</div>';
 }
 
-function renderWorkspace() {
-  const root = $('workspace');
-  if (!root) return;
-  const items = workspace();
-  root.innerHTML = items.length
-    ? items.map((pack, index) => '<div class="item"><div><b>' + esc(pack.title) + '</b><br><span class="small">' + esc(pack.created) + '</span><div class="mono" style="margin-top:8px">' + packText(pack).split('\n').map(esc).join('<br>') + '</div></div><div class="actions"><button class="secondary" data-copy-pack="' + index + '">Copy</button><button data-open-pack="' + index + '">Open Searches</button><button class="danger" data-delete-pack="' + index + '">Delete</button></div></div>').join('')
-    : '<p class="small">No investigation packs yet.</p>';
+function buildActions(result) {
+  const actions = [
+    '- Confirm installed versions from inventory, EDR, BigFix, MECM, vulnerability scanner, or app control data.',
+    '- Identify owner, business criticality, exposure, and patch deployment path.',
+    '- Check vendor advisory and release notes for fixed versions and mitigations.'
+  ];
+  if (result.kev.length) actions.push('- Prioritize immediately: at least one matching item appears in CISA KEV.');
+  if (result.rss.length) actions.push('- Validate whether a recent vendor/update signal maps to a deployable update.');
+  return actions;
 }
 
-function findKev(cve) {
-  return (kevData.vulnerabilities || []).find(vuln => vuln.cveID === cve);
+function buildQueries(result) {
+  const app = result.app;
+  const cves = [...new Set(result.kev.map(v => v.cveID).concat(result.rss.flatMap(r => r.cves)))];
+  const queries = [
+    '"' + app + '" vulnerability advisory',
+    '"' + app + '" release notes security update',
+    '"' + app + '" fixed version CVE'
+  ];
+  cves.slice(0, 5).forEach(cve => {
+    queries.push('"' + cve + '" exploit OR poc OR github');
+    queries.push('"' + cve + '" patch OR mitigation OR advisory');
+  });
+  return queries;
 }
 
-function investigate(cve) {
-  const vuln = findKev(cve);
-  if (!vuln) return;
-
-  const vendor = vuln.vendorProject || '';
-  const product = vuln.product || '';
-  const vendorProduct = (vendor + ' ' + product).trim();
-  const queries = [];
-  const actions = [];
-
-  queries.push('"' + cve + '" exploit OR poc OR github');
-  queries.push('"' + cve + '" patch OR mitigation OR advisory');
-
-  if (vendorProduct) {
-    queries.push('"' + vendorProduct + '" vulnerability advisory');
-    queries.push('"' + vendorProduct + '" release notes security update');
-    queries.push('"' + vendorProduct + '" breach OR compromise OR incident');
-    queries.push('"' + vendorProduct + '" end of life OR unsupported OR upgrade path');
-  }
-
-  actions.push('Confirm whether ' + (vendorProduct || vendor || product || 'this product') + ' exists in CMDB, BigFix, MECM, EDR, vulnerability scanner, or procurement inventory.');
-  actions.push('Identify system owner, business owner, internet exposure, patch source, and maintenance window.');
-  actions.push('Check vendor advisory, exploit maturity, available mitigations, and compensating controls.');
-  actions.push('Validate patch/remediation deployment status and document exceptions.');
-  actions.push('Escalate if internet-facing, unmanaged, unsupported, or tied to remote access / identity / endpoint management.');
-
-  const pack = { title: cve + ' - ' + vendorProduct, created: new Date().toLocaleString(), cve, vendor, product, queries, actions };
-  saveWorkspace([pack, ...workspace().filter(existing => existing.cve !== cve)].slice(0, 50));
-
-  const current = $('currentInvestigation');
-  if (current) {
-    current.innerHTML = '<b>' + esc(pack.title) + '</b><p class="small">Architect triage pack generated and added to Workspace.</p>' +
-      '<h3>Validation steps</h3><div class="mono">' + actions.map(action => '- ' + esc(action)).join('<br>') + '</div>' +
-      '<h3>Research pivots</h3><div class="mono">' + queries.map(esc).join('<br>') + '</div>' +
-      '<div class="actions" style="margin-top:12px"><button data-open-current="' + esc(cve) + '">Open Searches</button><button class="secondary" data-copy-current="' + esc(cve) + '">Copy Pack</button></div>';
-  }
-
-  setTab('workspace');
-}
-
-function packText(pack) {
+function resultText(result) {
   return [
-    pack.title,
-    'Generated: ' + pack.created,
+    result.app,
+    'Priority: ' + result.priority.label + ' (' + result.priority.score + ')',
+    'Reasons: ' + result.priority.reasons.join('; '),
     '',
-    'Validation Steps:',
-    ...(pack.actions || []).map(action => '- ' + action),
+    'KEV Matches:',
+    ...(result.kev.length ? result.kev.map(v => '- ' + v.cveID + ' ' + v.vendorProject + ' ' + v.product + ' Added: ' + v.dateAdded) : ['- None']),
     '',
-    'Research Pivots:',
-    ...(pack.queries || [])
+    'Patch Signals:',
+    ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']),
+    '',
+    'Validation Actions:',
+    ...buildActions(result),
+    '',
+    'Search Pivots:',
+    ...buildQueries(result)
   ].join('\n');
 }
 
 function exportReport() {
-  const lines = [
-    'Security Threat Investigation Report',
-    'Generated: ' + new Date().toLocaleString(),
-    '',
-    'Watchlist:',
-    ...(watchlist().length ? watchlist().map(item => '- ' + item) : ['(none)']),
-    '',
-    'Investigation Packs:'
-  ];
-
-  workspace().forEach((pack, index) => {
-    lines.push('', (index + 1) + '. ' + pack.title, 'Created: ' + pack.created, 'Validation Steps:', ...(pack.actions || []).map(action => '   - ' + action), 'Research Pivots:', ...(pack.queries || []).map(query => '   - ' + query));
-  });
-
+  const lines = ['Software Vulnerability & Patch Intelligence Report', 'Generated: ' + new Date().toLocaleString(), '', 'Software Input:', ...softwareList().map(x => '- ' + x), '', 'Results:', ''];
+  LAST_RESULTS.forEach(result => lines.push(resultText(result), '', '---', ''));
   const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
-  link.download = 'security-threat-investigation-report.txt';
+  link.download = 'software-vulnerability-patch-report.txt';
   link.click();
   URL.revokeObjectURL(link.href);
 }
 
-function configureRefresh() {
-  if (timer) {
-    clearInterval(timer);
-    timer = null;
-  }
-
-  const refreshSelect = $('refreshInterval');
-  const status = $('settingsStatus');
-  const minutes = parseInt((refreshSelect && refreshSelect.value) || '0', 10);
-  store.set('securityConsole.refreshInterval', minutes);
-
-  if (status) status.textContent = minutes ? 'Auto-refreshing every ' + minutes + ' minutes while open. Repo feed updates hourly via GitHub Action.' : 'Auto-refresh is off. Repo feed updates hourly via GitHub Action.';
-  if (minutes) timer = setInterval(loadKev, minutes * 60 * 1000);
+function openSearchesFor(app) {
+  const result = LAST_RESULTS.find(r => r.app === app);
+  if (!result) return;
+  buildQueries(result).forEach(query => window.open(engineUrl(query), '_blank'));
 }
 
-function packForCve(cve) {
-  return workspace().find(pack => pack.cve === cve);
-}
-
-function openPack(pack) {
-  if (!pack) return;
-  (pack.queries || []).forEach(query => window.open(engineUrl(query), '_blank'));
+function copyReportFor(app) {
+  const result = LAST_RESULTS.find(r => r.app === app);
+  if (!result) return;
+  navigator.clipboard.writeText(resultText(result));
 }
 
 function runTests() {
   const tests = [
-    { name: 'packText uses escaped newline string', pass: packText({ title: 'T', created: 'Now', actions: ['A'], queries: ['Q'] }).includes('\nValidation Steps:\n') },
-    { name: 'watchlist returns array', pass: Array.isArray(watchlist()) },
-    { name: 'workspace returns array', pass: Array.isArray(workspace()) },
-    { name: 'KEV candidate fallback includes data/kev.json', pass: true }
+    { name: 'Software parser splits lines', pass: (() => { const old = $('softwareInput').value; $('softwareInput').value = 'A\nB'; const ok = softwareList().length === 2; $('softwareInput').value = old; return ok; })() },
+    { name: 'RSS parser accepts empty channel', pass: parseRss('<rss><channel></channel></rss>').length === 0 },
+    { name: 'Priority with KEV is high', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], []).score >= 70 },
+    { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', kev: [], rss: [], priority: priorityFor([], []) }).includes('Validation Actions') }
   ];
-
-  const root = $('testResults');
-  if (!root) return;
-  root.innerHTML = tests.map(test => '<div class="' + (test.pass ? 'ok' : 'bad') + '" style="margin-bottom:8px"><b>' + (test.pass ? 'PASS' : 'FAIL') + '</b> - ' + esc(test.name) + '</div>').join('');
+  $('testResults').innerHTML = tests.map(t => '<div class="' + (t.pass ? 'ok' : 'bad') + '" style="margin-bottom:8px"><b>' + (t.pass ? 'PASS' : 'FAIL') + '</b> - ' + esc(t.name) + '</div>').join('');
 }
 
 function boot() {
-  document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => setTab(button.dataset.tab)));
-
   document.addEventListener('click', event => {
     const target = event.target;
-    if (target.dataset.copy) navigator.clipboard.writeText(target.dataset.copy);
-    if (target.dataset.investigate) investigate(target.dataset.investigate);
-    if (target.dataset.removeWatch !== undefined) {
-      const items = watchlist();
-      items.splice(Number(target.dataset.removeWatch), 1);
-      saveWatchlist(items);
-    }
-    if (target.dataset.copyPack !== undefined) navigator.clipboard.writeText(packText(workspace()[Number(target.dataset.copyPack)]));
-    if (target.dataset.deletePack !== undefined) {
-      const items = workspace();
-      items.splice(Number(target.dataset.deletePack), 1);
-      saveWorkspace(items);
-    }
-    if (target.dataset.openPack !== undefined) openPack(workspace()[Number(target.dataset.openPack)]);
-    if (target.dataset.openCurrent) openPack(packForCve(target.dataset.openCurrent));
-    if (target.dataset.copyCurrent) {
-      const pack = packForCve(target.dataset.copyCurrent);
-      if (pack) navigator.clipboard.writeText(packText(pack));
-    }
+    if (target.dataset.action === 'load-feeds') loadFeeds();
+    if (target.dataset.action === 'analyze') analyze();
+    if (target.dataset.action === 'export-report') exportReport();
+    if (target.dataset.action === 'load-sample') $('softwareInput').value = SAMPLE;
+    if (target.dataset.action === 'clear-input') $('softwareInput').value = '';
+    if (target.dataset.openSearches) openSearchesFor(target.dataset.openSearches);
+    if (target.dataset.copyReport) copyReportFor(target.dataset.copyReport);
   });
 
-  const refreshButton = document.querySelector('[data-action="refresh-kev"]');
-  if (refreshButton) refreshButton.addEventListener('click', loadKev);
+  $('kevImport').addEventListener('change', event => importKev(event.target.files[0]));
+  $('rssImport').addEventListener('change', event => importRss(event.target.files[0]));
+  $('resultFilter').addEventListener('change', analyze);
+  $('lookbackDays').addEventListener('change', analyze);
 
-  const addWatchButton = document.querySelector('[data-action="add-watch"]');
-  if (addWatchButton) addWatchButton.addEventListener('click', () => {
-    const value = $('watchItem').value.trim();
-    if (!value) return;
-    saveWatchlist([...new Set([...watchlist(), value])]);
-    $('watchItem').value = '';
-  });
-
-  const quickAddButton = document.querySelector('[data-action="quick-add-watch"]');
-  if (quickAddButton) quickAddButton.addEventListener('click', () => {
-    const value = $('quickWatchItem').value.trim();
-    if (!value) return;
-    saveWatchlist([...new Set([...watchlist(), value])]);
-    $('quickWatchItem').value = '';
-    setTab('threats');
-  });
-
-  const exportButton = document.querySelector('[data-action="export-report"]');
-  if (exportButton) exportButton.addEventListener('click', exportReport);
-
-  const copyWorkspaceButton = document.querySelector('[data-action="copy-workspace"]');
-  if (copyWorkspaceButton) copyWorkspaceButton.addEventListener('click', () => navigator.clipboard.writeText(workspace().map(packText).join('\n\n---\n\n')));
-
-  const downloadWorkspaceButton = document.querySelector('[data-action="download-workspace"]');
-  if (downloadWorkspaceButton) downloadWorkspaceButton.addEventListener('click', exportReport);
-
-  const clearWorkspaceButton = document.querySelector('[data-action="clear-workspace"]');
-  if (clearWorkspaceButton) clearWorkspaceButton.addEventListener('click', () => { if (confirm('Clear workspace?')) saveWorkspace([]); });
-
-  const kevImport = $('kevImport');
-  if (kevImport) kevImport.addEventListener('change', event => importKev(event.target.files[0]));
-
-  const kevFilter = $('kevFilter');
-  if (kevFilter) kevFilter.addEventListener('input', renderKevList);
-
-  const refreshInterval = $('refreshInterval');
-  if (refreshInterval) {
-    refreshInterval.value = store.get('securityConsole.refreshInterval', 0);
-    refreshInterval.addEventListener('change', configureRefresh);
-  }
-
-  renderWatchlist();
-  renderWorkspace();
   runTests();
-  configureRefresh();
-  loadKev();
+  loadFeeds();
 }
 
 boot();
