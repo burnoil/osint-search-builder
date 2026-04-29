@@ -1,0 +1,34 @@
+name: Update CISA KEV Feed
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-kev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create data folder
+        run: mkdir -p data
+
+      - name: Download CISA KEV JSON
+        run: |
+          curl -L \
+            "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json" \
+            -o data/kev.json
+
+      - name: Commit updated feed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/kev.json
+          git diff --cached --quiet || git commit -m "Update KEV feed"
+          git push
