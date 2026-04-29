@@ -61,7 +61,12 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/kev.json data/patchmypc.xml
+
+          git add data/kev.json data/patchmypc.xml data/zdi.xml
+
+          git status
+          git diff --cached --stat
+
           git diff --cached --quiet && exit 0
           git commit -m "Update threat feeds"
           git pull --rebase origin main
