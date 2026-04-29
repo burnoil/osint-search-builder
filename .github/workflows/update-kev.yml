@@ -31,13 +31,22 @@ jobs:
             -A "Mozilla/5.0" \
             "https://patchmypc.com/feed/" \
             -o data/patchmypc.xml
-
+            
+      - name: Download ZDI RSS
+        run: |
+          curl -fL --retry 3 \
+            -A "Mozilla/5.0" \
+            "https://www.zerodayinitiative.com/rss/published/" \
+            -o data/zdi.xml
+            
       - name: Validate downloaded files
         run: |
           test -s data/kev.json
           test -s data/patchmypc.xml
+          test -s data/zdi.xml
           jq . data/kev.json > /dev/null
           head -n 5 data/patchmypc.xml
+          head -n 5 data/zdi.xml
 
       - name: Commit updated feeds
         run: |
