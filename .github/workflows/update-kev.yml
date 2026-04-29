@@ -24,11 +24,21 @@ jobs:
           curl -L \
             "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json" \
             -o data/kev.json
-
+            
+      - name: Download Patch My PC RSS
+        run: |
+          curl -L \
+            "https://patchmypc.com/feed/" \
+            -o data/patchmypc.xml
+            
       - name: Validate JSON
         run: |
           cat data/kev.json | jq . > /dev/null
-
+          
+      - name: Validate Patch My PC RSS
+        run: |
+          test -s data/patchmypc.xml
+          
       - name: Commit updated feed
         run: |
           git config user.name "github-actions"
