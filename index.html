@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Software Vulnerability & Patch Intelligence</title>
 <style>
-:root{--bg:#09090b;--panel:#14141b;--panel2:#1f1f2a;--text:#f4f4f5;--muted:#a1a1aa;--border:#30303d;--blue:#2563eb;--green:#34d399;--red:#fb7185;--amber:#f59e0b;--sky:#38bdf8;--purple:#c084fc}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#152238 0,#09090b 44%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}main{max-width:1380px;margin:auto;padding:28px 18px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:20px}.badge{display:inline-block;border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.08);color:var(--sky);border-radius:999px;padding:6px 12px;font-size:13px}h1{font-size:clamp(32px,5vw,54px);line-height:1;margin:10px 0 8px;letter-spacing:-.04em}h2{margin-top:0}p{color:var(--muted);line-height:1.55}.layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}.card{background:rgba(20,20,27,.94);border:1px solid var(--border);border-radius:22px;padding:18px;margin-bottom:18px;box-shadow:0 20px 55px rgba(0,0,0,.25)}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.actions{display:flex;flex-wrap:wrap;gap:10px}button,a.button,label.filebtn{border:0;color:white;background:var(--blue);border-radius:14px;padding:10px 14px;font-weight:750;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px}button:hover,a.button:hover,label.filebtn:hover{filter:brightness(1.12)}button.secondary,a.secondary,label.secondary{background:var(--panel2)}button.danger{background:rgba(251,113,133,.18);color:#fecdd3}select,input,textarea{width:100%;border:1px solid var(--border);background:#0d0d13;color:var(--text);border-radius:14px;padding:11px 12px;outline:none;font-size:15px}textarea{min-height:260px;resize:vertical;font-family:Consolas,Monaco,monospace}select:focus,input:focus,textarea:focus{border-color:rgba(56,189,248,.8);box-shadow:0 0 0 3px rgba(56,189,248,.12)}.item{background:#0d0d13;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:10px}.item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.mono{font-family:Consolas,Monaco,monospace;font-size:12px;color:#d4d4d8;overflow-wrap:anywhere}.small{font-size:13px;color:var(--muted)}.pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:12px;margin-right:6px;margin-bottom:6px}.ok{border:1px solid rgba(52,211,153,.5);background:rgba(52,211,153,.08);color:#a7f3d0;border-radius:14px;padding:12px}.warn{border:1px solid rgba(245,158,11,.5);background:rgba(245,158,11,.09);color:#fde68a;border-radius:14px;padding:12px}.bad{border:1px solid rgba(251,113,133,.55);background:rgba(251,113,133,.09);color:#fecdd3;border-radius:14px;padding:12px}.score-critical{color:#fecdd3;background:rgba(251,113,133,.15);padding:3px 8px;border-radius:8px}.score-high{color:#fde68a;background:rgba(245,158,11,.15);padding:3px 8px;border-radius:8px}.score-medium{color:#bfdbfe;background:rgba(59,130,246,.15);padding:3px 8px;border-radius:8px}.score-low{color:#a7f3d0;background:rgba(52,211,153,.15);padding:3px 8px;border-radius:8px}details summary{cursor:pointer;font-weight:800}code{background:rgba(255,255,255,.07);padding:2px 5px;border-radius:6px;color:#e4e4e7}.sticky{position:sticky;top:18px;align-self:start}.hide{display:none!important}@media(max-width:980px){.top,.layout,.two,.three{display:block}.sticky{position:static}.item-head{display:block}.item-head .actions{margin-top:10px}}
+:root{--bg:#09090b;--panel:#14141b;--panel2:#1f1f2a;--text:#f4f4f5;--muted:#a1a1aa;--border:#30303d;--blue:#2563eb;--green:#34d399;--red:#fb7185;--amber:#f59e0b;--sky:#38bdf8;--purple:#c084fc}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#152238 0,#09090b 44%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}main{max-width:1380px;margin:auto;padding:28px 18px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:20px}.badge{display:inline-block;border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.08);color:var(--sky);border-radius:999px;padding:6px 12px;font-size:13px}h1{font-size:clamp(32px,5vw,54px);line-height:1;margin:10px 0 8px;letter-spacing:-.04em}h2{margin-top:0}p{color:var(--muted);line-height:1.55}.layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}.card{background:rgba(20,20,27,.94);border:1px solid var(--border);border-radius:22px;padding:18px;margin-bottom:18px;box-shadow:0 20px 55px rgba(0,0,0,.25)}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.actions{display:flex;flex-wrap:wrap;gap:10px}button,a.button,label.filebtn{border:0;color:white;background:var(--blue);border-radius:14px;padding:10px 14px;font-weight:750;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px}button:hover,a.button:hover,label.filebtn:hover{filter:brightness(1.12)}button.secondary,a.secondary,label.secondary{background:var(--panel2)}button.danger{background:rgba(251,113,133,.18);color:#fecdd3}select,input,textarea{width:100%;border:1px solid var(--border);background:#0d0d13;color:var(--text);border-radius:14px;padding:11px 12px;outline:none;font-size:15px}textarea{min-height:260px;resize:vertical;font-family:Consolas,Monaco,monospace}select:focus,input:focus,textarea:focus{border-color:rgba(56,189,248,.8);box-shadow:0 0 0 3px rgba(56,189,248,.12)}.item{background:#0d0d13;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:10px}.item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.mono{font-family:Consolas,Monaco,monospace;font-size:12px;color:#d4d4d8;overflow-wrap:anywhere}.small{font-size:13px;color:var(--muted)}.pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:12px;margin-right:6px;margin-bottom:6px}.ok{border:1px solid rgba(52,211,153,.5);background:rgba(52,211,153,.08);color:#a7f3d0;border-radius:14px;padding:12px}.warn{border:1px solid rgba(245,158,11,.5);background:rgba(245,158,11,.09);color:#fde68a;border-radius:14px;padding:12px}.bad{border:1px solid rgba(251,113,133,.55);background:rgba(251,113,133,.09);color:#fecdd3;border-radius:14px;padding:12px}.score-critical{color:#fecdd3;background:rgba(251,113,133,.15);padding:3px 8px;border-radius:8px}.score-high{color:#fde68a;background:rgba(245,158,11,.15);padding:3px 8px;border-radius:8px}.score-medium{color:#bfdbfe;background:rgba(59,130,246,.15);padding:3px 8px;border-radius:8px}.score-low{color:#a7f3d0;background:rgba(52,211,153,.15);padding:3px 8px;border-radius:8px}details summary{cursor:pointer;font-weight:800}code{background:rgba(255,255,255,.07);padding:2px 5px;border-radius:6px;color:#e4e4e7}.linkbtn{display:inline-flex;align-items:center;margin:3px 4px 3px 0;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:#93c5fd;text-decoration:none;font-size:11px;background:rgba(37,99,235,.12)}.linkbtn:hover{text-decoration:underline;filter:brightness(1.15)}.sticky{position:sticky;top:18px;align-self:start}.hide{display:none!important}@media(max-width:980px){.top,.layout,.two,.three{display:block}.sticky{position:static}.item-head{display:block}.item-head .actions{margin-top:10px}}
 </style>
 </head>
 <body>
@@ -336,15 +336,43 @@ function renderResults() {
   root.innerHTML = LAST_RESULTS.map(result => renderResult(result)).join('');
 }
 
+function linkButton(label, url) {
+  if (!url) return '';
+  return '<a class="linkbtn" href="' + esc(url) + '" target="_blank" rel="noreferrer">' + esc(label) + '</a>';
+}
+
+function cveLinks(cve) {
+  if (!cve) return '';
+  return linkButton('NVD', 'https://nvd.nist.gov/vuln/detail/' + encodeURIComponent(cve)) +
+    linkButton('CISA KEV', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=' + encodeURIComponent(cve)) +
+    linkButton('Exploit / PoC', engineUrl('"' + cve + '" exploit OR poc OR github')) +
+    linkButton('Patch / Mitigation', engineUrl('"' + cve + '" patch OR mitigation OR advisory'));
+}
+
+function vendorLinks(app) {
+  return linkButton('Vendor Advisory', engineUrl('"' + app + '" vulnerability advisory')) +
+    linkButton('Security Updates', engineUrl('"' + app + '" security update release notes')) +
+    linkButton('Download / Update Page', engineUrl('"' + app + '" download update latest version'));
+}
+
 function renderResult(result) {
-  const kevHtml = result.kev.length ? result.kev.map(v => '<div class="mono">' + esc(v.cveID) + ' • ' + esc(v.vendorProject) + ' ' + esc(v.product) + ' • Added ' + esc(v.dateAdded) + ' • Match ' + v.matchScore + '%</div>').join('') : '<div class="small">No KEV match.</div>';
-  const rssHtml = result.rss.length ? result.rss.map(item => '<div class="mono">' + esc(item.title) + (item.cves.length ? ' • ' + esc(item.cves.join(', ')) : '') + '</div>').join('') : '<div class="small">No recent patch/update signal.</div>';
+  const kevHtml = result.kev.length ? result.kev.map(v => {
+    return '<div class="mono" style="margin-bottom:8px"><b>' + esc(v.cveID) + '</b> • ' + esc(v.vendorProject) + ' ' + esc(v.product) + ' • Added ' + esc(v.dateAdded) + ' • Match ' + v.matchScore + '%<br>' + cveLinks(v.cveID) + '</div>';
+  }).join('') : '<div class="small">No KEV match.</div>';
+
+  const rssHtml = result.rss.length ? result.rss.map(item => {
+    const cveLinkHtml = item.cves.length ? '<br>' + item.cves.map(cve => '<b>' + esc(cve) + '</b> ' + cveLinks(cve)).join('<br>') : '';
+    const updateLink = item.link ? '<br>' + linkButton('Patch / Release Item', item.link) : '';
+    return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + updateLink + '</div>';
+  }).join('') : '<div class="small">No recent patch/update signal.</div>';
+
   const queries = buildQueries(result);
 
   return '<div class="item">' +
     '<div class="item-head"><div><h3 style="margin:0 0 6px">' + esc(result.app) + '</h3><span class="' + result.priority.cls + '">' + result.priority.label + '</span> <span class="pill">Score ' + result.priority.score + '</span></div>' +
     '<div class="actions"><button data-open-searches="' + esc(result.app) + '">Open Searches</button><button class="secondary" data-copy-report="' + esc(result.app) + '">Copy</button></div></div>' +
     '<p class="small">' + esc(result.priority.reasons.join(' • ')) + '</p>' +
+    '<div style="margin-bottom:8px">' + vendorLinks(result.app) + '</div>' +
     '<details open><summary>KEV exploited vulnerability matches</summary>' + kevHtml + '</details>' +
     '<details><summary>Patch/update signals</summary>' + rssHtml + '</details>' +
     '<details><summary>Suggested validation actions</summary><div class="mono">' + buildActions(result).map(esc).join('<br>') + '</div></details>' +
@@ -427,7 +455,9 @@ function runTests() {
     { name: 'RSS parser accepts empty channel', pass: parseRss('<rss><channel></channel></rss>').length === 0 },
     { name: 'Priority with KEV is high', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], []).score >= 70 },
     { name: 'Priority levels include critical', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [{ cves: ['CVE-2024-0001'] }]).level === 'critical' },
-    { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', kev: [], rss: [], priority: priorityFor([], []) }).includes('Validation Actions') }
+    { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', kev: [], rss: [], priority: priorityFor([], []) }).includes('Validation Actions') },
+    { name: 'CVE links include NVD', pass: cveLinks('CVE-2024-0001').includes('nvd.nist.gov') },
+    { name: 'Vendor links include update search', pass: vendorLinks('TestApp').includes('download') }
   ];
   $('testResults').innerHTML = tests.map(t => '<div class="' + (t.pass ? 'ok' : 'bad') + '" style="margin-bottom:8px"><b>' + (t.pass ? 'PASS' : 'FAIL') + '</b> - ' + esc(t.name) + '</div>').join('');
 }
