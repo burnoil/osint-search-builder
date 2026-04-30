@@ -12,14 +12,16 @@
 <main>
   <section class="top">
     <div>
-      <div class="badge">Technology Stack → Vulnerability + Patch Intelligence</div>
+      <div class="badge">Technology Stack → Vulnerability + Patch Intelligence • v<span id="versionBadge">0.5.0</span></div>
       <h1>Technology Vulnerability & Patch Intelligence</h1>
       <p>Paste applications, operating systems, firmware, hardware, SaaS platforms, drivers, and appliances; correlate them against exploited vulnerabilities and recent patch/update signals; then generate an engineer-ready action report.</p>
+      <p class="small" id="versionInfo">Version loading...</p>
     </div>
     <div class="actions">
       <button data-action="load-feeds">Load Feeds</button>
       <button class="secondary" data-action="analyze">Analyze Assets</button>
       <button class="secondary" data-action="export-report">Export Report</button>
+      <button class="secondary" data-action="export-results-csv">Export Results CSV</button>
       <button class="secondary" data-action="copy-critical-high">Copy Critical + High</button>
     </div>
   </section>
@@ -34,6 +36,8 @@
           <button data-action="analyze">Analyze Assets</button>
           <button class="secondary" data-action="load-sample">Load Sample</button>
           <button class="danger" data-action="clear-input">Clear</button>
+          <label class="filebtn secondary">Import CSV<input id="csvImport" type="file" accept=".csv,text/csv" style="display:none"></label>
+          <button class="secondary" data-action="export-assets-csv">Export Asset CSV</button>
         </div>
       </section>
 
@@ -90,6 +94,22 @@
 
   <section class="card">
     <details>
+      <summary>Version / Changelog</summary>
+      <div class="small" style="margin-top:12px">
+        <p><b id="versionLine">Version loading...</b></p>
+        <ul>
+          <li><b>0.5.0</b> — Added CSV asset import/export, CSV results export, and GitHub Action feed timestamp metadata support.</li>
+          <li><b>0.4.0</b> — Asset-type support for applications, OS, firmware, hardware/appliances, drivers, SaaS/cloud, and vendor/product entries.</li>
+          <li><b>0.3.0</b> — Added ZDI emerging vulnerability feed integration.</li>
+          <li><b>0.2.0</b> — Added Patch RSS correlation, clickable investigation links, criticality scoring, and Critical/High copy workflow.</li>
+          <li><b>0.1.0</b> — Initial KEV-based software vulnerability correlation prototype.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <section class="card">
+    <details>
       <summary>Built-in tests</summary>
       <div id="testResults" style="margin-top:12px"></div>
     </details>
@@ -98,6 +118,11 @@
 
 <script>
 'use strict';
+
+const APP_VERSION = '0.5.0';
+const APP_UPDATED = '2026-04-30';
+const APP_CODENAME = 'Asset Intelligence';
+let GIT_FEED_META = null;
 
 const $ = id => document.getElementById(id);
 let KEV = { vulnerabilities: [] };
@@ -176,6 +201,15 @@ async function fetchTextCandidates(candidates) {
   throw new Error(errors.join(' | '));
 }
 
+async function loadGitFeedMeta() {
+  try {
+    const result = await fetchTextCandidates(sourceCandidateList('data/feed-meta.json', 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/feed-meta.json'));
+    GIT_FEED_META = JSON.parse(result.text);
+  } catch (error) {
+    GIT_FEED_META = null;
+  }
+}
+
 async function loadFeeds() {
   const status = $('sourceStatus');
   status.innerHTML = '<p class="small">Loading data sources...</p>';
@@ -183,6 +217,7 @@ async function loadFeeds() {
   const patchUrl = $('patchUrl').value || 'data/patchmypc.xml';
   const zdiUrl = $('zdiUrl').value || 'data/zdi.xml';
   const lines = [];
+  await loadGitFeedMeta();
 
   try {
     const kevResult = await fetchTextCandidates(sourceCandidateList(kevUrl, 'https://raw.githubusercontent.com/burnoil/Security-Threat-Investigation-Console/main/data/kev.json'));
@@ -365,8 +400,14 @@ function analyze() {
 function renderFreshness() {
   const root = $('freshnessBox');
   if (!root) return;
-  const label = (name, meta) => !meta ? '<div class="item"><b>' + name + '</b><br><span class="small">Not loaded yet.</span></div>' : '<div class="item"><b>' + name + '</b><br><span class="small">Loaded: ' + esc(new Date(meta.loadedAt).toLocaleString()) + '<br>Items: ' + esc(meta.count) + '<br>Source: <code>' + esc(meta.source) + '</code></span></div>';
-  root.innerHTML = label('CISA KEV', FEED_META.kev) + label('Patch RSS', FEED_META.patch) + label('ZDI RSS', FEED_META.zdi) + '<p class="small">GitHub Action mirrors feeds hourly. Browser data refresh happens when you click Load Feeds or reload the page.</p>';
+  const mirrorTime = GIT_FEED_META && GIT_FEED_META.generatedAt ? new Date(GIT_FEED_META.generatedAt).toLocaleString() : null;
+  const mirrorCommit = GIT_FEED_META && GIT_FEED_META.commit ? GIT_FEED_META.commit : null;
+  const label = (name, key, meta) => {
+    const gitSource = GIT_FEED_META && GIT_FEED_META.feeds && GIT_FEED_META.feeds[key] ? GIT_FEED_META.feeds[key] : null;
+    if (!meta) return '<div class="item"><b>' + name + '</b><br><span class="small">Not loaded yet.' + (gitSource ? '<br>Mirrored: ' + esc(gitSource.generatedAt || GIT_FEED_META.generatedAt || 'unknown') : '') + '</span></div>';
+    return '<div class="item"><b>' + name + '</b><br><span class="small">Browser loaded: ' + esc(new Date(meta.loadedAt).toLocaleString()) + '<br>Items: ' + esc(meta.count) + '<br>Source: <code>' + esc(meta.source) + '</code>' + (gitSource ? '<br>Repo mirror: ' + esc(gitSource.generatedAt || GIT_FEED_META.generatedAt || 'unknown') : '') + '</span></div>';
+  };
+  root.innerHTML = label('CISA KEV', 'kev', FEED_META.kev) + label('Patch RSS', 'patchmypc', FEED_META.patch) + label('ZDI RSS', 'zdi', FEED_META.zdi) + '<p class="small">GitHub Action mirrors feeds hourly.' + (mirrorTime ? ' Last repo mirror: <b>' + esc(mirrorTime) + '</b>.' : '') + (mirrorCommit ? ' Commit: <code>' + esc(mirrorCommit) + '</code>.' : '') + ' Browser data refresh happens when you click Load Feeds or reload the page.</p>';
 }
 
 function renderSummary() {
@@ -435,6 +476,99 @@ function resultText(result) {
   return [result.app, 'Asset Type: ' + assetTypeLabel(result.asset?.type || 'unknown'), 'Priority: ' + result.priority.label + ' (' + result.priority.score + ')', 'Reasons: ' + result.priority.reasons.join('; '), '', 'KEV Matches:', ...(result.kev.length ? result.kev.map(v => '- ' + v.cveID + ' ' + v.vendorProject + ' ' + v.product + ' Added: ' + v.dateAdded) : ['- None']), '', 'Patch Signals:', ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']), '', 'ZDI Emerging Disclosures:', ...(result.zdi.length ? result.zdi.map(z => '- ' + z.title + (z.cves.length ? ' [' + z.cves.join(', ') + ']' : '')) : ['- None']), '', 'Validation Actions:', ...buildActions(result), '', 'Search Pivots:', ...buildQueries(result)].join('\n');
 }
 
+function csvEscape(value) {
+  const text = String(value ?? '');
+  return '"' + text.replaceAll('"', '""') + '"';
+}
+
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let inQuotes = false;
+  const input = String(text || '');
+  for (let i = 0; i < input.length; i++) {
+    const ch = input[i];
+    const next = input[i + 1];
+    if (ch === '"') {
+      if (inQuotes && next === '"') { cell += '"'; i++; }
+      else inQuotes = !inQuotes;
+    } else if (ch === ',' && !inQuotes) {
+      row.push(cell); cell = '';
+    } else if ((ch === '
+' || ch === '
+') && !inQuotes) {
+      if (ch === '
+' && next === '
+') i++;
+      row.push(cell); cell = '';
+      if (row.some(v => String(v).trim())) rows.push(row);
+      row = [];
+    } else {
+      cell += ch;
+    }
+  }
+  row.push(cell);
+  if (row.some(v => String(v).trim())) rows.push(row);
+  return rows;
+}
+
+function importAssetCsv(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const rows = parseCsv(reader.result);
+    if (!rows.length) return;
+    const header = rows[0].map(h => String(h).trim().toLowerCase());
+    const hasHeader = header.includes('name') || header.includes('asset') || header.includes('software') || header.includes('type');
+    const dataRows = hasHeader ? rows.slice(1) : rows;
+    const nameIndex = hasHeader ? Math.max(header.indexOf('name'), header.indexOf('asset'), header.indexOf('software'), header.indexOf('product')) : 0;
+    const typeIndex = hasHeader ? header.indexOf('type') : -1;
+    const lines = dataRows.map(row => {
+      const name = String(row[nameIndex >= 0 ? nameIndex : 0] || '').trim();
+      const type = typeIndex >= 0 ? String(row[typeIndex] || '').trim().toLowerCase() : '';
+      return name ? (type ? type + ': ' + name : name) : '';
+    }).filter(Boolean);
+    $('softwareInput').value = lines.join('
+');
+  };
+  reader.readAsText(file);
+}
+
+function downloadText(filename, text, type = 'text/plain') {
+  const blob = new Blob([text], { type });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+function exportAssetsCsv() {
+  const rows = [['type','name','raw']].concat(softwareList().map(asset => [asset.type, asset.name, asset.raw]));
+  downloadText('technology-assets.csv', rows.map(row => row.map(csvEscape).join(',')).join('
+'), 'text/csv');
+}
+
+function exportResultsCsv() {
+  const rows = [['asset_type','asset_name','priority_level','priority_label','score','reasons','kev_cves','patch_items','zdi_items']];
+  LAST_RESULTS.forEach(result => {
+    rows.push([
+      assetTypeLabel(result.asset?.type || 'unknown'),
+      result.app,
+      result.priority.level,
+      result.priority.label,
+      result.priority.score,
+      result.priority.reasons.join('; '),
+      result.kev.map(v => v.cveID).join('; '),
+      result.rss.map(r => r.title).join('; '),
+      result.zdi.map(z => z.title).join('; ')
+    ]);
+  });
+  downloadText('technology-vulnerability-results.csv', rows.map(row => row.map(csvEscape).join(',')).join('
+'), 'text/csv');
+}
+
 function criticalHighResults() {
   return LAST_RESULTS.filter(result => result.priority.level === 'critical' || result.priority.level === 'high');
 }
@@ -448,12 +582,8 @@ function copyCriticalHigh() {
 function exportReport() {
   const lines = ['Technology Vulnerability & Patch Intelligence Report', 'Generated: ' + new Date().toLocaleString(), '', 'Technology / Asset Input:', ...softwareList().map(x => '- ' + assetTypeLabel(x.type) + ': ' + x.name), '', 'Results:', ''];
   LAST_RESULTS.forEach(result => lines.push(resultText(result), '', '---', ''));
-  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'technology-vulnerability-patch-report.txt';
-  link.click();
-  URL.revokeObjectURL(link.href);
+  downloadText('technology-vulnerability-patch-report.txt', lines.join('
+'), 'text/plain');
 }
 
 function openSearchesFor(app) {
@@ -486,12 +616,24 @@ function runTests() {
   $('testResults').innerHTML = tests.map(t => '<div class="' + (t.pass ? 'ok' : 'bad') + '" style="margin-bottom:8px"><b>' + (t.pass ? 'PASS' : 'FAIL') + '</b> - ' + esc(t.name) + '</div>').join('');
 }
 
+function renderVersion() {
+  const badge = $('versionBadge');
+  const info = $('versionInfo');
+  const line = $('versionLine');
+  if (badge) badge.textContent = APP_VERSION;
+  const text = 'Version ' + APP_VERSION + ' • ' + APP_CODENAME + ' • Updated ' + APP_UPDATED;
+  if (info) info.textContent = text;
+  if (line) line.textContent = text;
+}
+
 function boot() {
   document.addEventListener('click', event => {
     const target = event.target;
     if (target.dataset.action === 'load-feeds') loadFeeds();
     if (target.dataset.action === 'analyze') analyze();
     if (target.dataset.action === 'export-report') exportReport();
+    if (target.dataset.action === 'export-assets-csv') exportAssetsCsv();
+    if (target.dataset.action === 'export-results-csv') exportResultsCsv();
     if (target.dataset.action === 'copy-critical-high') copyCriticalHigh();
     if (target.dataset.action === 'load-sample') $('softwareInput').value = SAMPLE;
     if (target.dataset.action === 'clear-input') $('softwareInput').value = '';
@@ -501,10 +643,12 @@ function boot() {
   $('kevImport').addEventListener('change', event => importKev(event.target.files[0]));
   $('rssImport').addEventListener('change', event => importRss(event.target.files[0]));
   $('zdiImport').addEventListener('change', event => importZdi(event.target.files[0]));
+  $('csvImport').addEventListener('change', event => importAssetCsv(event.target.files[0]));
   $('resultFilter').addEventListener('change', analyze);
   $('lookbackDays').addEventListener('change', analyze);
   $('noiseFilter').addEventListener('change', analyze);
   $('assetTypeFilter').addEventListener('change', analyze);
+  renderVersion();
   runTests();
   loadFeeds();
 }
