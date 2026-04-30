@@ -12,7 +12,7 @@
 	<atom:link href="https://patchmypc.com/feed/" rel="self" type="application/rss+xml" />
 	<link>https://patchmypc.com/</link>
 	<description>Patch Management Made Easy</description>
-	<lastBuildDate>Thu, 30 Apr 2026 09:50:06 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 30 Apr 2026 09:51:19 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -233,7 +233,7 @@
 
 
 
-<p>As long as login.live.com remains reachable, Windows can still establish its provisioning context. It can obtain a <strong>valid device ticket</strong> and retain the associated<strong> ZTDID</strong> that links the provisioning session back to the Autopilot registration created from the uploaded hardware hash. When the device later reaches MDM enrollment, Intune evaluates that provisioning context, not the setup experience. Because the device can still be linked to a trusted Autopilot registration, enrollment can succeed even when personal devices are blocked. </p>
+<p>As long as login.live.com remains reachable, Windows can still establish its provisioning context. It can obtain a <strong>valid device ticket</strong> and retain the associated <strong>ZTDID</strong> that links the provisioning session back to the Autopilot registration created from the uploaded hardware hash. When the device later reaches MDM enrollment, Intune evaluates that provisioning context, not the setup experience. Because the device can still be linked to a trusted Autopilot registration, enrollment can succeed even when personal devices are blocked.</p>
 
 
 
