@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Software Vulnerability & Patch Intelligence</title>
+<title>Technology Vulnerability & Patch Intelligence</title>
 <style>
 :root{--bg:#09090b;--panel:#14141b;--panel2:#1f1f2a;--text:#f4f4f5;--muted:#a1a1aa;--border:#30303d;--blue:#2563eb;--green:#34d399;--red:#fb7185;--amber:#f59e0b;--sky:#38bdf8;--purple:#c084fc}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#152238 0,#09090b 44%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}main{max-width:1380px;margin:auto;padding:28px 18px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:20px}.badge{display:inline-block;border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.08);color:var(--sky);border-radius:999px;padding:6px 12px;font-size:13px}h1{font-size:clamp(32px,5vw,54px);line-height:1;margin:10px 0 8px;letter-spacing:-.04em}h2{margin-top:0}p{color:var(--muted);line-height:1.55}.layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}.card{background:rgba(20,20,27,.94);border:1px solid var(--border);border-radius:22px;padding:18px;margin-bottom:18px;box-shadow:0 20px 55px rgba(0,0,0,.25)}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.actions{display:flex;flex-wrap:wrap;gap:10px}button,a.button,label.filebtn{border:0;color:white;background:var(--blue);border-radius:14px;padding:10px 14px;font-weight:750;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px}button:hover,a.button:hover,label.filebtn:hover{filter:brightness(1.12)}button.secondary,a.secondary,label.secondary{background:var(--panel2)}button.danger{background:rgba(251,113,133,.18);color:#fecdd3}select,input,textarea{width:100%;border:1px solid var(--border);background:#0d0d13;color:var(--text);border-radius:14px;padding:11px 12px;outline:none;font-size:15px}textarea{min-height:260px;resize:vertical;font-family:Consolas,Monaco,monospace}select:focus,input:focus,textarea:focus{border-color:rgba(56,189,248,.8);box-shadow:0 0 0 3px rgba(56,189,248,.12)}.item{background:#0d0d13;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:10px}.item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.mono{font-family:Consolas,Monaco,monospace;font-size:12px;color:#d4d4d8;overflow-wrap:anywhere}.small{font-size:13px;color:var(--muted)}.pill{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:12px;margin-right:6px;margin-bottom:6px}.ok{border:1px solid rgba(52,211,153,.5);background:rgba(52,211,153,.08);color:#a7f3d0;border-radius:14px;padding:12px}.warn{border:1px solid rgba(245,158,11,.5);background:rgba(245,158,11,.09);color:#fde68a;border-radius:14px;padding:12px}.bad{border:1px solid rgba(251,113,133,.55);background:rgba(251,113,133,.09);color:#fecdd3;border-radius:14px;padding:12px}.score-critical{color:#fecdd3;background:rgba(251,113,133,.15);padding:3px 8px;border-radius:8px}.score-high{color:#fde68a;background:rgba(245,158,11,.15);padding:3px 8px;border-radius:8px}.score-medium{color:#bfdbfe;background:rgba(59,130,246,.15);padding:3px 8px;border-radius:8px}.score-low{color:#a7f3d0;background:rgba(52,211,153,.15);padding:3px 8px;border-radius:8px}details summary{cursor:pointer;font-weight:800}code{background:rgba(255,255,255,.07);padding:2px 5px;border-radius:6px;color:#e4e4e7}.linkbtn{display:inline-flex;align-items:center;margin:3px 4px 3px 0;padding:3px 8px;border:1px solid var(--border);border-radius:999px;color:#93c5fd;text-decoration:none;font-size:11px;background:rgba(37,99,235,.12)}.linkbtn:hover{text-decoration:underline;filter:brightness(1.15)}.sticky{position:sticky;top:18px;align-self:start}.hide{display:none!important}@media(max-width:980px){.top,.layout,.two,.three{display:block}.sticky{position:static}.item-head{display:block}.item-head .actions{margin-top:10px}}
 </style>
@@ -12,13 +12,13 @@
 <main>
   <section class="top">
     <div>
-      <div class="badge">Software Stack → Vulnerability + Patch Intelligence</div>
-      <h1>Software Vulnerability & Patch Intelligence</h1>
-      <p>Paste a software list, correlate it against exploited vulnerabilities and recent patch/update signals, then generate an engineer-ready action report.</p>
+      <div class="badge">Technology Stack → Vulnerability + Patch Intelligence</div>
+      <h1>Technology Vulnerability & Patch Intelligence</h1>
+      <p>Paste applications, operating systems, firmware, hardware, SaaS platforms, drivers, and appliances; correlate them against exploited vulnerabilities and recent patch/update signals; then generate an engineer-ready action report.</p>
     </div>
     <div class="actions">
       <button data-action="load-feeds">Load Feeds</button>
-      <button class="secondary" data-action="analyze">Analyze Software</button>
+      <button class="secondary" data-action="analyze">Analyze Assets</button>
       <button class="secondary" data-action="export-report">Export Report</button>
       <button class="secondary" data-action="copy-critical-high">Copy Critical + High</button>
     </div>
@@ -27,11 +27,11 @@
   <section class="layout">
     <div>
       <section class="card">
-        <h2>1. Software / Application List</h2>
-        <p class="small">Paste one software, platform, vendor, or product per line. This can come from inventory exports, known critical apps, RMM/EDR tools, VPNs, browsers, collaboration tools, or endpoint agents.</p>
-        <textarea id="softwareInput" placeholder="Google Chrome&#10;Microsoft Office&#10;Zoom&#10;7-Zip&#10;Ivanti Connect Secure&#10;Fortinet FortiOS&#10;Okta&#10;ConnectWise ScreenConnect"></textarea>
+        <h2>1. Technology / Asset List</h2>
+        <p class="small">Paste one application, OS, firmware, hardware appliance, SaaS platform, driver, vendor, or product per line. Optional prefixes help filtering: <code>app:</code>, <code>os:</code>, <code>firmware:</code>, <code>hardware:</code>, <code>driver:</code>, <code>saas:</code>, or <code>vendor:</code>.</p>
+        <textarea id="softwareInput" placeholder="app: Google Chrome&#10;app: Microsoft Office&#10;os: Windows 11&#10;firmware: Dell BIOS&#10;hardware: Fortinet FortiGate&#10;hardware: Cisco ASA&#10;driver: Intel Graphics Driver&#10;saas: Okta&#10;hardware: QNAP NAS"></textarea>
         <div class="actions" style="margin-top:12px">
-          <button data-action="analyze">Analyze Software</button>
+          <button data-action="analyze">Analyze Assets</button>
           <button class="secondary" data-action="load-sample">Load Sample</button>
           <button class="danger" data-action="clear-input">Clear</button>
         </div>
@@ -60,6 +60,7 @@
           <div><label><b>Criticality filter</b></label><select id="resultFilter"><option value="all">All criticalities</option><option value="critical">Critical only</option><option value="high">High only</option><option value="medium">Medium only</option><option value="low">Low only</option></select></div>
           <div><label><b>Lookback window</b></label><select id="lookbackDays"><option value="30">Last 30 days</option><option value="60">Last 60 days</option><option value="90" selected>Last 90 days</option><option value="180">Last 180 days</option><option value="365">Last year</option></select></div>
           <div><label><b>Noise control</b></label><select id="noiseFilter"><option value="all">Show all results</option><option value="actionable">Hide Low / No Signal</option></select></div>
+          <div><label><b>Asset type</b></label><select id="assetTypeFilter"><option value="all">All asset types</option><option value="app">Applications</option><option value="os">Operating Systems</option><option value="firmware">Firmware</option><option value="hardware">Hardware / Appliances</option><option value="driver">Drivers</option><option value="saas">SaaS / Cloud</option><option value="vendor">Vendor / Product</option><option value="unknown">Unspecified</option></select></div>
           <div><label><b>Search engine</b></label><select id="engine"><option value="google">Google</option><option value="bing">Bing</option><option value="duck">DuckDuckGo</option></select></div>
         </div>
       </section>
@@ -68,7 +69,7 @@
     <aside class="sticky">
       <section class="card">
         <h2>Analysis Summary</h2>
-        <div id="summaryBox"><p class="small">Load feeds and analyze software to see results.</p></div>
+        <div id="summaryBox"><p class="small">Load feeds and analyze assets to see results.</p></div>
       </section>
       <section class="card">
         <h2>Feed Freshness</h2>
@@ -76,15 +77,15 @@
       </section>
       <section class="card">
         <h2>What This Tool Does</h2>
-        <p class="small">This does not scan endpoints. It correlates a software list against public vulnerability and patch signals so an engineer can prioritize validation, patching, ownership, and escalation.</p>
-        <span class="pill">Software stack input</span><span class="pill">KEV exploited</span><span class="pill">Patch signal</span><span class="pill">ZDI emerging</span><span class="pill">Action report</span>
+        <p class="small">This does not scan endpoints. It correlates a technology/asset list against public vulnerability and patch signals so an engineer can prioritize validation, patching, ownership, and escalation.</p>
+        <span class="pill">Technology stack input</span><span class="pill">KEV exploited</span><span class="pill">Patch signal</span><span class="pill">ZDI emerging</span><span class="pill">Firmware / hardware</span><span class="pill">Action report</span>
       </section>
     </aside>
   </section>
 
   <section class="card">
     <h2>Results</h2>
-    <div id="results"><p class="small">No analysis has been run yet.</p></div>
+    <div id="results"><p class="small">No asset analysis has been run yet.</p></div>
   </section>
 
   <section class="card">
@@ -105,33 +106,49 @@ let ZDI_ITEMS = [];
 let LAST_RESULTS = [];
 let FEED_META = { kev: null, patch: null, zdi: null };
 
-const SAMPLE = 'Google Chrome\nMicrosoft Office\nZoom\n7-Zip\nIvanti Connect Secure\nFortinet FortiOS\nOkta\nConnectWise ScreenConnect\nAdobe Acrobat\nMozilla Firefox';
+const SAMPLE = 'app: Google Chrome\napp: Microsoft Office\napp: Zoom\napp: 7-Zip\nos: Windows 11\nfirmware: Dell BIOS\nhardware: Fortinet FortiGate\nhardware: Cisco ASA\ndriver: Intel Graphics Driver\nsaas: Okta\nhardware: QNAP NAS\nhardware: Ivanti Connect Secure';
 
-const esc = value => String(value || '')
-  .replaceAll('&', '&amp;')
-  .replaceAll('<', '&lt;')
-  .replaceAll('>', '&gt;')
-  .replaceAll('"', '&quot;')
-  .replaceAll("'", '&#039;');
+const esc = value => String(value || '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
 
 function norm(value) {
-  return String(value || '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  return String(value || '').toLowerCase().replace(new RegExp('[^a-z0-9]+','g'),' ').replace(new RegExp(' +','g'),' ').trim();
 }
 
 function tokenSet(value) {
   return new Set(norm(value).split(' ').filter(t => t.length > 1));
 }
 
+function inferAssetType(name) {
+  const n = norm(name);
+  if (['windows','macos','ubuntu','debian','rhel','red hat','suse','android','ios','linux'].some(x => n.includes(x))) return 'os';
+  if (['bios','uefi','firmware','idrac','ilo','bmc','controller'].some(x => n.includes(x))) return 'firmware';
+  if (['fortigate','asa','firewall','router','switch','nas','qnap','synology','esxi','appliance','gateway','vpn','pan os','pan-os'].some(x => n.includes(x))) return 'hardware';
+  if (['driver','graphics driver','printer driver','audio driver','chipset'].some(x => n.includes(x))) return 'driver';
+  if (['okta','entra','azure ad','m365','office 365','salesforce','servicenow','google workspace','slack'].some(x => n.includes(x))) return 'saas';
+  return 'app';
+}
+
+function parseAssetLine(line) {
+  const raw = String(line || '').trim();
+  const idx = raw.indexOf(':');
+  if (idx > 0) {
+    let type = raw.slice(0, idx).trim().toLowerCase();
+    const name = raw.slice(idx + 1).trim();
+    const aliases = { application:'app', 'operating-system':'os', appliance:'hardware', cloud:'saas', product:'vendor' };
+    type = aliases[type] || type;
+    const allowed = ['app','os','firmware','hardware','driver','saas','vendor','unknown'];
+    if (name && allowed.includes(type)) return { name, type, raw };
+  }
+  return { name: raw, type: inferAssetType(raw) || 'unknown', raw };
+}
+
 function softwareList() {
-  return $('softwareInput').value
-    .split(/\r?\n|,/)
-    .map(x => x.trim())
-    .filter(Boolean)
-    .filter((v, i, a) => a.findIndex(x => x.toLowerCase() === v.toLowerCase()) === i);
+  return $('softwareInput').value.split(new RegExp('\\r?\\n|,','g')).map(parseAssetLine).filter(asset => asset.name).filter((asset, i, arr) => arr.findIndex(x => x.name.toLowerCase() === asset.name.toLowerCase() && x.type === asset.type) === i);
+}
+
+function assetTypeLabel(type) {
+  const labels = { app:'Application', os:'Operating System', firmware:'Firmware', hardware:'Hardware / Appliance', driver:'Driver', saas:'SaaS / Cloud', vendor:'Vendor / Product', unknown:'Unspecified' };
+  return labels[type] || 'Unspecified';
 }
 
 function engineUrl(query) {
@@ -162,7 +179,6 @@ async function fetchTextCandidates(candidates) {
 async function loadFeeds() {
   const status = $('sourceStatus');
   status.innerHTML = '<p class="small">Loading data sources...</p>';
-
   const kevUrl = $('kevUrl').value || 'data/kev.json';
   const patchUrl = $('patchUrl').value || 'data/patchmypc.xml';
   const zdiUrl = $('zdiUrl').value || 'data/zdi.xml';
@@ -206,28 +222,22 @@ function sanitizeXmlText(xmlText) {
 }
 
 function compactPreview(text, length) {
-  return String(text || '').slice(0, length || 160).replace(/\s+/g, ' ');
+  return String(text || '').slice(0, length || 160).replace(new RegExp('\\s+','g'), ' ');
 }
 
 function parseRss(xmlText) {
   const original = String(xmlText || '').trim();
   if (!original) throw new Error('RSS/XML file was empty');
-  if (original.toLowerCase().startsWith('<!doctype html') || original.toLowerCase().startsWith('<html')) {
-    throw new Error('Downloaded content is HTML, not RSS/XML. Preview: ' + compactPreview(original, 120));
-  }
-
+  const lower = original.toLowerCase();
+  if (lower.startsWith('<!doctype html') || lower.startsWith('<html')) throw new Error('Downloaded content is HTML, not RSS/XML. Preview: ' + compactPreview(original, 120));
   const parser = new DOMParser();
   let doc = parser.parseFromString(original, 'application/xml');
   let parseError = doc.querySelector('parsererror');
-
   if (parseError) {
-    const sanitized = sanitizeXmlText(original);
-    doc = parser.parseFromString(sanitized, 'application/xml');
+    doc = parser.parseFromString(sanitizeXmlText(original), 'application/xml');
     parseError = doc.querySelector('parsererror');
   }
-
   if (parseError) throw new Error('Invalid XML/RSS. Preview: ' + compactPreview(original, 160));
-
   const items = [...doc.querySelectorAll('item, entry')];
   const cvePattern = new RegExp('CVE-[0-9]{4}-[0-9]{4,7}', 'gi');
   return items.map(item => {
@@ -284,8 +294,8 @@ function importZdi(file) {
   reader.readAsText(file);
 }
 
-function matchScore(software, text) {
-  const sw = norm(software);
+function matchScore(assetName, text) {
+  const sw = norm(assetName);
   const hay = norm(text);
   if (!sw || !hay) return 0;
   if (hay.includes(sw)) return 100;
@@ -296,32 +306,20 @@ function matchScore(software, text) {
   return Math.round((hits / swTokens.size) * 100);
 }
 
-function matchKev(software) {
-  return (KEV.vulnerabilities || [])
-    .map(v => ({ ...v, matchScore: matchScore(software, [v.cveID, v.vendorProject, v.product, v.vulnerabilityName, v.shortDescription].join(' ')) }))
-    .filter(v => v.matchScore >= 50)
-    .sort((a, b) => b.matchScore - a.matchScore || String(b.dateAdded).localeCompare(String(a.dateAdded)))
-    .slice(0, 10);
+function matchKev(assetName) {
+  return (KEV.vulnerabilities || []).map(v => ({ ...v, matchScore: matchScore(assetName, [v.cveID, v.vendorProject, v.product, v.vulnerabilityName, v.shortDescription].join(' ')) })).filter(v => v.matchScore >= 50).sort((a, b) => b.matchScore - a.matchScore || String(b.dateAdded).localeCompare(String(a.dateAdded))).slice(0, 10);
 }
 
-function matchRss(software) {
+function matchRss(assetName) {
   const days = parseInt($('lookbackDays').value || '90', 10);
   const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
-  return RSS_ITEMS.map(item => ({ ...item, matchScore: matchScore(software, item.text) }))
-    .filter(item => item.matchScore >= 50)
-    .filter(item => { const d = item.date ? new Date(item.date).getTime() : NaN; return Number.isNaN(d) || d >= cutoff; })
-    .sort((a, b) => b.matchScore - a.matchScore)
-    .slice(0, 8);
+  return RSS_ITEMS.map(item => ({ ...item, matchScore: matchScore(assetName, item.text) })).filter(item => item.matchScore >= 50).filter(item => { const d = item.date ? new Date(item.date).getTime() : NaN; return Number.isNaN(d) || d >= cutoff; }).sort((a, b) => b.matchScore - a.matchScore).slice(0, 8);
 }
 
-function matchZdi(software) {
+function matchZdi(assetName) {
   const days = parseInt($('lookbackDays').value || '90', 10);
   const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
-  return ZDI_ITEMS.map(item => ({ ...item, matchScore: matchScore(software, item.text) }))
-    .filter(item => item.matchScore >= 50)
-    .filter(item => { const d = item.date ? new Date(item.date).getTime() : NaN; return Number.isNaN(d) || d >= cutoff; })
-    .sort((a, b) => b.matchScore - a.matchScore)
-    .slice(0, 8);
+  return ZDI_ITEMS.map(item => ({ ...item, matchScore: matchScore(assetName, item.text) })).filter(item => item.matchScore >= 50).filter(item => { const d = item.date ? new Date(item.date).getTime() : NaN; return Number.isNaN(d) || d >= cutoff; }).sort((a, b) => b.matchScore - a.matchScore).slice(0, 8);
 }
 
 function priorityFor(kevMatches = [], rssMatches = [], zdiMatches = []) {
@@ -339,15 +337,16 @@ function priorityFor(kevMatches = [], rssMatches = [], zdiMatches = []) {
 }
 
 function analyze() {
-  const apps = softwareList();
+  const assets = softwareList();
   const filter = $('resultFilter').value;
   const noise = $('noiseFilter') ? $('noiseFilter').value : 'all';
-  LAST_RESULTS = apps.map(app => {
-    const kev = matchKev(app);
-    const rss = matchRss(app);
-    const zdi = matchZdi(app);
+  const assetTypeFilter = $('assetTypeFilter') ? $('assetTypeFilter').value : 'all';
+  LAST_RESULTS = assets.filter(asset => assetTypeFilter === 'all' || asset.type === assetTypeFilter).map(asset => {
+    const kev = matchKev(asset.name);
+    const rss = matchRss(asset.name);
+    const zdi = matchZdi(asset.name);
     const priority = priorityFor(kev, rss, zdi);
-    return { app, kev, rss, zdi, priority };
+    return { app: asset.name, asset, kev, rss, zdi, priority };
   }).filter(result => {
     if (filter === 'critical') return result.priority.level === 'critical';
     if (filter === 'high') return result.priority.level === 'high';
@@ -366,10 +365,7 @@ function analyze() {
 function renderFreshness() {
   const root = $('freshnessBox');
   if (!root) return;
-  const label = (name, meta) => {
-    if (!meta) return '<div class="item"><b>' + name + '</b><br><span class="small">Not loaded yet.</span></div>';
-    return '<div class="item"><b>' + name + '</b><br><span class="small">Loaded: ' + esc(new Date(meta.loadedAt).toLocaleString()) + '<br>Items: ' + esc(meta.count) + '<br>Source: <code>' + esc(meta.source) + '</code></span></div>';
-  };
+  const label = (name, meta) => !meta ? '<div class="item"><b>' + name + '</b><br><span class="small">Not loaded yet.</span></div>' : '<div class="item"><b>' + name + '</b><br><span class="small">Loaded: ' + esc(new Date(meta.loadedAt).toLocaleString()) + '<br>Items: ' + esc(meta.count) + '<br>Source: <code>' + esc(meta.source) + '</code></span></div>';
   root.innerHTML = label('CISA KEV', FEED_META.kev) + label('Patch RSS', FEED_META.patch) + label('ZDI RSS', FEED_META.zdi) + '<p class="small">GitHub Action mirrors feeds hourly. Browser data refresh happens when you click Load Feeds or reload the page.</p>';
 }
 
@@ -380,17 +376,12 @@ function renderSummary() {
   const zdiCount = LAST_RESULTS.filter(r => r.zdi.length).length;
   const critical = LAST_RESULTS.filter(r => r.priority.level === 'critical').length;
   const high = LAST_RESULTS.filter(r => r.priority.level === 'high').length;
-  $('summaryBox').innerHTML = '<div class="three">' +
-    '<div class="item"><b>' + total + '</b><br><span class="small">Applications analyzed</span></div>' +
-    '<div class="item"><b>' + kevCount + '</b><br><span class="small">KEV matches</span></div>' +
-    '<div class="item"><b>' + patchCount + '</b><br><span class="small">Patch/update signals</span></div>' +
-    '<div class="item"><b>' + zdiCount + '</b><br><span class="small">ZDI emerging signals</span></div>' +
-    '</div><div class="' + (critical ? 'bad' : high ? 'warn' : 'ok') + '" style="margin-top:10px"><b>' + critical + '</b> critical items • <b>' + high + '</b> high-priority items. Results are sorted by priority descending.</div>';
+  $('summaryBox').innerHTML = '<div class="three">' + '<div class="item"><b>' + total + '</b><br><span class="small">Assets analyzed</span></div>' + '<div class="item"><b>' + kevCount + '</b><br><span class="small">KEV matches</span></div>' + '<div class="item"><b>' + patchCount + '</b><br><span class="small">Patch/update signals</span></div>' + '<div class="item"><b>' + zdiCount + '</b><br><span class="small">ZDI emerging signals</span></div>' + '</div><div class="' + (critical ? 'bad' : high ? 'warn' : 'ok') + '" style="margin-top:10px"><b>' + critical + '</b> critical items • <b>' + high + '</b> high-priority items. Results are sorted by priority descending.</div>';
 }
 
 function renderResults() {
   const root = $('results');
-  if (!LAST_RESULTS.length) { root.innerHTML = '<p class="small">No results to display. Try loading feeds and analyzing a software list.</p>'; return; }
+  if (!LAST_RESULTS.length) { root.innerHTML = '<p class="small">No results to display. Try loading feeds and analyzing an asset list.</p>'; return; }
   root.innerHTML = LAST_RESULTS.map(result => renderResult(result)).join('');
 }
 
@@ -401,46 +392,28 @@ function linkButton(label, url) {
 
 function cveLinks(cve) {
   if (!cve) return '';
-  return linkButton('NVD', 'https://nvd.nist.gov/vuln/detail/' + encodeURIComponent(cve)) +
-    linkButton('CISA KEV', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=' + encodeURIComponent(cve)) +
-    linkButton('Exploit / PoC', engineUrl('"' + cve + '" exploit OR poc OR github')) +
-    linkButton('Patch / Mitigation', engineUrl('"' + cve + '" patch OR mitigation OR advisory'));
+  return linkButton('NVD', 'https://nvd.nist.gov/vuln/detail/' + encodeURIComponent(cve)) + linkButton('CISA KEV', 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=' + encodeURIComponent(cve)) + linkButton('Exploit / PoC', engineUrl('"' + cve + '" exploit OR poc OR github')) + linkButton('Patch / Mitigation', engineUrl('"' + cve + '" patch OR mitigation OR advisory'));
 }
 
-function vendorLinks(app) {
-  return linkButton('Vendor Advisory', engineUrl('"' + app + '" vulnerability advisory')) +
-    linkButton('Security Updates', engineUrl('"' + app + '" security update release notes')) +
-    linkButton('Download / Update Page', engineUrl('"' + app + '" download update latest version'));
+function vendorLinks(app, assetType) {
+  const updatePhrase = assetType === 'firmware' ? 'firmware update download' : assetType === 'hardware' ? 'firmware advisory update' : assetType === 'os' ? 'security update release notes' : 'download update latest version';
+  return linkButton('Vendor Advisory', engineUrl('"' + app + '" vulnerability advisory')) + linkButton('Security Updates', engineUrl('"' + app + '" security update release notes')) + linkButton('Update Page', engineUrl('"' + app + '" ' + updatePhrase));
 }
 
 function renderResult(result) {
+  const assetType = result.asset?.type || 'unknown';
   const kevHtml = result.kev.length ? result.kev.map(v => '<div class="mono" style="margin-bottom:8px"><b>' + esc(v.cveID) + '</b> • ' + esc(v.vendorProject) + ' ' + esc(v.product) + ' • Added ' + esc(v.dateAdded) + ' • Match ' + v.matchScore + '%<br>' + cveLinks(v.cveID) + '</div>').join('') : '<div class="small">No KEV match.</div>';
-  const rssHtml = result.rss.length ? result.rss.map(item => {
-    const cveLinkHtml = item.cves.length ? '<br>' + item.cves.map(cve => '<b>' + esc(cve) + '</b> ' + cveLinks(cve)).join('<br>') : '';
-    const updateLink = item.link ? '<br>' + linkButton('Patch / Release Item', item.link) : '';
-    return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + updateLink + '</div>';
-  }).join('') : '<div class="small">No recent patch/update signal.</div>';
-  const zdiHtml = result.zdi.length ? result.zdi.map(item => {
-    const cveLinkHtml = item.cves.length ? '<br>' + item.cves.map(cve => '<b>' + esc(cve) + '</b> ' + cveLinks(cve)).join('<br>') : '';
-    const advisoryLink = item.link ? '<br>' + linkButton('ZDI Advisory', item.link) : '';
-    return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + advisoryLink + '</div>';
-  }).join('') : '<div class="small">No recent ZDI disclosure signal.</div>';
+  const rssHtml = result.rss.length ? result.rss.map(item => { const cveLinkHtml = item.cves.length ? '<br>' + item.cves.map(cve => '<b>' + esc(cve) + '</b> ' + cveLinks(cve)).join('<br>') : ''; const updateLink = item.link ? '<br>' + linkButton('Patch / Release Item', item.link) : ''; return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + updateLink + '</div>'; }).join('') : '<div class="small">No recent patch/update signal.</div>';
+  const zdiHtml = result.zdi.length ? result.zdi.map(item => { const cveLinkHtml = item.cves.length ? '<br>' + item.cves.map(cve => '<b>' + esc(cve) + '</b> ' + cveLinks(cve)).join('<br>') : ''; const advisoryLink = item.link ? '<br>' + linkButton('ZDI Advisory', item.link) : ''; return '<div class="mono" style="margin-bottom:8px">' + esc(item.title) + cveLinkHtml + advisoryLink + '</div>'; }).join('') : '<div class="small">No recent ZDI disclosure signal.</div>';
   const queries = buildQueries(result);
-  return '<div class="item">' +
-    '<div class="item-head"><div><h3 style="margin:0 0 6px">' + esc(result.app) + '</h3><span class="' + result.priority.cls + '">' + result.priority.label + '</span> <span class="pill">Score ' + result.priority.score + '</span></div>' +
-    '<div class="actions"><button data-open-searches="' + esc(result.app) + '">Open Searches</button><button class="secondary" data-copy-report="' + esc(result.app) + '">Copy</button></div></div>' +
-    '<p class="small">' + esc(result.priority.reasons.join(' • ')) + '</p>' +
-    '<div style="margin-bottom:8px">' + vendorLinks(result.app) + '</div>' +
-    '<details open><summary>KEV exploited vulnerability matches</summary>' + kevHtml + '</details>' +
-    '<details><summary>Patch/update signals</summary>' + rssHtml + '</details>' +
-    '<details><summary>ZDI emerging disclosures</summary>' + zdiHtml + '</details>' +
-    '<details><summary>Suggested validation actions</summary><div class="mono">' + buildActions(result).map(esc).join('<br>') + '</div></details>' +
-    '<details><summary>Search pivots</summary><div class="mono">' + queries.map(esc).join('<br>') + '</div></details>' +
-    '</div>';
+  return '<div class="item">' + '<div class="item-head"><div><h3 style="margin:0 0 6px">' + esc(result.app) + '</h3><span class="pill">' + esc(assetTypeLabel(assetType)) + '</span> <span class="' + result.priority.cls + '">' + result.priority.label + '</span> <span class="pill">Score ' + result.priority.score + '</span></div>' + '<div class="actions"><button data-open-searches="' + esc(result.app) + '">Open Searches</button><button class="secondary" data-copy-report="' + esc(result.app) + '">Copy</button></div></div>' + '<p class="small">' + esc(result.priority.reasons.join(' • ')) + '</p>' + '<div style="margin-bottom:8px">' + vendorLinks(result.app, assetType) + '</div>' + '<details open><summary>KEV exploited vulnerability matches</summary>' + kevHtml + '</details>' + '<details><summary>Patch/update signals</summary>' + rssHtml + '</details>' + '<details><summary>ZDI emerging disclosures</summary>' + zdiHtml + '</details>' + '<details><summary>Suggested validation actions</summary><div class="mono">' + buildActions(result).map(esc).join('<br>') + '</div></details>' + '<details><summary>Search pivots</summary><div class="mono">' + queries.map(esc).join('<br>') + '</div></details>' + '</div>';
 }
 
 function buildActions(result) {
-  const actions = ['- Confirm installed versions from inventory, EDR, BigFix, MECM, vulnerability scanner, or app control data.', '- Identify owner, business criticality, exposure, and patch deployment path.', '- Check vendor advisory and release notes for fixed versions and mitigations.'];
+  const type = result.asset?.type || 'unknown';
+  const actions = ['- Confirm presence and version from the right source of truth for this asset type: inventory, EDR, BigFix, MECM, vulnerability scanner, CMDB, firmware tooling, network management, or vendor portal.', '- Identify owner, business criticality, exposure, and patch/update path.', '- Check vendor advisory and release notes for fixed versions, firmware, mitigations, and upgrade guidance.'];
+  if (type === 'firmware' || type === 'hardware') actions.push('- For hardware/firmware: validate model, firmware branch, support status, maintenance window, and vendor-specific upgrade prerequisites.');
+  if (type === 'os') actions.push('- For operating systems: validate build/version, servicing channel, cumulative update state, and unsupported/end-of-life exposure.');
   if (result.kev.length) actions.push('- Prioritize immediately: at least one matching item appears in CISA KEV.');
   if (result.rss.length) actions.push('- Validate whether a recent vendor/update signal maps to a deployable update.');
   if (result.zdi.length) actions.push('- Review ZDI disclosure details and vendor fix status; treat as emerging risk even if not yet in KEV.');
@@ -449,14 +422,17 @@ function buildActions(result) {
 
 function buildQueries(result) {
   const app = result.app;
+  const assetType = result.asset?.type || 'unknown';
   const cves = [...new Set(result.kev.map(v => v.cveID).concat(result.rss.flatMap(r => r.cves)).concat(result.zdi.flatMap(z => z.cves)))];
   const queries = ['"' + app + '" vulnerability advisory', '"' + app + '" release notes security update', '"' + app + '" fixed version CVE'];
+  if (assetType === 'firmware' || assetType === 'hardware') queries.push('"' + app + '" firmware update security advisory');
+  if (assetType === 'os') queries.push('"' + app + '" cumulative update security bulletin');
   cves.slice(0, 5).forEach(cve => { queries.push('"' + cve + '" exploit OR poc OR github'); queries.push('"' + cve + '" patch OR mitigation OR advisory'); });
   return queries;
 }
 
 function resultText(result) {
-  return [result.app, 'Priority: ' + result.priority.label + ' (' + result.priority.score + ')', 'Reasons: ' + result.priority.reasons.join('; '), '', 'KEV Matches:', ...(result.kev.length ? result.kev.map(v => '- ' + v.cveID + ' ' + v.vendorProject + ' ' + v.product + ' Added: ' + v.dateAdded) : ['- None']), '', 'Patch Signals:', ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']), '', 'ZDI Emerging Disclosures:', ...(result.zdi.length ? result.zdi.map(z => '- ' + z.title + (z.cves.length ? ' [' + z.cves.join(', ') + ']' : '')) : ['- None']), '', 'Validation Actions:', ...buildActions(result), '', 'Search Pivots:', ...buildQueries(result)].join('\n');
+  return [result.app, 'Asset Type: ' + assetTypeLabel(result.asset?.type || 'unknown'), 'Priority: ' + result.priority.label + ' (' + result.priority.score + ')', 'Reasons: ' + result.priority.reasons.join('; '), '', 'KEV Matches:', ...(result.kev.length ? result.kev.map(v => '- ' + v.cveID + ' ' + v.vendorProject + ' ' + v.product + ' Added: ' + v.dateAdded) : ['- None']), '', 'Patch Signals:', ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']), '', 'ZDI Emerging Disclosures:', ...(result.zdi.length ? result.zdi.map(z => '- ' + z.title + (z.cves.length ? ' [' + z.cves.join(', ') + ']' : '')) : ['- None']), '', 'Validation Actions:', ...buildActions(result), '', 'Search Pivots:', ...buildQueries(result)].join('\n');
 }
 
 function criticalHighResults() {
@@ -470,12 +446,12 @@ function copyCriticalHigh() {
 }
 
 function exportReport() {
-  const lines = ['Software Vulnerability & Patch Intelligence Report', 'Generated: ' + new Date().toLocaleString(), '', 'Software Input:', ...softwareList().map(x => '- ' + x), '', 'Results:', ''];
+  const lines = ['Technology Vulnerability & Patch Intelligence Report', 'Generated: ' + new Date().toLocaleString(), '', 'Technology / Asset Input:', ...softwareList().map(x => '- ' + assetTypeLabel(x.type) + ': ' + x.name), '', 'Results:', ''];
   LAST_RESULTS.forEach(result => lines.push(resultText(result), '', '---', ''));
   const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
-  link.download = 'software-vulnerability-patch-report.txt';
+  link.download = 'technology-vulnerability-patch-report.txt';
   link.click();
   URL.revokeObjectURL(link.href);
 }
@@ -494,17 +470,18 @@ function copyReportFor(app) {
 
 function runTests() {
   const tests = [
-    { name: 'Software parser splits lines', pass: (() => { const old = $('softwareInput').value; $('softwareInput').value = 'A\nB'; const ok = softwareList().length === 2; $('softwareInput').value = old; return ok; })() },
+    { name: 'Asset parser splits typed lines', pass: (() => { const old = $('softwareInput').value; $('softwareInput').value = 'app: A\nos: B'; const parsed = softwareList(); const ok = parsed.length === 2 && parsed[0].type === 'app' && parsed[1].type === 'os'; $('softwareInput').value = old; return ok; })() },
     { name: 'RSS parser accepts empty channel', pass: parseRss('<rss><channel></channel></rss>').length === 0 },
     { name: 'RSS parser fixes bare ampersand', pass: parseRss('<rss><channel><item><title>A & B</title></item></channel></rss>').length === 1 },
     { name: 'Priority with KEV is high', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [], []).score >= 70 },
     { name: 'Priority levels include critical', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [{ cves: ['CVE-2024-0001'] }], []).level === 'critical' },
     { name: 'Priority with ZDI is medium or higher', pass: priorityFor([], [], [{ title: 'ZDI test' }]).score >= 40 },
-    { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', kev: [], rss: [], zdi: [], priority: priorityFor([], [], []) }).includes('Validation Actions') },
+    { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', asset: { type: 'app' }, kev: [], rss: [], zdi: [], priority: priorityFor([], [], []) }).includes('Validation Actions') },
     { name: 'Critical/high helper returns array', pass: Array.isArray(criticalHighResults()) },
     { name: 'Critical/high copy separator is escaped', pass: ['A','B'].join('\n\n---\n\n').includes('---') },
     { name: 'CVE links include NVD', pass: cveLinks('CVE-2024-0001').includes('nvd.nist.gov') },
-    { name: 'Vendor links include update search', pass: vendorLinks('TestApp').includes('download') }
+    { name: 'Vendor links include update search', pass: vendorLinks('TestApp', 'app').includes('download') },
+    { name: 'Firmware type inference works', pass: parseAssetLine('Dell BIOS').type === 'firmware' }
   ];
   $('testResults').innerHTML = tests.map(t => '<div class="' + (t.pass ? 'ok' : 'bad') + '" style="margin-bottom:8px"><b>' + (t.pass ? 'PASS' : 'FAIL') + '</b> - ' + esc(t.name) + '</div>').join('');
 }
@@ -527,6 +504,7 @@ function boot() {
   $('resultFilter').addEventListener('change', analyze);
   $('lookbackDays').addEventListener('change', analyze);
   $('noiseFilter').addEventListener('change', analyze);
+  $('assetTypeFilter').addEventListener('change', analyze);
   runTests();
   loadFeeds();
 }
