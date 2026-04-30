@@ -131,7 +131,9 @@ let ZDI_ITEMS = [];
 let LAST_RESULTS = [];
 let FEED_META = { kev: null, patch: null, zdi: null };
 
-const SAMPLE = 'app: Google Chrome\napp: Microsoft Office\napp: Zoom\napp: 7-Zip\nos: Windows 11\nfirmware: Dell BIOS\nhardware: Fortinet FortiGate\nhardware: Cisco ASA\ndriver: Intel Graphics Driver\nsaas: Okta\nhardware: QNAP NAS\nhardware: Ivanti Connect Secure';
+const NL = String.fromCharCode(10);
+const CR = String.fromCharCode(13);
+const SAMPLE = ['app: Google Chrome','app: Microsoft Office','app: Zoom','app: 7-Zip','os: Windows 11','firmware: Dell BIOS','hardware: Fortinet FortiGate','hardware: Cisco ASA','driver: Intel Graphics Driver','saas: Okta','hardware: QNAP NAS','hardware: Ivanti Connect Secure'].join(NL);
 
 const esc = value => String(value || '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
 
@@ -473,7 +475,7 @@ function buildQueries(result) {
 }
 
 function resultText(result) {
-  return [result.app, 'Asset Type: ' + assetTypeLabel(result.asset?.type || 'unknown'), 'Priority: ' + result.priority.label + ' (' + result.priority.score + ')', 'Reasons: ' + result.priority.reasons.join('; '), '', 'KEV Matches:', ...(result.kev.length ? result.kev.map(v => '- ' + v.cveID + ' ' + v.vendorProject + ' ' + v.product + ' Added: ' + v.dateAdded) : ['- None']), '', 'Patch Signals:', ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']), '', 'ZDI Emerging Disclosures:', ...(result.zdi.length ? result.zdi.map(z => '- ' + z.title + (z.cves.length ? ' [' + z.cves.join(', ') + ']' : '')) : ['- None']), '', 'Validation Actions:', ...buildActions(result), '', 'Search Pivots:', ...buildQueries(result)].join('\n');
+  return [result.app, 'Asset Type: ' + assetTypeLabel(result.asset?.type || 'unknown'), 'Priority: ' + result.priority.label + ' (' + result.priority.score + ')', 'Reasons: ' + result.priority.reasons.join('; '), '', 'KEV Matches:', ...(result.kev.length ? result.kev.map(v => '- ' + v.cveID + ' ' + v.vendorProject + ' ' + v.product + ' Added: ' + v.dateAdded) : ['- None']), '', 'Patch Signals:', ...(result.rss.length ? result.rss.map(r => '- ' + r.title + (r.cves.length ? ' [' + r.cves.join(', ') + ']' : '')) : ['- None']), '', 'ZDI Emerging Disclosures:', ...(result.zdi.length ? result.zdi.map(z => '- ' + z.title + (z.cves.length ? ' [' + z.cves.join(', ') + ']' : '')) : ['- None']), '', 'Validation Actions:', ...buildActions(result), '', 'Search Pivots:', ...buildQueries(result)].join(NL);
 }
 
 function csvEscape(value) {
@@ -494,14 +496,12 @@ function parseCsv(text) {
       if (inQuotes && next === '"') { cell += '"'; i++; }
       else inQuotes = !inQuotes;
     } else if (ch === ',' && !inQuotes) {
-      row.push(cell); cell = '';
-    } else if ((ch === '
-' || ch === '
-') && !inQuotes) {
-      if (ch === '
-' && next === '
-') i++;
-      row.push(cell); cell = '';
+      row.push(cell);
+      cell = '';
+    } else if ((ch === NL || ch === CR) && !inQuotes) {
+      if (ch === CR && next === NL) i++;
+      row.push(cell);
+      cell = '';
       if (row.some(v => String(v).trim())) rows.push(row);
       row = [];
     } else {
@@ -529,8 +529,7 @@ function importAssetCsv(file) {
       const type = typeIndex >= 0 ? String(row[typeIndex] || '').trim().toLowerCase() : '';
       return name ? (type ? type + ': ' + name : name) : '';
     }).filter(Boolean);
-    $('softwareInput').value = lines.join('
-');
+    $('softwareInput').value = lines.join(NL);
   };
   reader.readAsText(file);
 }
@@ -546,27 +545,15 @@ function downloadText(filename, text, type = 'text/plain') {
 
 function exportAssetsCsv() {
   const rows = [['type','name','raw']].concat(softwareList().map(asset => [asset.type, asset.name, asset.raw]));
-  downloadText('technology-assets.csv', rows.map(row => row.map(csvEscape).join(',')).join('
-'), 'text/csv');
+  downloadText('technology-assets.csv', rows.map(row => row.map(csvEscape).join(',')).join(NL), 'text/csv');
 }
 
 function exportResultsCsv() {
   const rows = [['asset_type','asset_name','priority_level','priority_label','score','reasons','kev_cves','patch_items','zdi_items']];
   LAST_RESULTS.forEach(result => {
-    rows.push([
-      assetTypeLabel(result.asset?.type || 'unknown'),
-      result.app,
-      result.priority.level,
-      result.priority.label,
-      result.priority.score,
-      result.priority.reasons.join('; '),
-      result.kev.map(v => v.cveID).join('; '),
-      result.rss.map(r => r.title).join('; '),
-      result.zdi.map(z => z.title).join('; ')
-    ]);
+    rows.push([assetTypeLabel(result.asset?.type || 'unknown'), result.app, result.priority.level, result.priority.label, result.priority.score, result.priority.reasons.join('; '), result.kev.map(v => v.cveID).join('; '), result.rss.map(r => r.title).join('; '), result.zdi.map(z => z.title).join('; ')]);
   });
-  downloadText('technology-vulnerability-results.csv', rows.map(row => row.map(csvEscape).join(',')).join('
-'), 'text/csv');
+  downloadText('technology-vulnerability-results.csv', rows.map(row => row.map(csvEscape).join(',')).join(NL), 'text/csv');
 }
 
 function criticalHighResults() {
@@ -575,15 +562,14 @@ function criticalHighResults() {
 
 function copyCriticalHigh() {
   const items = criticalHighResults();
-  const text = items.length ? items.map(resultText).join('\n\n---\n\n') : 'No Critical or High findings in the current analysis.';
+  const text = items.length ? items.map(resultText).join(NL + NL + '---' + NL + NL) : 'No Critical or High findings in the current analysis.';
   navigator.clipboard.writeText(text);
 }
 
 function exportReport() {
   const lines = ['Technology Vulnerability & Patch Intelligence Report', 'Generated: ' + new Date().toLocaleString(), '', 'Technology / Asset Input:', ...softwareList().map(x => '- ' + assetTypeLabel(x.type) + ': ' + x.name), '', 'Results:', ''];
   LAST_RESULTS.forEach(result => lines.push(resultText(result), '', '---', ''));
-  downloadText('technology-vulnerability-patch-report.txt', lines.join('
-'), 'text/plain');
+  downloadText('technology-vulnerability-patch-report.txt', lines.join(NL), 'text/plain');
 }
 
 function openSearchesFor(app) {
@@ -600,7 +586,7 @@ function copyReportFor(app) {
 
 function runTests() {
   const tests = [
-    { name: 'Asset parser splits typed lines', pass: (() => { const old = $('softwareInput').value; $('softwareInput').value = 'app: A\nos: B'; const parsed = softwareList(); const ok = parsed.length === 2 && parsed[0].type === 'app' && parsed[1].type === 'os'; $('softwareInput').value = old; return ok; })() },
+    { name: 'Asset parser splits typed lines', pass: (() => { const old = $('softwareInput').value; $('softwareInput').value = 'app: A' + NL + 'os: B'; const parsed = softwareList(); const ok = parsed.length === 2 && parsed[0].type === 'app' && parsed[1].type === 'os'; $('softwareInput').value = old; return ok; })() },
     { name: 'RSS parser accepts empty channel', pass: parseRss('<rss><channel></channel></rss>').length === 0 },
     { name: 'RSS parser fixes bare ampersand', pass: parseRss('<rss><channel><item><title>A & B</title></item></channel></rss>').length === 1 },
     { name: 'Priority with KEV is high', pass: priorityFor([{ cveID: 'CVE-2024-0001' }], [], []).score >= 70 },
@@ -608,7 +594,8 @@ function runTests() {
     { name: 'Priority with ZDI is medium or higher', pass: priorityFor([], [], [{ title: 'ZDI test' }]).score >= 40 },
     { name: 'Report text contains validation actions', pass: resultText({ app: 'TestApp', asset: { type: 'app' }, kev: [], rss: [], zdi: [], priority: priorityFor([], [], []) }).includes('Validation Actions') },
     { name: 'Critical/high helper returns array', pass: Array.isArray(criticalHighResults()) },
-    { name: 'Critical/high copy separator is escaped', pass: ['A','B'].join('\n\n---\n\n').includes('---') },
+    { name: 'Critical/high copy separator is escaped', pass: ['A','B'].join(NL + NL + '---' + NL + NL).includes('---') },
+    { name: 'CSV parser handles quoted comma', pass: parseCsv('type,name' + NL + 'app,"A, B"')[1][1] === 'A, B' },
     { name: 'CVE links include NVD', pass: cveLinks('CVE-2024-0001').includes('nvd.nist.gov') },
     { name: 'Vendor links include update search', pass: vendorLinks('TestApp', 'app').includes('download') },
     { name: 'Firmware type inference works', pass: parseAssetLine('Dell BIOS').type === 'firmware' }
