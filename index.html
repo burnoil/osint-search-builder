@@ -12,7 +12,7 @@
 <main>
   <section class="top">
     <div>
-      <div class="badge">Technology Stack → Vulnerability + Patch Intelligence • v<span id="versionBadge">0.5.0</span></div>
+      <div class="badge">Technology Stack → Vulnerability + Patch Intelligence • v<span id="versionBadge">0.6.0</span></div>
       <h1>Technology Vulnerability & Patch Intelligence</h1>
       <p>Paste applications, operating systems, firmware, hardware, SaaS platforms, drivers, and appliances; correlate them against exploited vulnerabilities and recent patch/update signals; then generate an engineer-ready action report.</p>
       <p class="small" id="versionInfo">Version loading...</p>
@@ -39,6 +39,22 @@
           <label class="filebtn secondary">Import CSV<input id="csvImport" type="file" accept=".csv,text/csv" style="display:none"></label>
           <button class="secondary" data-action="export-assets-csv">Export Asset CSV</button>
         </div>
+      </section>
+
+      <section class="card">
+        <h2>Asset Profiles</h2>
+        <p class="small">Load a built-in profile or save the current asset list as your own reusable profile. Custom profiles are stored locally in this browser.</p>
+        <div class="two">
+          <div><label><b>Load profile</b></label><select id="profileSelect"></select></div>
+          <div><label><b>New custom profile name</b></label><input id="profileName" placeholder="Example: Client A Edge Stack"></div>
+        </div>
+        <div class="actions" style="margin-top:12px">
+          <button class="secondary" data-action="load-profile">Load Profile</button>
+          <button class="secondary" data-action="append-profile">Append Profile</button>
+          <button data-action="save-profile">Save Current as Profile</button>
+          <button class="danger" data-action="delete-profile">Delete Custom Profile</button>
+        </div>
+        <div id="profileStatus" class="small" style="margin-top:10px"></div>
       </section>
 
       <section class="card">
@@ -98,6 +114,7 @@
       <div class="small" style="margin-top:12px">
         <p><b id="versionLine">Version loading...</b></p>
         <ul>
+          <li><b>0.6.0</b> — Added built-in asset profiles and custom user-created profiles stored locally in the browser.</li>
           <li><b>0.5.0</b> — Added CSV asset import/export, CSV results export, and GitHub Action feed timestamp metadata support.</li>
           <li><b>0.4.0</b> — Asset-type support for applications, OS, firmware, hardware/appliances, drivers, SaaS/cloud, and vendor/product entries.</li>
           <li><b>0.3.0</b> — Added ZDI emerging vulnerability feed integration.</li>
@@ -119,7 +136,7 @@
 <script>
 'use strict';
 
-const APP_VERSION = '0.5.0';
+const APP_VERSION = '0.6.0';
 const APP_UPDATED = '2026-04-30';
 const APP_CODENAME = 'Asset Intelligence';
 let GIT_FEED_META = null;
@@ -133,7 +150,15 @@ let FEED_META = { kev: null, patch: null, zdi: null };
 
 const NL = String.fromCharCode(10);
 const CR = String.fromCharCode(13);
-const SAMPLE = ['app: Google Chrome','app: Microsoft Office','app: Zoom','app: 7-Zip','os: Windows 11','firmware: Dell BIOS','hardware: Fortinet FortiGate','hardware: Cisco ASA','driver: Intel Graphics Driver','saas: Okta','hardware: QNAP NAS','hardware: Ivanti Connect Secure'].join(NL);
+const BUILT_IN_PROFILES = {
+  'Endpoint Baseline': ['app: Google Chrome','app: Microsoft Edge','app: Mozilla Firefox','app: Microsoft Office','app: Adobe Acrobat','app: Zoom','app: 7-Zip','os: Windows 11','driver: Intel Graphics Driver'].join(NL),
+  'Network / Edge Security': ['hardware: Fortinet FortiGate','hardware: Cisco ASA','hardware: Palo Alto PAN-OS','hardware: Ivanti Connect Secure','hardware: Citrix ADC','hardware: SonicWall Firewall','hardware: F5 BIG-IP'].join(NL),
+  'Server / Infrastructure': ['os: Windows Server 2022','os: Ubuntu Server','os: Red Hat Enterprise Linux','hardware: VMware ESXi','app: Apache HTTP Server','app: NGINX','app: OpenSSL','app: OpenSSH'].join(NL),
+  'Identity / SaaS': ['saas: Okta','saas: Microsoft Entra ID','saas: Microsoft 365','saas: Salesforce','saas: ServiceNow','saas: Google Workspace','saas: Slack'].join(NL),
+  'Firmware / Hardware Risk Set': ['firmware: Dell BIOS','firmware: HP iLO','firmware: Lenovo UEFI','hardware: QNAP NAS','hardware: Synology NAS','hardware: Cisco IOS XE','hardware: Fortinet FortiGate','hardware: Palo Alto PAN-OS'].join(NL),
+  'Patch Management / RMM': ['app: Microsoft Configuration Manager','app: BigFix','app: Patch My PC','app: ConnectWise ScreenConnect','app: Kaseya VSA','app: NinjaOne','app: Action1','app: PDQ Deploy'].join(NL)
+};
+const SAMPLE = BUILT_IN_PROFILES['Endpoint Baseline'];
 
 const esc = value => String(value || '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
 
@@ -176,6 +201,74 @@ function softwareList() {
 function assetTypeLabel(type) {
   const labels = { app:'Application', os:'Operating System', firmware:'Firmware', hardware:'Hardware / Appliance', driver:'Driver', saas:'SaaS / Cloud', vendor:'Vendor / Product', unknown:'Unspecified' };
   return labels[type] || 'Unspecified';
+}
+
+function getCustomProfiles() {
+  try { return JSON.parse(localStorage.getItem('tvpi.customProfiles') || '{}'); }
+  catch { return {}; }
+}
+
+function saveCustomProfiles(profiles) {
+  localStorage.setItem('tvpi.customProfiles', JSON.stringify(profiles || {}));
+}
+
+function profileKey(kind, name) {
+  return kind + '::' + name;
+}
+
+function renderProfiles() {
+  const select = $('profileSelect');
+  if (!select) return;
+  const custom = getCustomProfiles();
+  const options = [];
+  Object.keys(BUILT_IN_PROFILES).forEach(name => options.push('<option value="' + esc(profileKey('built-in', name)) + '">Built-in: ' + esc(name) + '</option>'));
+  Object.keys(custom).sort().forEach(name => options.push('<option value="' + esc(profileKey('custom', name)) + '">Custom: ' + esc(name) + '</option>'));
+  select.innerHTML = options.join('');
+}
+
+function selectedProfile() {
+  const select = $('profileSelect');
+  if (!select || !select.value) return null;
+  const parts = select.value.split('::');
+  const kind = parts[0];
+  const name = parts.slice(1).join('::');
+  const custom = getCustomProfiles();
+  const content = kind === 'built-in' ? BUILT_IN_PROFILES[name] : custom[name];
+  return content ? { kind, name, content } : null;
+}
+
+function loadProfile(append) {
+  const profile = selectedProfile();
+  const status = $('profileStatus');
+  if (!profile) { if (status) status.textContent = 'No profile selected.'; return; }
+  if (append && $('softwareInput').value.trim()) $('softwareInput').value = $('softwareInput').value.trim() + NL + profile.content;
+  else $('softwareInput').value = profile.content;
+  if (status) status.textContent = (append ? 'Appended' : 'Loaded') + ' profile: ' + profile.name;
+}
+
+function saveCurrentProfile() {
+  const name = ($('profileName')?.value || '').trim();
+  const status = $('profileStatus');
+  const content = $('softwareInput').value.trim();
+  if (!name) { if (status) status.textContent = 'Enter a custom profile name first.'; return; }
+  if (!content) { if (status) status.textContent = 'Current asset list is empty.'; return; }
+  const custom = getCustomProfiles();
+  custom[name] = content;
+  saveCustomProfiles(custom);
+  renderProfiles();
+  if (status) status.textContent = 'Saved custom profile: ' + name;
+}
+
+function deleteSelectedCustomProfile() {
+  const profile = selectedProfile();
+  const status = $('profileStatus');
+  if (!profile) { if (status) status.textContent = 'No profile selected.'; return; }
+  if (profile.kind !== 'custom') { if (status) status.textContent = 'Built-in profiles cannot be deleted.'; return; }
+  const custom = getCustomProfiles();
+  delete custom[profile.name];
+  saveCustomProfiles(custom);
+  renderProfiles();
+  if (status) status.textContent = 'Deleted custom profile: ' + profile.name;
 }
 
 function engineUrl(query) {
@@ -598,7 +691,9 @@ function runTests() {
     { name: 'CSV parser handles quoted comma', pass: parseCsv('type,name' + NL + 'app,"A, B"')[1][1] === 'A, B' },
     { name: 'CVE links include NVD', pass: cveLinks('CVE-2024-0001').includes('nvd.nist.gov') },
     { name: 'Vendor links include update search', pass: vendorLinks('TestApp', 'app').includes('download') },
-    { name: 'Firmware type inference works', pass: parseAssetLine('Dell BIOS').type === 'firmware' }
+    { name: 'Firmware type inference works', pass: parseAssetLine('Dell BIOS').type === 'firmware' },
+    { name: 'Built-in profiles are available', pass: Object.keys(BUILT_IN_PROFILES).length >= 5 },
+    { name: 'Profile key roundtrip works', pass: profileKey('custom','Test').includes('custom::Test') }
   ];
   $('testResults').innerHTML = tests.map(t => '<div class="' + (t.pass ? 'ok' : 'bad') + '" style="margin-bottom:8px"><b>' + (t.pass ? 'PASS' : 'FAIL') + '</b> - ' + esc(t.name) + '</div>').join('');
 }
@@ -623,6 +718,10 @@ function boot() {
     if (target.dataset.action === 'export-results-csv') exportResultsCsv();
     if (target.dataset.action === 'copy-critical-high') copyCriticalHigh();
     if (target.dataset.action === 'load-sample') $('softwareInput').value = SAMPLE;
+    if (target.dataset.action === 'load-profile') loadProfile(false);
+    if (target.dataset.action === 'append-profile') loadProfile(true);
+    if (target.dataset.action === 'save-profile') saveCurrentProfile();
+    if (target.dataset.action === 'delete-profile') deleteSelectedCustomProfile();
     if (target.dataset.action === 'clear-input') $('softwareInput').value = '';
     if (target.dataset.openSearches) openSearchesFor(target.dataset.openSearches);
     if (target.dataset.copyReport) copyReportFor(target.dataset.copyReport);
@@ -636,6 +735,7 @@ function boot() {
   $('noiseFilter').addEventListener('change', analyze);
   $('assetTypeFilter').addEventListener('change', analyze);
   renderVersion();
+  renderProfiles();
   runTests();
   loadFeeds();
 }
