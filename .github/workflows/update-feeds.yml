@@ -1,0 +1,57 @@
+name: Update Threat Feeds
+
+on:
+  schedule:
+    - cron: "0 * * * *"   # every hour
+  workflow_dispatch:
+
+jobs:
+  update-feeds:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch KEV
+        run: |
+          curl -fL --retry 3 \
+          https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json \
+          -o data/kev.json
+
+      - name: Fetch Patch My PC RSS
+        run: |
+          curl -fL --retry 3 \
+          https://patchmypc.com/feed/ \
+          -o data/patchmypc.xml
+
+      - name: Fetch ZDI RSS
+        run: |
+          curl -fL --retry 3 \
+          https://www.zerodayinitiative.com/rss/published/ \
+          -o data/zdi.xml
+
+      - name: Generate feed-meta.json
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+
+          cat <<EOF > data/feed-meta.json
+          {
+            "generatedAt": "$TIMESTAMP",
+            "commit": "$COMMIT_SHA",
+            "feeds": {
+              "kev": { "generatedAt": "$TIMESTAMP" },
+              "patchmypc": { "generatedAt": "$TIMESTAMP" },
+              "zdi": { "generatedAt": "$TIMESTAMP" }
+            }
+          }
+          EOF
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update feeds + metadata"
+          git push
