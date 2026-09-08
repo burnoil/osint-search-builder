@@ -10,9 +10,65 @@
                    delivered ahead of public disclosure. All security vulnerabilities that are acquired by the
                    Zero Day Initiative are handled according to the ZDI Disclosure Policy.
         ]]></description>
-    <pubDate>Tue, 08 Sep 2026 16:43:49 -0500</pubDate>
+    <pubDate>Tue, 08 Sep 2026 18:58:23 -0500</pubDate>
     <copyright>Trend Micro, all rights reserved</copyright>
     <language>en</language>
+    
+    <item>
+      <title><![CDATA[ZDI-26-622: Microsoft Windows IKEv2 AES-GCM Decryption Integer Underflow Remote Code Execution Vulnerability]]></title>
+      <guid isPermaLink="false">ZDI-CAN-31212</guid>
+      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-622/</link>
+      <description><![CDATA[This vulnerability allows remote attackers to execute arbitrary code on affected installations of Microsoft Windows. Authentication is not required to exploit this vulnerability, but only systems with specific IPsec configurations are vulnerable. The ZDI has assigned a CVSS rating of 8.1. The following CVEs are assigned: CVE-2026-50696.]]></description>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 -0500</pubDate>
+    </item>
+    
+    <item>
+      <title><![CDATA[ZDI-26-621: Microsoft Windows UMPDDrvRealizeBrush Improper Object Management Local Privilege Escalation Vulnerability]]></title>
+      <guid isPermaLink="false">ZDI-CAN-30744</guid>
+      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-621/</link>
+      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Microsoft Windows. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-62712.]]></description>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 -0500</pubDate>
+    </item>
+    
+    <item>
+      <title><![CDATA[ZDI-26-620: Microsoft Windows UMPDDrvPlgBlt Improper Object Management Local Privilege Escalation Vulnerability]]></title>
+      <guid isPermaLink="false">ZDI-CAN-30743</guid>
+      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-620/</link>
+      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Microsoft Windows. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-62712.]]></description>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 -0500</pubDate>
+    </item>
+    
+    <item>
+      <title><![CDATA[ZDI-26-619: Microsoft Windows UMPDDrvStretchBltROP Improper Object Management Local Privilege Escalation Vulnerability]]></title>
+      <guid isPermaLink="false">ZDI-CAN-30745</guid>
+      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-619/</link>
+      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Microsoft Windows. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-62712.]]></description>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 -0500</pubDate>
+    </item>
+    
+    <item>
+      <title><![CDATA[ZDI-26-618: Microsoft Windows UMPDDrvStretchBlt Improper Object Management Local Privilege Escalation Vulnerability]]></title>
+      <guid isPermaLink="false">ZDI-CAN-30746</guid>
+      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-618/</link>
+      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Microsoft Windows. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-62712.]]></description>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 -0500</pubDate>
+    </item>
+    
+    <item>
+      <title><![CDATA[ZDI-26-617: Microsoft Windows MIDI Service Incorrect Permission Assignment Local Privilege Escalation Vulnerability]]></title>
+      <guid isPermaLink="false">ZDI-CAN-30483</guid>
+      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-617/</link>
+      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Microsoft Windows. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-66804.]]></description>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 -0500</pubDate>
+    </item>
+    
+    <item>
+      <title><![CDATA[ZDI-26-616: Koha Eval Code Injection Remote Code Execution Vulnerability]]></title>
+      <guid isPermaLink="false">ZDI-CAN-29165</guid>
+      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-616/</link>
+      <description><![CDATA[This vulnerability allows remote attackers to execute arbitrary code on affected installations of Koha. Authentication is required to exploit this vulnerability. The ZDI has assigned a CVSS rating of 8.8. The following CVEs are assigned: CVE-2026-19780.]]></description>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 -0500</pubDate>
+    </item>
     
     <item>
       <title><![CDATA[ZDI-26-615: (0Day) pdfforge PDF Architect activation-service Update Service Uncontrolled Search Path Element Local Privilege Escalation Vulnerability]]></title>
@@ -1555,62 +1611,6 @@
       <guid isPermaLink="false">ZDI-CAN-28554</guid>
       <link>http://www.zerodayinitiative.com/advisories/ZDI-26-423/</link>
       <description><![CDATA[This vulnerability allows network-adjacent attackers to execute arbitrary code on affected installations of Synology DiskStation DS925+ devices. Authentication is not required to exploit this vulnerability. The ZDI has assigned a CVSS rating of 8.8. The following CVEs are assigned: CVE-2025-15660.]]></description>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 -0500</pubDate>
-    </item>
-    
-    <item>
-      <title><![CDATA[ZDI-26-422: Samsung rlottie Numeric Truncation Remote Code Execution Vulnerability]]></title>
-      <guid isPermaLink="false">ZDI-CAN-30236</guid>
-      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-422/</link>
-      <description><![CDATA[This vulnerability allows remote attackers to execute arbitrary code on affected installations of Samsung rlottie. Interaction with the rlottie library is required to exploit this vulnerability but attack vectors may vary depending on the implementation. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-15551.]]></description>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 -0500</pubDate>
-    </item>
-    
-    <item>
-      <title><![CDATA[ZDI-26-421: Cisco Identity Services Engine validFileNameOrPath Directory Traversal Information Disclosure Vulnerability]]></title>
-      <guid isPermaLink="false">ZDI-CAN-28724</guid>
-      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-421/</link>
-      <description><![CDATA[This vulnerability allows remote attackers to disclose sensitive information on affected installations of Cisco Identity Services Engine. Authentication is required to exploit this vulnerability. The ZDI has assigned a CVSS rating of 5.5. The following CVEs are assigned: CVE-2026-20146.]]></description>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 -0500</pubDate>
-    </item>
-    
-    <item>
-      <title><![CDATA[ZDI-26-420: Adobe Creative Cloud AGSService Incorrect Permission Assignment Local Privilege Escalation Vulnerability]]></title>
-      <guid isPermaLink="false">ZDI-CAN-29867</guid>
-      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-420/</link>
-      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Adobe Creative Cloud Desktop Application. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-48344.]]></description>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 -0500</pubDate>
-    </item>
-    
-    <item>
-      <title><![CDATA[ZDI-26-419: Adobe Creative Cloud AdobeUpdateService Uncontrolled Search Path Element Local Privilege Escalation Vulnerability]]></title>
-      <guid isPermaLink="false">ZDI-CAN-29588</guid>
-      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-419/</link>
-      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Adobe Creative Cloud. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.0. The following CVEs are assigned: CVE-2026-48272.]]></description>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 -0500</pubDate>
-    </item>
-    
-    <item>
-      <title><![CDATA[ZDI-26-418: Microsoft SharePoint SPFieldMultiLineText Cross-Site Scripting Vulnerability]]></title>
-      <guid isPermaLink="false">ZDI-CAN-30803</guid>
-      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-418/</link>
-      <description><![CDATA[This vulnerability allows remote attackers to execute web requests with a target user&#x27;s privileges on affected installations of Microsoft SharePoint. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The ZDI has assigned a CVSS rating of 7.3. The following CVEs are assigned: CVE-2026-55126.]]></description>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 -0500</pubDate>
-    </item>
-    
-    <item>
-      <title><![CDATA[ZDI-26-417: Microsoft Windows ServerManager Exposed Dangerous Method Local Privilege Escalation Vulnerability]]></title>
-      <guid isPermaLink="false">ZDI-CAN-30003</guid>
-      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-417/</link>
-      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Microsoft Windows Server. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-50311.]]></description>
-      <pubDate>Wed, 15 Jul 2026 00:00:00 -0500</pubDate>
-    </item>
-    
-    <item>
-      <title><![CDATA[ZDI-26-416: Microsoft Hyper-V netvsc Out-Of-Bounds Read Local Privilege Escalation Vulnerability]]></title>
-      <guid isPermaLink="false">ZDI-CAN-28769</guid>
-      <link>http://www.zerodayinitiative.com/advisories/ZDI-26-416/</link>
-      <description><![CDATA[This vulnerability allows local attackers to escalate privileges on affected installations of Microsoft Hyper-V. An attacker must first obtain the ability to execute low-privileged code within a Windows virtual machine under Hyper-V in order to exploit this vulnerability. The ZDI has assigned a CVSS rating of 7.8. The following CVEs are assigned: CVE-2026-54129.]]></description>
       <pubDate>Wed, 15 Jul 2026 00:00:00 -0500</pubDate>
     </item>
     
